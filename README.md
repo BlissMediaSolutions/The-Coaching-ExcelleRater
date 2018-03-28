@@ -21,4 +21,4 @@ Developed By:
 * Luke Badawy  
 * Wendy Tran  
 * Danielle Walker  
-* Devon Naidoo  
+* Deven Naidoo  
