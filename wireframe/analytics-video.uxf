@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>1314</w>
+      <h>801</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>9</x>
+      <y>18</y>
+      <w>1296</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>Banner/Artwork  : logo?</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>18</x>
+      <y>126</y>
+      <w>450</w>
+      <h>603</h>
+    </coordinates>
+    <panel_attributes>MyVideos</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>180</y>
+      <w>90</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Video 
+Thumbnail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>153</x>
+      <y>198</y>
+      <w>216</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Video Summar
+halign=left
+valign=center
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>279</y>
+      <w>90</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Video 
+Thumbnail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>153</x>
+      <y>297</y>
+      <w>216</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Video Summary
+halign=left
+valign=center
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>378</y>
+      <w>90</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Video 
+Thumbnail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>153</x>
+      <y>396</y>
+      <w>216</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Video Summary
+halign=left
+valign=center
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>477</y>
+      <w>90</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Video 
+Thumbnail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>153</x>
+      <y>495</y>
+      <w>216</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Video Summary
+halign=left
+valign=center
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>36</x>
+      <y>576</y>
+      <w>90</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>Video 
+Thumbnail</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>153</x>
+      <y>594</y>
+      <w>216</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Video Summary
+halign=left
+valign=center
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>432</x>
+      <y>126</y>
+      <w>36</w>
+      <h>603</h>
+    </coordinates>
+    <panel_attributes>valign=center
+V
+E
+R
+T
+I
+C
+A
+L
+
+S
+C
+R
+O
+L
+L
+E
+R</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>495</x>
+      <y>126</y>
+      <w>522</w>
+      <h>522</h>
+    </coordinates>
+    <panel_attributes>Graphs</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>738</x>
+      <y>639</y>
+      <w>99</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>441</x>
+      <y>855</y>
+      <w>333</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>Graph showing player decision making</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1053</x>
+      <y>126</y>
+      <w>234</w>
+      <h>522</h>
+    </coordinates>
+    <panel_attributes>Unknown Decision
+	
+	- player name
+	
+	- player name
+	
+	- player name
+	
+	- player name</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1071</x>
+      <y>639</y>
+      <w>99</w>
+      <h>234</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;240.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>918</x>
+      <y>855</y>
+      <w>333</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>style=wordwrap
+Show list of players who have selected 'unknown' option for decision, that way coach can follow it up
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
