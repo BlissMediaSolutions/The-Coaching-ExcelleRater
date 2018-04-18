@@ -3,7 +3,7 @@
   &__link{
     color: white;
     position: absolute;
-    transition: all 0.25s ease-in-out;
+    transition: opacity 0.25s cubic-bezier(0.42, 0, 0, 1.26), transform 0.25s ease-in-out;
     font-size: 1.6rem;
     transform-origin: left center;
     text-shadow: 30px -8px 4px rgba(0,0,0,0.2);
