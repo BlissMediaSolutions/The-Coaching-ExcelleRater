@@ -3,13 +3,14 @@
   height: 400px;
   background-size: cover;
   // background-position: center center;
-  background-image: url(https://img00.deviantart.net/5b4a/i/2013/247/9/b/lebron_james_dunk_wallpaper_by_oppeprinz-d6l1slm.jpg);
+  background-image: url(https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png);
+  background-position: center center;
   display: flex;
   align-items: center;
   
   &__heading{
-    font-size: 4.5rem;
+    font-size: 5rem;
     color: white;
-    text-shadow: 5px 0px 2px rgba(0, 0, 0, 1);
+    text-shadow: 9px 8px 15px black;;
   }
 }

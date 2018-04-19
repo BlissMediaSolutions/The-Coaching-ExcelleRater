@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
   constructor(props) {
@@ -28,11 +29,11 @@ class Nav extends Component {
           </div>
           <div className={`${this.state.hamburgerOpen ? 'c-nav__menu-open' : 'c-nav__menu-closed'} c-nav__items`}>
             <div class="c-nav__item-wrapper">
-              <a className="c-nav__link" href="">Home</a>
-              <a className="c-nav__link" href="">About</a>
-              <a className="c-nav__link" href="">Sign Up</a>
-              <a className="c-nav__link" href="">Videos</a>
-              <a className="c-nav__link" href="">Demo</a>
+              <Link className="c-nav__link" to="/">Home</Link>
+              <Link className="c-nav__link" to="/about">About</Link>
+              <Link className="c-nav__link" to="/signup">Sign Up</Link>
+              <Link className="c-nav__link" to="/videos">Videos</Link>
+              <Link className="c-nav__link" to="/demo">Demo</Link>
             </div>
           </div>
         </div>
