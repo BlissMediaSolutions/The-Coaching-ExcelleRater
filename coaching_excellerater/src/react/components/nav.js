@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class Nav extends Component {
   constructor(props) {
@@ -29,11 +29,11 @@ class Nav extends Component {
           </div>
           <div className={`${this.state.hamburgerOpen ? 'c-nav__menu-open' : 'c-nav__menu-closed'} c-nav__items`}>
             <div class="c-nav__item-wrapper">
-              <Link className="c-nav__link" to="/">Home</Link>
-              <Link className="c-nav__link" to="/about">About</Link>
-              <Link className="c-nav__link" to="/signup">Sign Up</Link>
-              <Link className="c-nav__link" to="/videos">Videos</Link>
-              <Link className="c-nav__link" to="/demo">Demo</Link>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/">Home</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/about">About</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/signup">Sign Up</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/videos">Videos</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/demo">Demo</NavLink>
             </div>
           </div>
         </div>
