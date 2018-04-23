@@ -14,6 +14,7 @@ import './styles/main.scss';
 // Custom components, these are the sections of our application, we put them in
 // seperate files and import them to make the modular and scalable
 import Home from './react/pages/home';
+import Login from './react/pages/login';
 import About from './react/pages/about';
 import Nav from './react/components/nav';
 
@@ -24,6 +25,7 @@ class App extends Component {
         <Nav></Nav>
         <div>
           <Route path="/" exact component={Home}/>
+          <Route path="/login" exact component={Login}/>
           <Route path="/about" exact component={About}/>
         </div>
       </div>
