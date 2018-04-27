@@ -7,46 +7,39 @@ import { Grid, Nav, NavItem } from 'react-bootstrap';
 class Footer extends Component {
     render() {
         return(
-            <footer className="c-footer"> 
-                <div id="EmailContact">
-                <p align="left"> Email: CoachXL@support.com </p>
+        <footer className="c-footer"> 
+        <div className="container">
+            <div className="c-footer__container">   
+                <div>      
+                    <span className="c-footer__list-item"> Email: CoachXL@support.com </span>           
+                    <span className="c-footer__list-item"> Phone: 0415063336 </span>    
+                    <span className="c-footer__list-item"> Address: 22 Sporty Street Rowville </span> 
+                 </div>   
+                <div>
+                   <i className="fa fa-anchor"> </i> 
+                </div> 
+             </div>
+
+            <div className="c-footer__bottom">
+                <div> 
+                    <Link className="c-footer__link" to="/videos"> Videos </Link> 
+                                        
+                    <Link className="c-footer__link" to="/about"> About Us  </Link>
+                        
+                    <Link className="c-footer__link" to="/termsandconditions"> Terms and Conditions </Link>
+                        
                 </div>
 
-               <div id="Phone Support">
-                <p align="left"> Phone: 0415063336 </p>
-               </div>
+                <div>
+                    <a className="c-footer__social-link"> <i className="fa fa-facebook"></i> </a>
+                    <a className="c-footer__social-link"> <i className="fa fa-instagram"></i> </a>
+                    <a className="c-footer__social-link"> <i className="fa fa-twitter"></i> </a>
+                </div>  
+            </div>   
 
-               <div id="Address">
-                <p align="left"> Address: 22 Sporty Street Rowville </p>
-               </div>
-
-               <div id="Logo">
-                <p align="right"> Logo </p>
-               </div>
-
-               <hr/>
-
-         
-            <div>
-                   <NavItem eventKey={1}>
-                        <Link to="/videos"> Videos </Link> 
-                   </NavItem>    
-                    
-                    <NavItem eventKey={2}>
-                        <Link to="/about"> &nbsp;&nbsp;&nbsp;About Us  </Link>
-                    </NavItem> 
-
-                    <NavItem eventKey={3}>
-                        <Link to="/termsandconditions"> &nbsp;&nbsp;&nbsp;Terms and Conditions </Link>
-                    </NavItem>  
-            </div>
-                 <div>
-                    <i classname="fa fa-facebook"></i>
-                    <i classname="fa fa-instagram"></i>
-                    <i classname="fa fa-twitter"></i>
-                </div>     
+          </div>  
                              
-            </footer>
+        </footer>
         )
     }
 }
