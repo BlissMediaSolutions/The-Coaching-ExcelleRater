@@ -29,7 +29,11 @@ class App extends Component {
           <Route path="/login" exact component={Login}/>
           <Route path="/about" exact component={About}/>
         </div>
+        <div>
+          <Footer> </Footer>
+        </div>  
       </div>
+      
     );
   }
 }

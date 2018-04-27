@@ -7,8 +7,7 @@ import { Grid, Nav, NavItem } from 'react-bootstrap';
 class Footer extends Component {
     render() {
         return(
-            <div className="Footer">
-            <footer> 
+            <footer className="c-footer"> 
                 <div id="EmailContact">
                 <p align="left"> Email: CoachXL@support.com </p>
                 </div>
@@ -22,44 +21,32 @@ class Footer extends Component {
                </div>
 
                <div id="Logo">
-                <p align="right"> This is where the logo will go </p>
+                <p align="right"> Logo </p>
                </div>
 
                <hr/>
 
-            <Grid>
-               <Nav align="left">
+         
+            <div>
                    <NavItem eventKey={1}>
                         <Link to="/videos"> Videos </Link> 
                    </NavItem>    
-
+                    
                     <NavItem eventKey={2}>
-                        <Link to="/aboutus"> About Us </Link>
+                        <Link to="/about"> &nbsp;&nbsp;&nbsp;About Us  </Link>
                     </NavItem> 
 
                     <NavItem eventKey={3}>
-                        <Link to="/termsandconditions"> Terms and Conditions </Link>
+                        <Link to="/termsandconditions"> &nbsp;&nbsp;&nbsp;Terms and Conditions </Link>
                     </NavItem>  
-            </Nav>
-            </Grid>  
-                <Grid>
-                    <Nav align="right">
-                         <NavItem eventKey={4}>
-                            This will be a placeholder for the social media icons
-                         </NavItem>   
-
-                          <NavItem eventKey={5}>
-                            This will be a placeholder for the social media icons
-                         </NavItem>   
-
-                          <NavItem eventKey={6}>
-                            This will be a placeholder for the social media icons
-                         </NavItem>   
-                     </Nav>     
-                </Grid>
-                  
-            </footer>
             </div>
+                 <div>
+                    <i classname="fa fa-facebook"></i>
+                    <i classname="fa fa-instagram"></i>
+                    <i classname="fa fa-twitter"></i>
+                </div>     
+                             
+            </footer>
         )
     }
 }
