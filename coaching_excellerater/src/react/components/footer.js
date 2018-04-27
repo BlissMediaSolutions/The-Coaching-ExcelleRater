@@ -3,10 +3,10 @@ import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Grid, Nav, NavItem } from 'react-bootstrap';
 
-
 class Footer extends Component {
     render() {
         return(
+
         <footer className="c-footer"> 
         <div className="container">
             <div className="c-footer__container">   
@@ -22,12 +22,9 @@ class Footer extends Component {
 
             <div className="c-footer__bottom">
                 <div> 
-                    <Link className="c-footer__link" to="/videos"> Videos </Link> 
-                                        
-                    <Link className="c-footer__link" to="/about"> About Us  </Link>
-                        
+                    <Link className="c-footer__link" to="/videos"> Videos </Link>  
+                    <Link className="c-footer__link" to="/about"> About Us  </Link>      
                     <Link className="c-footer__link" to="/termsandconditions"> Terms and Conditions </Link>
-                        
                 </div>
 
                 <div>
@@ -44,3 +41,5 @@ class Footer extends Component {
     }
 }
 export default Footer; 
+
+           

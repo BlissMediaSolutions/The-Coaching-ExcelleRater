@@ -16,7 +16,6 @@ Tested In:
 * Google Chrome 64.0.2282
 
 Developed By:
-* Andrew Davis  
 * Jackson Zaloumis  
 * Luke Badawy  
 * Wendy Tran  
