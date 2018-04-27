@@ -17,6 +17,7 @@ import Home from './react/pages/home';
 import Login from './react/pages/login';
 import About from './react/pages/about';
 import Nav from './react/components/nav';
+import Footer from './react/components/footer';
 
 class App extends Component {
   render() {
