@@ -5,22 +5,17 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      username: '',
-      password: '',
-      rememberMe: false
+      data: {},
     };
   }
     
-  onUsernameChange = (event) => {
-    this.setState({ username: event.target.value });
-  }
-
-  onPasswordChange = (event) => {
-    this.setState({ password: event.target.value });
-  }
-
-  onRememberMeChange = (event) => {
-    this.setState({ rememberMe: event.target.value });
+  onChange = (e) => {
+    this.setState({
+      data: {
+        ...this.state.data,
+        [e.target.name]: e.target.value
+      }
+    });
   }
 
   onSubmit = () => {
@@ -36,17 +31,17 @@ class Login extends Component {
               <h2>Log into an existing account</h2>
               <div className="c-login__container">
                 <div className="row mb-3">
-                <label>Username</label>
-                  <input type="text" className="form-control" placeholder="Username" value={this.state.username} onChange={this.onUsernameChange} />
+                <label htmlFor="username">Username</label>
+                  <input type="text" className="form-control" name="username" id="username" placeholder="Username" value={this.state.username} onChange={this.onChange} />
                 </div>
                 <div className="row mb-3">
                   <label>Password</label>
-                  <input type="password" className="form-control" placeholder="Password" value={this.state.password} onChange={this.onPasswordChange} />
+                  <input type="password" className="form-control" name="password" id="password" placeholder="Password" value={this.state.password} onChange={this.onChange} />
                 </div>
                 <div className="row justify-content-between">
                   <div className="form-check">
-                    <input type="checkbox" id="remember" className="form-check-input" onChange={this.onRememberMeChange} /> 
-                    <label for="remember" className="form-check-label">Remember Me</label>
+                    <input type="checkbox" id="remember" className="form-check-input" onChange={this.onChange} /> 
+                    <label htmlFor="remember" className="form-check-label" name="rememberme" id="rememberme"> Remember Me</label>
                   </div>
                   <input type="submit" onClick={this.onSubmit} className="btn btn-primary" />
                 </div>
