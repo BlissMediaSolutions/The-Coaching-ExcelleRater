@@ -18,6 +18,7 @@ import Login from './react/pages/login';
 import About from './react/pages/about';
 import Nav from './react/components/nav';
 import Footer from './react/components/footer';
+import Signup from './react/pages/signup';
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/" exact component={Home}/>
           <Route path="/login" exact component={Login}/>
           <Route path="/about" exact component={About}/>
+          <Route path="/signup" exact component={Signup}/>
         </div>
         <div>
           <Footer> </Footer>
