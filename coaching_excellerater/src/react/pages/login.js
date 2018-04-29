@@ -40,7 +40,7 @@ class Login extends Component {
           <div className="container">
             <div className="u-component">
               <h2>Log into an existing account</h2>
-              <div className="c-login__container">
+              <div className="u-form-container">
                 <div className="row mb-3">
                 <label htmlFor="username">Username</label>
                   <input type="text" className="form-control" name="username" id="username" placeholder="Username" value={this.state.data.username} onChange={this.onChange} />

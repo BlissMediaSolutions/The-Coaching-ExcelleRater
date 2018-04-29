@@ -33,7 +33,7 @@ class Signup extends Component {
         <div className="container">
           <div className="u-component"> 
             <h2>Create an account</h2>
-            <div className="c-login__container">
+            <div className="u-form-container">
             <form>
             <div className="row mb-3">
                 <label htmlFor="organisation">Organisation</label>
