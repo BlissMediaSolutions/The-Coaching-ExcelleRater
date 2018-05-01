@@ -1,0 +1,18 @@
+// You dont need to put the file extension (.scss) it is 
+// smart enough to know
+
+// Variables
+@import './variables/spacing';
+
+// Components
+@import './components/_banner';
+@import './components/_nav';
+@import './components/_footer';
+
+// Elements
+@import './elements/typography';
+@import './elements/links'; 
+
+// Utilities
+@import './utilities/misc';
+@import './utilities/form';
