@@ -29,11 +29,11 @@ class Nav extends Component {
           </div>
           <div className={`${this.state.hamburgerOpen ? 'c-nav__menu-open' : 'c-nav__menu-closed'} c-nav__items`}>
             <div class="c-nav__item-wrapper">
-              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/">Home</NavLink>
-              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/about">About</NavLink>
-              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/signup">Sign Up</NavLink>
-              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/videos">Videos</NavLink>
-              <NavLink activeClassName='is-active' exact className="c-nav__link" to="/demo">Demo</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/`}>Home</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/about`}>About</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/signup`}>Sign Up</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/videos`}>Videos</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/demo`}>Demo</NavLink>
             </div>
           </div>
         </div>

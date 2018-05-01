@@ -19,12 +19,13 @@ import Nav from './react/components/nav';
 
 class App extends Component {
   render() {
+    console.log(process.env.PUBLIC_URL);
     return (
       <div className="App">
         <Nav></Nav>
         <div>
-          <Route path="/" exact component={Home}/>
-          <Route path="/about" exact component={About}/>
+          <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home}/>
+          <Route path={`${process.env.PUBLIC_URL}/about`} exact component={About}/>
         </div>
       </div>
     );
