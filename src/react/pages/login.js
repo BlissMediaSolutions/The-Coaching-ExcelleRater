@@ -33,6 +33,7 @@ class Login extends Component {
   onSubmit = () => {
     if(this.state.data.password && this.state.data.username){
       this.props.userLoginRequest(this.state);
+      //axios.post('login.php', {user: this.state.data}); will move to redux soon
     } else {
       //Fire Input Validation
     }
