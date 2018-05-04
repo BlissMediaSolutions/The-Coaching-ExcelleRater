@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import Banner from '../components/banner';
+import PropTypes from 'prop-types';
 
 class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      data: {},
+      data: {
+        passwordMatch: false
+      },
     };
   }
     
@@ -18,10 +21,41 @@ class Signup extends Component {
     });
   }
 
+  onSubmit = () => {
+    if (this.state.data.confirm_password && this.state.data.confirm_password) {
+      this.setState({
+        data: {
+          ...this.state.data,
+          passwordMatch: true
+        }
+      })
+    } else {
+      this.setState({
+        data: {
+          ...this.state.data,
+          passwordMatch: false
+        }
+      })
+    }
+    
+    if(
+        this.state.data.password && 
+        this.state.data.username && 
+        this.state.data.organisation && 
+        this.state.data.email && 
+        this.state.data.passwordMatch
+    )
+    {
+      this.props.userSignupRequest(this.state);
+    } else {
+      //Fire Input Validation
+    }
+  }
+
   render() {
     let confirmPasswordClassName = "form-control"
-    if (this.state.data.confirm_password !== undefined && this.state.data.confirm_password.length > 0) {
-      confirmPasswordClassName += this.state.data.password === this.state.data.confirm_password 
+    if (this.state.data.confirm_password && this.state.data.confirm_password) {
+        confirmPasswordClassName += this.state.data.password === this.state.data.confirm_password 
         ?  " is-valid"
         :  " is-invalid"
     }
@@ -91,6 +125,10 @@ class Signup extends Component {
       </div>
     );
   }
+}
+
+Signup.propTypes = {
+  userSignupRequest: PropTypes.func.isRequired
 }
 
 export default Signup;

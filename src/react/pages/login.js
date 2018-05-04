@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Banner from '../components/banner';
 
 class Login extends Component {
@@ -30,7 +31,11 @@ class Login extends Component {
   }
 
   onSubmit = () => {
-    //TO DO
+    if(this.state.data.password && this.state.data.username){
+      this.props.userLoginRequest(this.state);
+    } else {
+      //Fire Input Validation
+    }
   }
 
   render() {
@@ -62,6 +67,10 @@ class Login extends Component {
       </div>
     );
   }
+}
+
+Login.propTypes = {
+  userLoginRequest: PropTypes.func.isRequired
 }
 
 export default Login;

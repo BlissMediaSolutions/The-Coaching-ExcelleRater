@@ -4,10 +4,20 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
+
+const store = createStore(
+  (state = {} ) => state,
+  applyMiddleware(thunk)
+)
 
 ReactDOM.render(
-  <BrowserRouter basename="/coaching">
-    <App />
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter basename="/coaching">
+      <App />
+    </BrowserRouter>
+  </Provider>
   , document.getElementById('root'));
 registerServiceWorker();

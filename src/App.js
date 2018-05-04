@@ -32,9 +32,7 @@ class App extends Component {
           <Route path={`${process.env.PUBLIC_URL}/login`} exact component={Login}/>
           <Route path={`${process.env.PUBLIC_URL}/signup`} exact component={Signup}/>
         </div>
-        <div>
-          <Footer> </Footer>
-        </div>  
+        <Footer></Footer> 
       </div>
       
     );
