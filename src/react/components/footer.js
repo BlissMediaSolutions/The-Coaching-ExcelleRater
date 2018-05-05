@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { Grid, Nav, NavItem } from 'react-bootstrap';
 
 class Footer extends Component {
     render() {
