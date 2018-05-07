@@ -78,5 +78,9 @@ INSERT INTO SPORT(SportName) VALUES('Soccer');
 INSERT INTO ROLE(RoleTitle) VALUES('Admin');
 INSERT INTO ROLE(RoleTitle) VALUES('Coach');
 INSERT INTO ROLE(RoleTitle) VALUES('Player');
+
+INSERT INTO TEAM(SportID, Name) VALUES (2, 'Rockets');
+
+INSERT INTO PERSON(FullName, Dob, Address, City, State, Phone, Email) VALUES ('John Doe', '1985-2-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdoe@test.com');
   
   
