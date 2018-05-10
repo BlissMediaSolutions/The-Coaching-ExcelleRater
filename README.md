@@ -2,7 +2,7 @@
 
 2018, Swinburne University Software Engineering Capstone Project    
 **Client:** Associate Professor Chris Fluke    
-**Project Supervisor:** Ron Barthals  
+**Project Supervisor:** Ronald Bartels
 
 Status: Incomplete, Under Development
 
