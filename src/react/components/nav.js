@@ -31,7 +31,7 @@ class Nav extends Component {
             <div className="c-nav__item-wrapper">
               <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/`}>Home</NavLink>
               <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/about`}>About</NavLink>
-              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/signup`}>Sign Up</NavLink>
+              <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/createWorkflow`}>Workflow Setup</NavLink>
               <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/videos`}>Videos</NavLink>
               <NavLink activeClassName='is-active' exact className="c-nav__link" to={`${process.env.PUBLIC_URL}/demo`}>Demo</NavLink>
             </div>

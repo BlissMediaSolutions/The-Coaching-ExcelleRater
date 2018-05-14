@@ -11,14 +11,18 @@ import { Route } from 'react-router-dom';
 import './styles/main.scss';
 
 
-// Custom components, these are the sections of our application, we put them in
-// seperate files and import them to make the modular and scalable
+// Pages
 import Home from './react/pages/home';
 import Login from './react/pages/login';
 import About from './react/pages/about';
+import Signup from './react/pages/signup';
+import Video from './react/pages/video';
+import CreateWorkflow from './react/pages/createWorkflow';
+
+// Custom components, these are the sections of our application, we put them in
+// seperate files and import them to make the modular and scalable
 import Nav from './react/components/nav';
 import Footer from './react/components/footer';
-import Signup from './react/pages/signup';
 
 class App extends Component {
   render() {
@@ -31,6 +35,8 @@ class App extends Component {
           <Route path={`${process.env.PUBLIC_URL}/about`} exact component={About}/>
           <Route path={`${process.env.PUBLIC_URL}/login`} exact component={Login}/>
           <Route path={`${process.env.PUBLIC_URL}/signup`} exact component={Signup}/>
+          <Route path={`${process.env.PUBLIC_URL}/videos`} exact component={Video}/>
+          <Route path={`${process.env.PUBLIC_URL}/createWorkflow`} exact component={CreateWorkflow}/>
         </div>
         <Footer></Footer> 
       </div>
