@@ -1,0 +1,44 @@
+.Container {
+
+    &__url {
+        margin-left: 375px;
+    }
+
+    &__url-button {
+        margin-left:20px;
+    }
+
+    &__react-player {
+        margin-top: 25px;
+        margin-left: 150px;
+        justify-content: center;
+        background-color: red;
+    }
+    
+    &__breakdown {
+        text-align: left;
+        padding-top: 25px;
+        font-weight: bold;
+        margin-left: 150px;
+    }
+
+    &__breakdown-text {
+        padding-bottom: 15px;
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+    
+    &__additional {
+        text-align: left;
+        padding-top: 25px;
+        font-weight: bold;
+        margin-left: 150px;
+    }    
+
+    &__additional-text {
+        padding-bottom: 15px;
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+    }
