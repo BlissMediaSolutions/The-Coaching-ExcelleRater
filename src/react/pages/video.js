@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Banner from '../components/banner';
 import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player'
 
 class Video extends Component {
   constructor(props) {
@@ -100,6 +101,9 @@ class Video extends Component {
         </div>
         </div> 
       </div>
+        )
+      }
+   }
       
 Video.propTypes = {
 }
