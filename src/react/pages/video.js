@@ -100,8 +100,7 @@ class Video extends Component {
         </div>
         </div> 
       </div>
-        )
-
+      
 Video.propTypes = {
 }
 
