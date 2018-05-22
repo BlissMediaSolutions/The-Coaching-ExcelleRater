@@ -1,86 +1,101 @@
 CREATE DATABASE IF NOT EXISTS coaching;
 USE coaching;
 
-DROP TABLE IF EXISTS VIDEOLIST, TEAMLIST, VIDEO, ROLE, PERSON, TEAM, SPORT;
+DROP TABLE IF EXISTS videolist, teamlist, video, role, person, team, sport;
 
-CREATE TABLE SPORT
+CREATE TABLE sport
 (
-  SportID INT PRIMARY KEY AUTO_INCREMENT,
-  SportName VARCHAR(25) NOT NULL
+  id INT AUTO_INCREMENT,
+  sportid INT PRIMARY KEY,
+  sportname VARCHAR(25) NOT NULL,
+  INDEX(id)
 );
 
-CREATE TABLE TEAM
+CREATE TABLE team
 (
-  TeamID INT PRIMARY KEY AUTO_INCREMENT,
-  SportID INT,
-  Name VARCHAR(35) NOT NULL,
-  CONSTRAINT FK_Team_Sport FOREIGN KEY (SportID) REFERENCES SPORT(SportID)
+  id INT AUTO_INCREMENT,
+  teamid INT PRIMARY KEY,
+  sportid INT,
+  name VARCHAR(35) NOT NULL,
+  CONSTRAINT FK_Team_Sport FOREIGN KEY (sportid) REFERENCES sport(sportid),
+  INDEX(id)
 );
 
-CREATE TABLE PERSON
+CREATE TABLE person
 (
-  PersonID INT PRIMARY KEY AUTO_INCREMENT,
-  FullName VARCHAR(25) NOT NULL,
-  Dob DATE,
-  Address VARCHAR(40),
-  City VARCHAR(15),
-  State VARCHAR(5),
-  Phone VARCHAR(12),
-  Email VARCHAR(35)
+  id INT AUTO_INCREMENT,
+  personid INT PRIMARY KEY,
+  fullname VARCHAR(25) NOT NULL,
+  dob DATE,
+  address VARCHAR(40),
+  city VARCHAR(15),
+  state VARCHAR(5),
+  phone VARCHAR(12),
+  email VARCHAR(35),
+  INDEX(id)
 );
 
-CREATE TABLE ROLE
+CREATE TABLE role
 (
-  RoleID INT PRIMARY KEY AUTO_INCREMENT,
-  RoleTitle VARCHAR(15) NOT NULL
+  id INT AUTO_INCREMENT,
+  roleid INT PRIMARY KEY,
+  roletitle VARCHAR(15) NOT NULL,
+  INDEX(id)
 );
 
-CREATE TABLE VIDEO
+CREATE TABLE video
 (
-  VideoID INT PRIMARY KEY AUTO_INCREMENT,
-  Description VARCHAR(20) NOT NULL,
-  Private CHAR NOT NULL,
-  Location VARCHAR(50) NOT NULL,
-  Category1 VARCHAR(10) NOT NULL,
-  Category2 VARCHAR(10),
-  Category3 VARCHAR(10),
-  Title VARCHAR(25)
+  id INT AUTO_INCREMENT,
+  videoid INT PRIMARY KEY,
+  description VARCHAR(20) NOT NULL,
+  private CHAR NOT NULL,
+  location VARCHAR(50) NOT NULL,
+  category1 VARCHAR(10) NOT NULL,
+  category2 VARCHAR(10),
+  category3 VARCHAR(10),
+  title VARCHAR(25),
+  INDEX(id)
 );
 
-CREATE TABLE TEAMLIST
+CREATE TABLE teamlist
 (
-  Username VARCHAR(25) PRIMARY KEY,
-  Password VARCHAR(12) NOT NULL,
-  TeamID INT,
-  PersonID INT,
-  RoleID INT,
-  CONSTRAINT FK_TEAMLIST_TEAM FOREIGN KEY (TeamID) REFERENCES TEAM(TeamID),
-  CONSTRAINT FK_TEAMLIST_PERSON FOREIGN KEY (PersonID) REFERENCES PERSON(PersonID),
-  CONSTRAINT FK_TEAMLIST_ROLE FOREIGN KEY (RoleID) REFERENCES ROLE(RoleID)
+  id INT AUTO_INCREMENT,
+  username VARCHAR(25) PRIMARY KEY,
+  password VARCHAR(12) NOT NULL,
+  teamid INT,
+  personid INT,
+  roleid INT,
+  CONSTRAINT FK_TEAMLIST_TEAM FOREIGN KEY (teamid) REFERENCES team(teamid),
+  CONSTRAINT FK_TEAMLIST_PERSON FOREIGN KEY (personid) REFERENCES person(personid),
+  CONSTRAINT FK_TEAMLIST_ROLE FOREIGN KEY (roleid) REFERENCES role(roleid),
+  INDEX(id)
  );
 
-CREATE TABLE VIDEOLIST
+CREATE TABLE videolist
 (
-  VideoID INT,
-  Username VARCHAR(25),
-  StopPoint DECIMAL(8,8),
-  Reason VARCHAR(200),
-  CONSTRAINT FK_VIDEOLIST_VIDEO FOREIGN KEY (VideoID) REFERENCES VIDEO(VideoID),
-  CONSTRAINT FK_VIDEOLIST_TEAMLIST FOREIGN KEY (Username) REFERENCES TEAMLIST(Username)
+  id INT AUTO_INCREMENT,
+  videoid INT,
+  username VARCHAR(25),
+  stoppoint DECIMAL(8,8),
+  reason VARCHAR(200),
+  CONSTRAINT FK_VIDEOLIST_VIDEO FOREIGN KEY (videoID) REFERENCES video(videoid),
+  CONSTRAINT FK_VIDEOLIST_TEAMLIST FOREIGN KEY (username) REFERENCES teamlist(username),
+  INDEX(id)
 );
 
-INSERT INTO SPORT(SportName) VALUES('Tennis');
-INSERT INTO SPORT(SportName) VALUES('AFL');
-INSERT INTO SPORT(SportName) VALUES('Basketball');
-INSERT INTO SPORT(SportName) VALUES('Netball');
-INSERT INTO SPORT(SportName) VALUES('Soccer');
+INSERT INTO sport(sportid, sportname) VALUES(1, 'Tennis');
+INSERT INTO sport(sportid, sportname) VALUES(2, 'AFL');
+INSERT INTO sport(sportid, sportname) VALUES(3, 'Basketball');
+INSERT INTO sport(sportid, sportname) VALUES(4, 'Netball');
+INSERT INTO sport(sportid, sportname) VALUES(5, 'Soccer');
 
-INSERT INTO ROLE(RoleTitle) VALUES('Admin');
-INSERT INTO ROLE(RoleTitle) VALUES('Coach');
-INSERT INTO ROLE(RoleTitle) VALUES('Player');
+INSERT INTO role(roleid, roletitle) VALUES(1, 'Coach');
+INSERT INTO role(roleid, roletitle) VALUES(2, 'Player');
 
-INSERT INTO TEAM(SportID, Name) VALUES (2, 'Rockets');
+INSERT INTO team(teamid, sportid, name) VALUES (1, 2, 'Rockets');
 
-INSERT INTO PERSON(FullName, Dob, Address, City, State, Phone, Email) VALUES ('John Doe', '1985-2-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdoe@test.com');
-  
-  
+INSERT INTO person(personid, fullname, dob, address, city, state, phone, email) VALUES (1, 'John Doe', '1985-2-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdoe@test.com');
+INSERT INTO person(personid, fullname, dob, address, city, state, phone, email) VALUES (2, 'Harry Fink', '1979-6-12', '111 This Place St', 'Somewhere', 'VIC', '0401 234 5678', 'hfink@ozemail.com');
+
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('jdoe', 'password', 1, 1, 1);
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('hfink', 'password', 1, 2, 2);
