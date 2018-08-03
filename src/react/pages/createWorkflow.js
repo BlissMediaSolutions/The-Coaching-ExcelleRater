@@ -94,8 +94,11 @@ class CreateWorkflow extends Component {
     const canPrev = this.state.index !== 0;
 
     return (
-      <div>
-        <Banner title="Create Workflow" bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"></Banner>
+      <div className="c-create-workflow">
+        {!canPrev && 
+          <Banner title="Create Workflow" bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"></Banner>
+        }
+        <div className="logo"></div>
         <div className="container">
           {this.componentToRender(this.state.index)}
           <div className="row justify-content-between mb-4">
