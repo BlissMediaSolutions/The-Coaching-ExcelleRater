@@ -1,6 +1,12 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import { FormGroup, Input, Label } from "reactstrap";
+import {
+  FormGroup,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Label
+} from "reactstrap";
 
 export default ({
   timeStamp,
@@ -32,12 +38,15 @@ export default ({
         <div className="row">
           <FormGroup className="col sm-4">
             <Label>Pause at Timestamp</Label>
-            <Input
-              type="text"
-              name="timeStamp"
-              value={timeStamp}
-              onChange={onChange}
-            />
+            <InputGroup>
+              <Input
+                type="number"
+                name="timeStamp"
+                value={timeStamp}
+                onChange={onChange}
+              />
+              <InputGroupAddon addonType="append">seconds</InputGroupAddon>
+            </InputGroup>
           </FormGroup>
           <FormGroup className="col sm-4">
             <Label>Select playback rate</Label>

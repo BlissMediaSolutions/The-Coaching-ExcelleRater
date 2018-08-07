@@ -9,13 +9,11 @@ class Footer extends Component {
           <div className="c-footer__container">
             <div>
               <span className="c-footer__list-item">
-                {" "}
-                Email: CoachXL@support.com{" "}
+                Email: CoachXL@support.com
               </span>
               <span className="c-footer__list-item"> Phone: 0415063336 </span>
               <span className="c-footer__list-item">
-                {" "}
-                Address: 22 Sporty Street Rowville{" "}
+                Address: 22 Sporty Street Rowville
               </span>
             </div>
             <div>
@@ -79,35 +77,28 @@ class Footer extends Component {
           <div className="c-footer__bottom">
             <div>
               <Link className="c-footer__link" to="/">
-                {" "}
-                Home{" "}
+                Home
               </Link>
               <Link className="c-footer__link" to="/videos">
-                {" "}
-                Videos{" "}
+                Videos
               </Link>
               <Link className="c-footer__link" to="/about">
-                {" "}
-                About Us{" "}
+                About Us
               </Link>
               <Link className="c-footer__link" to="/termsandconditions">
-                {" "}
-                Terms and Conditions{" "}
+                Terms and Conditions
               </Link>
             </div>
 
             <div>
               <a className="c-footer__social-link">
-                {" "}
-                <i className="fa fa-facebook" />{" "}
+                <i className="fa fa-facebook" />
               </a>
               <a className="c-footer__social-link">
-                {" "}
-                <i className="fa fa-instagram" />{" "}
+                <i className="fa fa-instagram" />
               </a>
               <a className="c-footer__social-link">
-                {" "}
-                <i className="fa fa-twitter" />{" "}
+                <i className="fa fa-twitter" />
               </a>
             </div>
           </div>
