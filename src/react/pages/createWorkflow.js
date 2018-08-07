@@ -6,8 +6,11 @@ import { Button } from "reactstrap";
 
 import SelectVideo from "../components/createWorkflow/selectVideo";
 import VideoSetUp from "../components/createWorkflow/videoSetUp";
+import VideoAnswers from "../components/createWorkflow/videoAnswers";
+import { isDefinedNotNull } from "../../util/objUtil";
+import { validateNonEmptyString } from "../../util/validators";
 
-const maxIndex = 1;
+const maxIndex = 2;
 
 // Video to Play
 const youtubeVideo = "https://www.youtube.com/watch?v=mQQgFqptVyc";
@@ -49,6 +52,8 @@ class CreateWorkflow extends Component {
         return this.isSelectVideoComplete();
       case 1:
         return this.isVideoSetUpComplete();
+      case 2:
+        return this.isVideoAnswersComplete();
       default:
         return false;
     }
@@ -57,31 +62,57 @@ class CreateWorkflow extends Component {
   isSelectVideoComplete = () => {
     // TO DO: Check if video is selected
     // For now, just check non empty string
-    return this.state.searchString !== "";
+    return validateNonEmptyString(this.state.searchString);
   };
 
   isVideoSetUpComplete = () => {
+    const { question, timeStamp, endFrame, playbackRate } = this.state;
+
+    return (
+      validateNonEmptyString(question) &&
+      parseInt(timeStamp, 10) > 0 &&
+      validateNonEmptyString(endFrame) &&
+      isDefinedNotNull(playbackRate)
+    );
+  };
+
+  isVideoAnswersComplete = () => {
+    // To Do: Check that all 3 have been set up
     return true;
   };
 
   componentToRender(index) {
+    const {
+      searchString,
+      question,
+      timeStamp,
+      endFrame,
+      playbackRate
+    } = this.state;
     switch (index) {
       case 0:
         return (
-          <SelectVideo
-            onChange={this.onChange}
-            searchString={this.state.searchString}
-          />
+          <SelectVideo onChange={this.onChange} searchString={searchString} />
         );
       case 1:
         return (
           <VideoSetUp
             videoUrl={youtubeVideo}
             onChange={this.onChange}
-            question={this.state.question}
-            timeStamp={this.state.timeStamp}
-            endFrame={this.state.endFrame}
-            playbackRate={this.state.playbackRate}
+            question={question}
+            timeStamp={timeStamp}
+            endFrame={endFrame}
+            playbackRate={playbackRate}
+          />
+        );
+      case 2:
+        return (
+          <VideoAnswers
+            videoUrl={youtubeVideo}
+            question={question}
+            timeStamp={timeStamp}
+            endFrame={endFrame}
+            playbackRate={playbackRate}
           />
         );
       default:
@@ -90,9 +121,9 @@ class CreateWorkflow extends Component {
   }
 
   render() {
-    const canNext =
-      this.isComplete(this.state.index) && this.state.index < maxIndex;
-    const canPrev = this.state.index !== 0;
+    const { index } = this.state;
+    const canNext = this.isComplete(index) && index < maxIndex;
+    const canPrev = index !== 0;
 
     return (
       <div>
@@ -103,7 +134,7 @@ class CreateWorkflow extends Component {
           />
         )}
         <div className="container">
-          <div className="row">{this.componentToRender(this.state.index)}</div>
+          <div className="row">{this.componentToRender(index)}</div>
           <div className="row justify-content-between mb-4">
             <Button
               color="secondary"
