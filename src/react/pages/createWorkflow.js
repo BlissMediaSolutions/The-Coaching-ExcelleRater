@@ -24,7 +24,8 @@ class CreateWorkflow extends Component {
       timeStamp: "",
       question: "",
       endFrame: "show",
-      playbackRate: 1.0
+      playbackRate: 1.0,
+      playing: true
     };
   }
 
@@ -81,13 +82,23 @@ class CreateWorkflow extends Component {
     return true;
   };
 
+  onProgress = progress => {
+    const { timeStamp } = this.state;
+    if (Math.round(progress.playedSeconds) === parseInt(timeStamp, 10)) {
+      this.setState({
+        playing: false
+      });
+    }
+  };
+
   componentToRender(index) {
     const {
       searchString,
       question,
       timeStamp,
       endFrame,
-      playbackRate
+      playbackRate,
+      playing
     } = this.state;
     switch (index) {
       case 0:
@@ -110,9 +121,9 @@ class CreateWorkflow extends Component {
           <VideoAnswers
             videoUrl={youtubeVideo}
             question={question}
-            timeStamp={timeStamp}
-            endFrame={endFrame}
             playbackRate={playbackRate}
+            playing={playing}
+            onProgress={this.onProgress}
           />
         );
       default:
