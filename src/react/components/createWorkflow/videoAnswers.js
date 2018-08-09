@@ -1,14 +1,9 @@
 import React from "react";
 import DragAndDropVideoPlayer from "./dragAndDropVIdeoPlayer";
 
-export default ({ videoUrl, question, playing, onProgress, playbackRate }) => (
+export default ({ videoUrl, question }) => (
   <div className="u-component c-video-answers d-flex align-items-center m-3 flex-column w-100">
-    <DragAndDropVideoPlayer
-      videoUrl={videoUrl}
-      playing={playing}
-      onProgress={onProgress}
-      playbackRate={playbackRate}
-    />
+    <DragAndDropVideoPlayer videoUrl={videoUrl} />
     <span className="mt-2">
       Please drag and drop answer areas onto the correct locations
     </span>

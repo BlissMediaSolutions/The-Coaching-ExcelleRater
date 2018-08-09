@@ -97,8 +97,7 @@ class CreateWorkflow extends Component {
       question,
       timeStamp,
       endFrame,
-      playbackRate,
-      playing
+      playbackRate
     } = this.state;
     switch (index) {
       case 0:
@@ -117,17 +116,13 @@ class CreateWorkflow extends Component {
           />
         );
       case 2:
-        return (
-          <VideoAnswers
-            videoUrl={youtubeVideo}
-            question={question}
-            playbackRate={playbackRate}
-            playing={playing}
-            onProgress={this.onProgress}
-          />
-        );
-      default:
+        return <VideoAnswers videoUrl={youtubeVideo} question={question} />;
+      default: {
         console.log("Indexing Error");
+        return (
+          <SelectVideo onChange={this.onChange} searchString={searchString} />
+        );
+      }
     }
   }
 
