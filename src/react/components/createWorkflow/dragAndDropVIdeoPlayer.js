@@ -1,17 +1,35 @@
 import React, { Component } from "react";
+import { DropTarget } from "react-dnd";
 import ReactPlayer from "react-player";
 
-const Circle = ({ number }) => (
-  <div className="c-dnd-video-player__side-bar__circle">{number}</div>
-);
+import DraggableCircle from "./draggableCircle";
 
-export default class componentName extends Component {
+function collect(connect, monitor) {
+  return {
+    connectDropTarget: connect.dropTarget(),
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
+  };
+}
+
+const target = {
+  canDrop() {
+    return true;
+  },
+
+  drop(props) {
+    //TO DO: Change x,y of the circles
+  }
+};
+
+class DragAndDropVideoPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       playing: true
     };
   }
+
   ref = player => {
     this.player = player;
   };
@@ -36,11 +54,13 @@ export default class componentName extends Component {
           ref={this.ref}
         />
         <div className="c-dnd-video-player__side-bar d-flex flex-column justify-content-between">
-          <Circle number="1" />
-          <Circle number="2" />
-          <Circle number="3" />
+          <DraggableCircle number="1" />
+          <DraggableCircle number="2" />
+          <DraggableCircle number="3" />
         </div>
       </div>
     );
   }
 }
+
+export default DropTarget("CIRCLE", target, collect)(DragAndDropVideoPlayer);
