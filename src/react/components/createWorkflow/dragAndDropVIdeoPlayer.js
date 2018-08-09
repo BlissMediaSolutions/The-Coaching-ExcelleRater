@@ -7,18 +7,13 @@ import DraggableCircle from "./draggableCircle";
 function collect(connect, monitor) {
   return {
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop()
+    isOver: monitor.isOver()
   };
 }
 
-const target = {
-  canDrop() {
-    return true;
-  },
-
+const squareTarget = {
   drop(props) {
-    //TO DO: Change x,y of the circles
+    console.log("DROP");
   }
 };
 
@@ -43,15 +38,22 @@ class DragAndDropVideoPlayer extends Component {
   };
 
   render() {
-    const { videoUrl } = this.props;
+    const { videoUrl, connectDropTarget } = this.props;
     const { playing } = this.state;
-    return (
+
+    return connectDropTarget(
       <div className="c-dnd-video-player row">
+        <div className="c-dnd-video-player__overlay b-transparent" />
+
         <ReactPlayer
+          className="c-dnd-video-player__player"
           url={videoUrl}
           playing={playing}
           onPlay={this.seekToTime}
           ref={this.ref}
+          style={{
+            zIndex: "-1"
+          }}
         />
         <div className="c-dnd-video-player__side-bar d-flex flex-column justify-content-between">
           <DraggableCircle number="1" />
@@ -63,4 +65,6 @@ class DragAndDropVideoPlayer extends Component {
   }
 }
 
-export default DropTarget("CIRCLE", target, collect)(DragAndDropVideoPlayer);
+export default DropTarget("CIRCLE", squareTarget, collect)(
+  DragAndDropVideoPlayer
+);

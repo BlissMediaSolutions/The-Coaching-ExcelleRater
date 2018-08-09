@@ -140,7 +140,7 @@ class CreateWorkflow extends Component {
           />
         )}
         <div className="container">
-          <div className="row">{this.componentToRender(index)}</div>
+          <div className="row">{this.componentToRender(2)}</div>
           <div className="row justify-content-between mb-4">
             <Button
               color="secondary"
