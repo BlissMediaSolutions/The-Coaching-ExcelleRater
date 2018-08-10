@@ -1,58 +1,52 @@
 <?php
-function Login()
-{
-    if(empty($_POST['username']))
-    {
-        $this->HandleError("UserName is empty!");
-        return false;
+  //ini_set('display_errors', 'On');
+  //error_reporting(E_ALL | E_STRICT);
+
+  require_once ("connect.php");
+  require_once ("rb.php");
+
+  try {
+
+    $postdata = file_get_contents("php://input");
+    $login = json_decode($postdata);
+
+    $username = $login->username;
+    $password = md5($login->password);
+
+    $user = R::find('teamlist', ' username LIKE ? ', [ $username ]);
+    //Check if a $user was found - if not, then respond to the frontend
+    if (Empty($user)) {
+      $data->success = false;
+      $data->error = 'Incorrect Username or Password';
+      echo json_encode($data);
     }
 
-    if(empty($_POST['password']))
-    {
-        $this->HandleError("Password is empty!");
-        return false;
+    //$user was found & is return as a 2 dimensional array, so we need to iterate thru it (and check the password), even though it should have only 1 element
+    foreach ($user as $usr) {
+      if ($usr->password === $password) {
+        $thisusr = $usr;
+        $result = true;
+      } else {
+        $result = false;
+      }
     }
 
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-
-    if(!$this->CheckLoginInDB($username,$password))
-    {
-        return false;
+    if ($result == true) {
+      $data->success = true;
+      $data->username = $thisusr->username;
+      $data->userlevel = $thisusr->roleid;
+      $data->team = $thisusr->teamid;
+    } else {
+      $data->success = false;
+      $data->error = 'Incorrect Username or Password';
     }
 
-    session_start();
+    R::close();
 
-    $_SESSION[$this->GetLoginSessionVar()] = $username;
+  } catch (Exception $e) {
+    echo json_encode(array("success"=>false, "error"=>$e));
+  }
 
-    return true;
-}
-
-
-function CheckLoginInDB($username,$password)
-{
-    if(!$this->DBLogin())
-    {
-        $this->HandleError("Database login failed!");
-        return false;
-    }
-    $username = $this->SanitizeForSQL($username);
-    $pwdmd5 = md5($password);
-    $qry = "Select name, email from $this->tablename ".
-        " where username='$username' and password='$pwdmd5' ".
-        " and confirmcode='y'";
-
-    $result = mysql_query($qry,$this->connection);
-
-    if(!$result || mysql_num_rows($result) <= 0)
-    {
-        $this->HandleError("Error logging in. ".
-            "The username or password does not match");
-        return false;
-    }
-    return true;
-}
+  echo json_encode($data);
 
 ?>
-
-<?php include 'connect.php' ?>
