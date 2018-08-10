@@ -125,6 +125,16 @@ INSERT INTO team(sportid, teamname) VALUES (6, 'The Hockynets');
 
 INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('John Doe', '1985-2-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdoe@test.com');
 INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Harry Fink', '1979-6-12', '111 This Place St', 'Somewhere', 'VIC', '0401 234 5678', 'hfink@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Ted Bundy', '1946-11-24', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'tbundy@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('John Wayne Gacy', '1942-3-17', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jgacy@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Gary Ridgway', '1949-2-18', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'gridgway@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Luis Garavito', '1957-1-25', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'lgaravito@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Pedro Lopez', '1948-10-8', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'plopez@test.com');
 
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('jdoe', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 1, 1);
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('hfink', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 2, 2);
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('tbundy', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 3, 2);
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('jgacy', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 4, 2);
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('gridgway', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 5, 2);
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('lgaravito', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 6, 2);
+INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('plopez', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 7, 2);
