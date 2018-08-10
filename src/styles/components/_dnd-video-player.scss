@@ -3,7 +3,9 @@
 
   &__side-bar {
     background-color: red;
+    width: 50px;
     &__circle {
+      z-index: 1020;
       width: 50px;
       height: 50px;
       border-radius: 50%;
@@ -18,7 +20,10 @@
   &__overlay {
     position: absolute;
     z-index: 1000;
-    width: 500px;
-    height: 300px;
+    width: 640px;
+    height: 360px;
+  }
+  &__player {
+    z-index: -1;
   }
 }
