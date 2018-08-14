@@ -1,4 +1,16 @@
 <?php
+/*   Get Team Players for The Coaching ExcelleRater
+     Last Modified Date: 13/8/2018
+     version: 1.0
+	   1.0 - Initial script created.
+			 This script receives a JSON object of the teamid, modeled as:
+       {"teamid": x}
+			 It then uses RedBean ORM, to return all team players (coaches not included) of the given team.
+       It responds with a JSON object, which will be modeled in either of 2 fashions (relative to if the teamid exists, or an error arises):
+       {"success": true, "personid": x, "username": xxxxxx, "fullname": xxxxxx}
+       {"success": false, "error": xxxxxxxxxx}
+*/
+
 //ini_set('display_errors', 'On');
 //error_reporting(E_ALL | E_STRICT);
 
