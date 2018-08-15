@@ -139,6 +139,6 @@ INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('grid
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('lgaravito', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 6, 2);
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('plopez', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 7, 2);
 
-INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip01N.mp4', 'Goal Kick Out', '', '', 'WB Kickout');
-INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip02N.mp4', 'Goal Kick Out', '', '', 'WB Kickout');
-INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (2, 'Where to Kick after Point Scored?', 1, 'Clip03N.mp4', 'Goal Kick Out', '', '', 'WB Kickout');
+INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip01N.mp4', 'W Bulldogs', '', '', 'WB Kickout');
+INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip02N.mp4', 'W Bulldogs', '', '', 'WB Kickout');
+INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (2, 'Where to Kick after Point Scored?', 1, 'Clip03N.mp4', 'W Bulldogs', '', '', 'WB Kickout');
