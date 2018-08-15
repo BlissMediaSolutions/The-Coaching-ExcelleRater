@@ -41,7 +41,7 @@ CREATE TABLE video
   teamid INT,
   description VARCHAR(20) NOT NULL,
   private CHAR NOT NULL,
-  location VARCHAR(50) NOT NULL,
+  filename VARCHAR(50) NOT NULL,
   category1 VARCHAR(10) NOT NULL,
   category2 VARCHAR(10),
   category3 VARCHAR(10),
@@ -120,7 +120,7 @@ INSERT INTO sport(sportname) VALUES('Hockey');
 INSERT INTO role(roletitle) VALUES('Coach');
 INSERT INTO role(roletitle) VALUES('Player');
 
-INSERT INTO team(sportid, teamname) VALUES (3, 'Rockets');
+INSERT INTO team(sportid, teamname) VALUES (2, 'Rockets');
 INSERT INTO team(sportid, teamname) VALUES (6, 'The Hockynets');
 
 INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('John Doe', '1985-2-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdoe@test.com');
@@ -138,3 +138,7 @@ INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('jgac
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('gridgway', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 5, 2);
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('lgaravito', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 6, 2);
 INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('plopez', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 7, 2);
+
+INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip01N.mp4', 'Goal Kick Out', '', '', 'WB Kickout');
+INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip02N.mp4', 'Goal Kick Out', '', '', 'WB Kickout');
+INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (2, 'Where to Kick after Point Scored?', 1, 'Clip03N.mp4', 'Goal Kick Out', '', '', 'WB Kickout');
