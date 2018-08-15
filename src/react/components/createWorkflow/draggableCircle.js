@@ -37,10 +37,19 @@ class DraggableCircle extends Component {
       right
     };
     return connectDragSource(
+      <span> 
       <div className="c-dnd-video-player__side-bar__circle" style={style}>
-        {number}
+            
       </div>
+      <div className="c-dnd-video-player__side-bar__circle2" style={style}>
+            
+      </div>
+      <div className="c-dnd-video-player__side-bar__circle3" style={style}>
+            {number} 
+      </div>
+      </span>
     );
+  
   }
 }
 
