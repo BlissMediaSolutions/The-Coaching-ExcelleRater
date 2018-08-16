@@ -25,20 +25,18 @@
     $password = md5($login->password);
 
     $user = R::find('teamlist', ' username LIKE ? ', [ $username ]);
-    //Check if a $user was found - if not, then respond to the frontend
+    //Check if a $user was found.  If not $result is false, otherwise check the password.
     if (Empty($user)) {
-      $data->success = false;
-      $data->error = 'Incorrect Username or Password';
-      echo json_encode($data);
-    }
-
-    //$user was found & is return as a 2 dimensional array, so we need to iterate thru it (and check the password), even though it should have only 1 element
-    foreach ($user as $usr) {
-      if ($usr->password === $password) {
-        $thisusr = $usr;
-        $result = true;
-      } else {
-        $result = false;
+      $result = false;
+    } else {
+      //$user was found & is return as a 2 dimensional array, so we need to iterate thru it (and check the password), even though it should have only 1 element
+      foreach ($user as $usr) {
+        if ($usr->password === $password) {
+          $thisusr = $usr;
+          $result = true;
+        } else {
+          $result = false;
+        }
       }
     }
 
