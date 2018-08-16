@@ -56,11 +56,19 @@ class Login extends Component {
         },
         body: JSON.stringify(data)
       })
-        .then(res => {
-          console.log(res);
+        .then(response => {
+          response.json();
         })
-        .catch(res => {
-          console.log(res);
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.log(error);
+          this.setState({
+            errors: {
+              login: "Invalid username or password"
+            }
+          });
         });
     }
   };
@@ -217,6 +225,7 @@ class Login extends Component {
                   className="btn btn-primary"
                 />
               </div>
+              <InlineError text={errors.login} />
             </div>
           </div>
         </div>
