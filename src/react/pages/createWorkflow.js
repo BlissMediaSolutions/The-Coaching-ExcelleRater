@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import Banner from "../components/banner";
+import axios from "axios";
 // import PropTypes from "prop-types";
-
 import { Button } from "reactstrap";
 
+import Banner from "../components/common/banner";
 import SelectVideo from "../components/createWorkflow/selectVideo";
 import VideoSetUp from "../components/createWorkflow/videoSetUp";
 import VideoAnswers from "../components/createWorkflow/videoAnswers";
 import { isDefinedNotNull } from "../../util/objUtil";
 import { validateNonEmptyString } from "../../util/validators";
+import { USER_TEAM } from "../../constants/storageTokens";
 
 const maxIndex = 2;
 
@@ -27,6 +28,18 @@ class CreateWorkflow extends Component {
       playbackRate: 1.0,
       playing: true
     };
+  }
+
+  componentDidMount() {
+    console.log("MOUNTED!");
+    axios
+      .get("/getteamplayers.php", { teamid: sessionStorage.getItem(USER_TEAM) })
+      .then(respoonse => {
+        console.log(respoonse);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   onNextClick = () => {

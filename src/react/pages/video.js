@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Banner from "../components/banner";
+import Banner from "../components/common/banner";
 import PropTypes from "prop-types";
 import ReactPlayer from "react-player";
 

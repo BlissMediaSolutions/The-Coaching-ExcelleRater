@@ -4,7 +4,7 @@ import axios from "axios";
 import { graphql } from "react-apollo";
 import { updateUser } from "../../graphql/login";
 
-import Banner from "../components/banner";
+import Banner from "../components/common/banner";
 import InlineError from "../components/common/inlineError";
 
 import { validateNonEmptyString } from "../../util/validators";
