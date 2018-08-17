@@ -1,7 +1,9 @@
+import { USER_TEAM, USER_LEVEL } from "../constants/storageTokens";
+
 export default {
   user: {
     __typename: "user",
-    team: "",
-    level: ""
+    team: sessionStorage.getItem(USER_TEAM),
+    level: sessionStorage.getItem(USER_LEVEL)
   }
 };

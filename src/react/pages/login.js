@@ -8,6 +8,7 @@ import Banner from "../components/banner";
 import InlineError from "../components/common/inlineError";
 
 import { validateNonEmptyString } from "../../util/validators";
+import { USER_TEAM, USER_LEVEL } from "../../constants/storageTokens";
 
 class Login extends Component {
   constructor(props) {
@@ -62,8 +63,8 @@ class Login extends Component {
           if (success) {
             this.setState({ loading: false });
             // save in sessionStorage
-            sessionStorage.setItem("team", team);
-            sessionStorage.setItem("userLevel", userlevel);
+            sessionStorage.setItem(USER_TEAM, team);
+            sessionStorage.setItem(USER_LEVEL, userlevel);
             // update link state
             updateUser({ variables: { user: response.data } });
           } else {
