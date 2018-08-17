@@ -17,14 +17,39 @@ import Routes from "./react/components/routes";
 import Nav from "./react/components/nav";
 import Footer from "./react/components/footer";
 
+// Axios
+import axios from "axios";
+
+// Apollo GQL Related imports
+import { ApolloProvider } from "react-apollo";
+import ApolloClient from "apollo-boost";
+// Apollo link state
+import defaults from "./graphql/defaults";
+import resolvers from "./graphql/resolvers";
+
+// axios set up
+axios.defaults.baseURL = "http://144.6.226.54/php";
+axios.defaults.headers.common["Accept"] = "application/json";
+axios.defaults.headers.post["Content-Type"] = "application/json";
+
+// Apollo link state set up
+const client = new ApolloClient({
+  clientState: {
+    defaults,
+    resolvers
+  }
+});
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Nav />
-        <Routes />
-        <Footer />
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <Nav />
+          <Routes />
+          <Footer />
+        </div>
+      </ApolloProvider>
     );
   }
 }
