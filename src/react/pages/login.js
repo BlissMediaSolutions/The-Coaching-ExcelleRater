@@ -55,9 +55,7 @@ class Login extends Component {
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
       axios
-        .post("/login.php", {
-          ...data
-        })
+        .post("/login.php", data)
         .then(response => {
           const { success, team, userlevel } = response.data;
           if (success) {

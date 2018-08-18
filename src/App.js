@@ -30,7 +30,7 @@ import resolvers from "./graphql/resolvers";
 // axios set up
 axios.defaults.baseURL = "http://144.6.226.54/php";
 axios.defaults.headers.common["Accept"] = "application/json";
-axios.defaults.headers.post["Content-Type"] = "application/json";
+axios.defaults.headers.common["Content-Type"] = "application/json";
 
 // Apollo link state set up
 const client = new ApolloClient({
