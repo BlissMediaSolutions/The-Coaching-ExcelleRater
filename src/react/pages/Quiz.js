@@ -2,11 +2,21 @@ import React, { Component } from 'react';
 import Banner from '../components/banner';
 import {BootstrapTable,TableHeaderColumn} from 'react-bootstrap-table';
 
-var data = [
-    {player: 'Old mate', quiz : 'Test', time: '2.00', score: 15},
-    {player: 'Old mate Gaz', quiz : 'Test1', time: '2.05', score: 15},
-    {player: 'Old mate Baz', quiz : 'Test2', time: '2.01', score: 16},
+function alternatingRowColours(row, rowIdx) {
+    return { backgroundColor: rowIdx % 2 === 0 ? '#D3D3D3' : 'white' };
+  }
+
+var playerData = [
+    {player: 'Luke Badawy', quiz : 'Passing Improvement', time: '2:33', score: '10/10'},
+    {player: 'Deven Main', quiz : 'Passing Improvement', time: '2:40', score: '10/10'},
+    {player: 'Jackson Rig', quiz : 'Ace Kicking', time: '3:20', score: '15/15'},
+    {player: 'Wendy Bendy', quiz : 'Mid field positioning', time: '5:03', score: '7/10'},
+    {player: 'Danielle Runner', quiz : 'Stopping Dustin Martin', time: '10:33', score: '0/19'},
+    {player: 'Ron Bergendy', quiz : 'Stopping Dustin Martin', time: '15:12', score: '0/19'},
+    {player: 'Chris Luck', quiz : 'Handball Guide', time: '1:50', score: '5/7'},
   ];
+
+  
    
 
 class Quiz extends Component {
@@ -16,49 +26,58 @@ class Quiz extends Component {
         <Banner title="Quiz Overview" bgImage="http://i.cdn.turner.com/cnn/2010/SPORT/football/06/21/france.squad.crisis/t1larg.france.squad.afp.gi.jpg"></Banner>
         <div className="quiz">
 
-          <div className="quiz__table">
-          <BootstrapTable data={this.props.data}>
-          <TableHeaderColumn isKey dataField='player'>
+        <div className="quiz__table">
+        <h4 className="quiz__table-heading"> Recent Quiz Results </h4>
+
+        <BootstrapTable data={playerData} trStyle={alternatingRowColours} className="quiz__table-layout">
+
+          <TableHeaderColumn isKey dataField='player' className="quiz__table-player-name">
             Player Name
           </TableHeaderColumn>
-          <TableHeaderColumn dataField='quiz'>
+          
+          <TableHeaderColumn dataField='quiz' className="quiz__table-quiz">
             Quiz
-            
           </TableHeaderColumn>
-          <TableHeaderColumn dataField='time'>
+          
+          <TableHeaderColumn dataField='time' className="quiz__table-time">
             Time
           </TableHeaderColumn>
-          <TableHeaderColumn datafield='score'>
+
+          <TableHeaderColumn dataField='score' className="quiz__table-time">
             Score
           </TableHeaderColumn>
+
         </BootstrapTable>
 
-          </div>
+        </div>
 
 
-          <div className="quiz__additional">
-                <h3 className="quiz__additional-heading"> Additional Info </h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Quisquam facere animi quod excepturi deserunt ratione eos 
-              ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
-              quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium 
-              
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Quisquam facere animi quod excepturi deserunt ratione eos 
-              ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
-              quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium  </p>
+        <div className="quiz__additional">
+            <h3 className="quiz__additional-heading"> Additional Info </h3>
 
-              <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Quisquam facere animi quod excepturi deserunt ratione eos 
-              ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
-              quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium 
-              
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Quisquam facere animi quod excepturi deserunt ratione eos 
-              ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
-              quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium 
-              </p>
+            <p className="quiz__additional-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Quisquam facere animi quod excepturi deserunt ratione eos 
+            ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
+            quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium 
+            
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Quisquam facere animi quod excepturi deserunt ratione eos 
+            ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
+            quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium  
+            </p>
+
+            <p className="quiz__additional-text2">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Quisquam facere animi quod excepturi deserunt ratione eos 
+            ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
+            quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium 
+            
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Quisquam facere animi quod excepturi deserunt ratione eos 
+            ipsa? Laudantium nobis eligendi sit libero possimus necessitatibus nulla, 
+            quam tenetur aliquid incidunt obcaecati voluptates ipsa, magni, praesentium 
+            </p>
 
           </div>
         </div>

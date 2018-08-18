@@ -10,6 +10,7 @@ import About from "../pages/about";
 import Signup from "../pages/signup";
 import Video from "../pages/video";
 import CreateWorkflow from "../pages/createWorkflow";
+import Quiz from "../pages/Quiz";
 import { validateNonEmptyString } from "../../util/validators";
 
 class Routes extends Component {
@@ -46,6 +47,11 @@ class Routes extends Component {
               path={`${process.env.PUBLIC_URL}/createWorkflow`}
               exact
               component={CreateWorkflow}
+            />
+             <Route
+              path={`${process.env.PUBLIC_URL}/quiz`}
+              exact
+              component={Quiz}
             />
             <Redirect to="/" />
           </Switch>

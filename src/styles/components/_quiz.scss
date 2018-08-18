@@ -1,5 +1,21 @@
 .quiz {
-    padding-top: 50px;
+    padding-top: 25px;
+
+
+    &__table-heading {
+        text-align: center;
+        font-weight: 0.9em;
+    }
+
+    &__table-layout {
+        margin-right: 25px;
+        margin-left: 25px;
+        padding: 15px;
+    }
+
+    &__table-player-name {
+        margin: 0px;
+    }
 
     &__additional-heading{
         font-weight: bold;
@@ -7,7 +23,23 @@
         padding-top: 25px;
     }
 
+    &__additional {
+        margin-left: 35px;
+        margin-right: 35px;
+    }
+
     &__section {
         font-weight: bold;
     }
+
+    &__additional-text {
+        padding-bottom: 15px;
+    }
+
+    &__additional-text2 {
+        margin-bottom: 25px;
+    }
+
+   
+    
 }
