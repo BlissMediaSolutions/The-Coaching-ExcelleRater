@@ -1,22 +1,18 @@
 .quiz {
     padding-top: 25px;
 
-
     &__table-heading {
         text-align: center;
         font-weight: 0.9em;
     }
 
-    &__table-layout {
+    &__table {
         margin-right: 25px;
         margin-left: 25px;
         padding: 15px;
     }
 
-    &__table-player-name {
-        margin: 0px;
-    }
-
+   
     &__additional-heading{
         font-weight: bold;
         text-align: left;
