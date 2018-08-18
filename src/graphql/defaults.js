@@ -5,5 +5,10 @@ export default {
     __typename: "user",
     team: sessionStorage.getItem(USER_TEAM),
     level: sessionStorage.getItem(USER_LEVEL)
+  },
+  workflow: {
+    __typename: "workflow",
+    videos: [],
+    players: []
   }
 };

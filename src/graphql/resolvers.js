@@ -1,4 +1,6 @@
 import { userQuery } from "./login";
+import { workflowQuery } from "./workflow";
+import { PLAYER_LIST, VIDEO_LIST } from "./types";
 
 export default {
   Mutation: {
@@ -9,7 +11,7 @@ export default {
       const previous = cache.readQuery({ query });
 
       const { userlevel, team } = user;
-      console.log(user);
+
       const data = {
         user: {
           ...previous.user,
@@ -19,7 +21,38 @@ export default {
       };
 
       cache.writeQuery({ query, data });
-      return null;
+    },
+    updateWorkflow: (_, { type, data }, { cache }) => {
+      const query = workflowQuery;
+
+      // Get Previous State
+      const previous = cache.readQuery({ query });
+
+      switch (type) {
+        case PLAYER_LIST: {
+          const newData = {
+            workflow: {
+              ...previous.workflow,
+              players: data
+            }
+          };
+          cache.writeQuery({ query, data: newData });
+
+          return;
+        }
+        case VIDEO_LIST: {
+          const newData = {
+            workflow: {
+              ...previous.workflow,
+              videos: data
+            }
+          };
+          cache.writeQuery({ query, data: newData });
+          return;
+        }
+        default:
+          return;
+      }
     }
   }
 };

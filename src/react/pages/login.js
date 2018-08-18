@@ -4,7 +4,7 @@ import axios from "axios";
 import { graphql } from "react-apollo";
 import { updateUser } from "../../graphql/login";
 
-import Banner from "../components/banner";
+import Banner from "../components/common/banner";
 import InlineError from "../components/common/inlineError";
 
 import { validateNonEmptyString } from "../../util/validators";
@@ -55,9 +55,7 @@ class Login extends Component {
     if (Object.keys(errors).length === 0) {
       this.setState({ loading: true });
       axios
-        .post("/login.php", {
-          ...data
-        })
+        .post("/login.php", data)
         .then(response => {
           const { success, team, userlevel } = response.data;
           if (success) {

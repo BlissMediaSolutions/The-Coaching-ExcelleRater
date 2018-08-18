@@ -1,14 +1,20 @@
 import React, { Component } from "react";
-import Banner from "../components/banner";
+import axios from "axios";
+import { compose, graphql } from "react-apollo";
+import { workflowQuery, updateWorkflow } from "../../graphql/workflow";
 // import PropTypes from "prop-types";
-
 import { Button } from "reactstrap";
 
+import Banner from "../components/common/banner";
 import SelectVideo from "../components/createWorkflow/selectVideo";
 import VideoSetUp from "../components/createWorkflow/videoSetUp";
 import VideoAnswers from "../components/createWorkflow/videoAnswers";
+
 import { isDefinedNotNull } from "../../util/objUtil";
 import { validateNonEmptyString } from "../../util/validators";
+
+import { VIDEO_LIST, PLAYER_LIST } from "../../graphql/types";
+import { USER_TEAM } from "../../constants/storageTokens";
 
 const maxIndex = 2;
 
@@ -27,6 +33,33 @@ class CreateWorkflow extends Component {
       playbackRate: 1.0,
       playing: true
     };
+  }
+
+  componentDidMount() {
+    const { updateWorkflow } = this.props;
+    const variables = {
+      teamid: parseInt(sessionStorage.getItem(USER_TEAM), 10)
+    };
+    axios
+      .post("/getteamplayers.php", variables)
+      .then(response => {
+        updateWorkflow({
+          variables: { type: PLAYER_LIST, data: response.data }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    axios
+      .post("/getteamvideos.php", variables)
+      .then(response => {
+        updateWorkflow({
+          variables: { type: VIDEO_LIST, data: response.data }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   onNextClick = () => {
@@ -91,7 +124,8 @@ class CreateWorkflow extends Component {
     }
   };
 
-  componentToRender(index) {
+  componentToRender = index => {
+    const { workflow } = this.props;
     const {
       searchString,
       question,
@@ -99,10 +133,17 @@ class CreateWorkflow extends Component {
       endFrame,
       playbackRate
     } = this.state;
+
+    console.log(workflow);
+
     switch (index) {
       case 0:
         return (
-          <SelectVideo onChange={this.onChange} searchString={searchString} />
+          <SelectVideo
+            videos={workflow.videos}
+            onChange={this.onChange}
+            searchString={searchString}
+          />
         );
       case 1:
         return (
@@ -130,7 +171,7 @@ class CreateWorkflow extends Component {
         );
       }
     }
-  }
+  };
 
   render() {
     const { index } = this.state;
@@ -171,4 +212,11 @@ class CreateWorkflow extends Component {
 
 CreateWorkflow.propTypes = {};
 
-export default CreateWorkflow;
+export default compose(
+  graphql(workflowQuery, {
+    props: ({ data: { workflow } }) => ({
+      workflow
+    })
+  }),
+  graphql(updateWorkflow, { name: "updateWorkflow" })
+)(CreateWorkflow);
