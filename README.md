@@ -18,6 +18,6 @@ Tested In:
 Developed By:
 * Jackson Zaloumis  
 * Luke Badawy  
-* Wendy Tran  
+* Wendy Phan  
 * Danielle Walker  
 * Deven Naidoo  

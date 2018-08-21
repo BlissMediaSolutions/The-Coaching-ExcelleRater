@@ -1,21 +1,24 @@
-// You dont need to put the file extension (.scss) it is 
+// You dont need to put the file extension (.scss) it is
 // smart enough to know
 
 // Variables
-@import './variables/spacing';
+@import "./variables/spacing";
 
 // Components
-@import './components/_banner';
-@import './components/_nav';
-@import './components/_footer';
-@import './components/_tool-menu';
-@import './components/_video-setup';
+@import "./components/_banner";
+@import "./components/_nav";
+@import "./components/_footer";
+@import "./components/_tool-menu";
+@import "./components/_video-setup";
+@import "./components/_video-answers";
+@import "./components/_dnd-video-player";
+@import "./components/_quiz";
 
 // Elements
-@import './elements/typography';
-@import './elements/links'; 
+@import "./elements/typography";
+@import "./elements/links";
 
 // Utilities
-@import './utilities/misc';
-@import './utilities/form';
-@import './utilities/video';
+@import "./utilities/misc";
+@import "./utilities/form";
+@import "./utilities/video";

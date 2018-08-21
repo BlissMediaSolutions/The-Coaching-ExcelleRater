@@ -1,3 +1,14 @@
+.c-toolbox {
+  position: absolute;
+  top: -70px;
+  left: -70px;
+  z-index: 999999;
+  
+  svg {
+    display: none;
+  }
+}
+
 .menu {
   filter: url("#shadowed-goo");
 }
@@ -5,8 +16,8 @@
 .menu-item, .menu-open-button {
   background: red;
   border-radius: 100%;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   position: absolute;
   top: 20px;
   color: white;
@@ -59,7 +70,7 @@
   position: absolute;
   padding-top: 20px;
   width: 650px;
-  height: 150px;
+  height: 80px;
   box-sizing: border-box;
   font-size: 20px;
   text-align: left;
