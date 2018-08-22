@@ -187,7 +187,9 @@ class CreateWorkflow extends Component {
           />
         )}
         <div className="container">
-          <div className="row">{this.componentToRender(index)}</div>
+          <div className="row justify-content-center">
+            {this.componentToRender(index)}
+          </div>
           <div className="row justify-content-between mb-4">
             <Button
               color="secondary"
