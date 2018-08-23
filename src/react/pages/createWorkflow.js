@@ -9,6 +9,8 @@ import Banner from "../components/common/banner";
 import SelectVideo from "../components/createWorkflow/selectVideo";
 import VideoSetUp from "../components/createWorkflow/videoSetUp";
 import VideoAnswers from "../components/createWorkflow/videoAnswers";
+import SelectPlayers from "../components/createWorkflow/selectPlayers";
+import CompleteWorkflow from "../components/createWorkflow/completeWorkflow";
 
 import { isDefinedNotNull } from "../../util/objUtil";
 import { validateNonEmptyString } from "../../util/validators";
@@ -16,7 +18,7 @@ import { validateNonEmptyString } from "../../util/validators";
 import { VIDEO_LIST, PLAYER_LIST } from "../../graphql/types";
 import { USER_TEAM } from "../../constants/storageTokens";
 
-const maxIndex = 2;
+const maxIndex = 4;
 
 // Video to Play
 const youtubeVideo = "https://www.youtube.com/watch?v=mQQgFqptVyc";
@@ -27,11 +29,12 @@ class CreateWorkflow extends Component {
     this.state = {
       index: 0,
       searchString: "",
+      playing: true,
       timeStamp: "",
       question: "",
       endFrame: "show",
       playbackRate: 1.0,
-      playing: true
+      players: []
     };
   }
 
@@ -88,6 +91,8 @@ class CreateWorkflow extends Component {
         return this.isVideoSetUpComplete();
       case 2:
         return this.isVideoAnswersComplete();
+      case 3:
+        return this.isSelectPlayerComplete();
       default:
         return false;
     }
@@ -115,11 +120,36 @@ class CreateWorkflow extends Component {
     return true;
   };
 
+  isSelectPlayerComplete = () => {
+    const { players } = this.state;
+    return players.length > 1;
+  };
+
   onProgress = progress => {
     const { timeStamp } = this.state;
     if (Math.round(progress.playedSeconds) === parseInt(timeStamp, 10)) {
       this.setState({
         playing: false
+      });
+    }
+  };
+
+  onPlayerSelect = id => {
+    const { players } = this.state;
+    const playerIndex = players.indexOf(id);
+    if (playerIndex !== -1) {
+      // player has already been selected
+      const newPlayers = players;
+      // remove the player
+      newPlayers.splice(playerIndex, 1);
+      this.setState({
+        players: newPlayers
+      });
+    } else {
+      // if player has not been selected
+      this.setState({
+        // add the player
+        players: [...players, id]
       });
     }
   };
@@ -131,10 +161,12 @@ class CreateWorkflow extends Component {
       question,
       timeStamp,
       endFrame,
-      playbackRate
+      playbackRate,
+      players
     } = this.state;
 
     console.log(workflow);
+    console.log(players);
 
     switch (index) {
       case 0:
@@ -164,6 +196,16 @@ class CreateWorkflow extends Component {
             timeStamp={timeStamp}
           />
         );
+      case 3:
+        return (
+          <SelectPlayers
+            players={workflow.players}
+            selectedPlayers={players}
+            onSelect={this.onPlayerSelect}
+          />
+        );
+      case 4:
+        return <CompleteWorkflow onAdd={this.onAdd} onSave={this.onSave} />;
       default: {
         console.log("Indexing Error");
         return (

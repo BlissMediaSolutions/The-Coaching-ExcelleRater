@@ -1,0 +1,15 @@
+.c-player-item {
+  cursor: pointer;
+  &:hover {
+    background-color: #cccccc;
+  }
+  &__icon {
+    font-size: 16px;
+    &--check {
+      color: green;
+    }
+    &--square {
+      color: red;
+    }
+  }
+}
