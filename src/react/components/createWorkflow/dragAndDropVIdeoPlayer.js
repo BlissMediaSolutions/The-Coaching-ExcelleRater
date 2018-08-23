@@ -21,7 +21,7 @@ const target = {
     const right = Math.round(item.right - delta.x);
     const top = Math.round(item.top + delta.y);
 
-    component.moveAnswer(item.number, top, right);
+    component.props.moveAnswer(item.number, top, right);
   }
 };
 
@@ -29,24 +29,7 @@ class DragAndDropVideoPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      playing: true,
-      answers: {
-        "1": {
-          number: "1",
-          top: 0,
-          right: 0
-        },
-        "2": {
-          number: "2",
-          top: 100,
-          right: 0
-        },
-        "3": {
-          number: "3",
-          top: 200,
-          right: 0
-        }
-      }
+      playing: true
     };
   }
 
@@ -62,22 +45,9 @@ class DragAndDropVideoPlayer extends Component {
     });
   };
 
-  moveAnswer = (number, top, right) => {
-    this.setState({
-      answers: {
-        ...this.state.answers,
-        [number]: {
-          ...this.state.answers[number],
-          top,
-          right
-        }
-      }
-    });
-  };
-
   render() {
-    const { videoUrl, connectDropTarget } = this.props;
-    const { playing, answers } = this.state;
+    const { videoUrl, connectDropTarget, answers } = this.props;
+    const { playing } = this.state;
 
     return connectDropTarget(
       <div className="c-dnd-video-player row position-relative">
