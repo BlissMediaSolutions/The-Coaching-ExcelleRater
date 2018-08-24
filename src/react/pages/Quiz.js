@@ -12,15 +12,16 @@ import 'react-bootstrap-table/dist/react-bootstrap-table.min.css';
   react-bootstrap-table built in styling called 'striped'
 */
 
+
   
 var playerData = [
-    {player:'Luke Badawy',quiz:'Passing Improvement',time:'2:33',score:'10/10'},
-    {player:'Deven Main',quiz:'Passing Improvement',time:'2:40',score:'10/10'},
-    {player:'Jackson Rig',quiz:'Ace Kicking',time:'3:20',score:'15/15'},
-    {player:'Wendy Bendy',quiz:'Mid field positioning',time:'5:03',score:'7/10'},
-    {player:'Danielle Runner',quiz:'Stopping Dustin Martin',time:'10:33',score:'0/19'},
-    {player:'Ron Bergendy',quiz:'Stopping Dustin Martin',time:'15:12',score:'0/19'},
-    {player:'Chris Luck',quiz:'Handball Guide',time:'1:50',score:'5/7'},
+    {player:'Luke Badawy', quiz:'Passing Improvement', time:'2:33', score:'10/10'},
+    {player:'Deven Main', quiz:'Passing Improvement', time:'2:40', score:'10/10'},
+    {player:'Jackson Rig', quiz:'Ace Kicking', time:'3:20', score:'15/15'},
+    {player:'Wendy Bendy', quiz:'Mid field positioning', time:'5:03', score:'7/10'},
+    {player:'Danielle Runner', quiz:'Stopping Dustin Martin', time:'10:33', score:'0/19'},
+    {player:'Ron Bergendy', quiz:'Stopping Dustin Martin', time:'15:12', score:'0/19'},
+    {player:'Chris Luck', quiz:'Handball Guide', time:'1:50', score:'5/7'},
   ];
 
   
@@ -43,7 +44,8 @@ class Quiz extends Component {
         responsive 
         striped
         bordered 
-        condensed>
+        condensed
+        >
 
           <TableHeaderColumn isKey dataField='player' className="quiz__table-player-name">
             Player Name
