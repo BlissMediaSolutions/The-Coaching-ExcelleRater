@@ -22,34 +22,34 @@ class Routes extends Component {
         {// if there is a team to the user(is logged in)
         validateNonEmptyString(user.team) ? (
           <Switch>
-            <Route path={`${process.env.PUBLIC_URL}/`} exact component={Home} />
+            <Route path={`/`} exact component={Home} />
             <Route
-              path={`${process.env.PUBLIC_URL}/about`}
+              path={`/about`}
               exact
               component={About}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/login`}
+              path={`/login`}
               exact
               component={Login}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/signup`}
+              path={`/signup`}
               exact
               component={Signup}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/videos`}
+              path={`/videos`}
               exact
               component={Video}
             />
             <Route
-              path={`${process.env.PUBLIC_URL}/createWorkflow`}
+              path={`/createWorkflow`}
               exact
               component={CreateWorkflow}
             />
              <Route
-              path={`${process.env.PUBLIC_URL}/quiz`}
+              path={`/quiz`}
               exact
               component={Quiz}
             />
@@ -58,7 +58,7 @@ class Routes extends Component {
         ) : (
           <Switch>
             <Route
-              path={`${process.env.PUBLIC_URL}/`}
+              path={`/`}
               exact
               component={Login}
             />
