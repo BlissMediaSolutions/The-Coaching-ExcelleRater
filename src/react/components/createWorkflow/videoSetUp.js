@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 
 export default ({
+  playing,
   timeStamp,
   question,
   endFrame,
@@ -17,7 +18,7 @@ export default ({
   videoUrl
 }) => (
   <div className="c-video-setup d-flex align-items-center m-3 flex-column w-100">
-    <ReactPlayer url={videoUrl} />
+    <ReactPlayer playing={playing} url={videoUrl} controls={true} />
     <div>
       <div className="d-flex align-items-center">
         <i className="c-video-setup__icon fa fa-cog m-3" />

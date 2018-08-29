@@ -1,0 +1,8 @@
+.c-select-video {
+  &__video {
+    cursor: pointer;
+    &:hover {
+      background-color: #cccccc;
+    }
+  }
+}

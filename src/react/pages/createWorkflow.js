@@ -20,15 +20,13 @@ import { USER_TEAM } from "../../constants/storageTokens";
 
 const maxIndex = 4;
 
-// Video to Play
-const youtubeVideo = "http://www.youtube.com/watch?v=mQQgFqptVyc";
-
 class CreateWorkflow extends Component {
   constructor(props) {
     super(props);
     this.state = {
       index: 0,
       searchString: "",
+      videoId: "",
       playing: true,
       timeStamp: "",
       question: "",
@@ -121,9 +119,8 @@ class CreateWorkflow extends Component {
   }
 
   isSelectVideoComplete = () => {
-    // TO DO: Check if video is selected
-    // For now, just check non empty string
-    return validateNonEmptyString(this.state.searchString);
+    // Force user to select video
+    return false;
   };
 
   isVideoSetUpComplete = () => {
@@ -169,6 +166,26 @@ class CreateWorkflow extends Component {
     });
   };
 
+  onVideoSelect = id => {
+    // set the video id and change index
+    this.setState({
+      videoId: id,
+      index: this.state.index + 1
+    });
+  };
+
+  getVideoUrl = id => {
+    const {
+      workflow: { videos }
+    } = this.props;
+    const video = videos.find(video => video.id === id);
+    if (isDefinedNotNull(video)) {
+      return "http://144.6.226.54/videos/" + video.filename;
+    }
+    // if no video was found
+    return undefined;
+  };
+
   onPlayerSelect = id => {
     const { data } = this.state;
     const { players } = data;
@@ -198,6 +215,7 @@ class CreateWorkflow extends Component {
 
   onAddVideoSetUp = addMore => {
     const {
+      videoId,
       question,
       timeStamp,
       endFrame,
@@ -207,7 +225,7 @@ class CreateWorkflow extends Component {
     } = this.state;
 
     const videoSetUpData = {
-      video: youtubeVideo,
+      videoId,
       question,
       timeStamp,
       endFrame,
@@ -249,6 +267,8 @@ class CreateWorkflow extends Component {
   componentToRender = index => {
     const { workflow } = this.props;
     const {
+      playing,
+      videoId,
       answers,
       searchString,
       question,
@@ -258,19 +278,33 @@ class CreateWorkflow extends Component {
       data: { players }
     } = this.state;
 
+    const videoUrl = this.getVideoUrl(videoId);
+
     switch (index) {
-      case 0:
+      case 0: {
+        let filteredVideos = workflow.videos;
+        if (validateNonEmptyString(searchString)) {
+          filteredVideos = workflow.videos.filter(video => {
+            return video.description
+              .toLowerCase()
+              .includes(searchString.toLowerCase());
+          });
+        }
+
         return (
           <SelectVideo
-            videos={workflow.videos}
+            videos={filteredVideos}
             onChange={this.onChange}
+            onSelect={this.onVideoSelect}
             searchString={searchString}
           />
         );
+      }
       case 1:
         return (
           <VideoSetUp
-            videoUrl={youtubeVideo}
+            playing={playing}
+            videoUrl={videoUrl}
             onChange={this.onChange}
             question={question}
             timeStamp={timeStamp}
@@ -282,8 +316,8 @@ class CreateWorkflow extends Component {
         return (
           <VideoAnswers
             answers={answers}
+            videoUrl={videoUrl}
             moveAnswer={this.moveAnswer}
-            videoUrl={youtubeVideo}
             question={question}
             timeStamp={timeStamp}
           />
