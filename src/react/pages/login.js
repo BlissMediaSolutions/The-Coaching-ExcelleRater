@@ -6,6 +6,7 @@ import { updateUser } from "../../graphql/login";
 
 import Banner from "../components/common/banner";
 import InlineError from "../components/common/inlineError";
+import Preloader from "../components/common/preloader";
 
 import { validateNonEmptyString } from "../../util/validators";
 import { USER_TEAM, USER_LEVEL } from "../../constants/storageTokens";
@@ -93,7 +94,7 @@ class Login extends Component {
           <div className="u-component">
             <h2>Log into an existing account</h2>
             {loading ? (
-              <div className="p-5">TO DO: BUILD LOADER</div>
+              <div className="p-5"> <Preloader/> </div>
             ) : (
               <div className="u-form-container">
                 <div className="row mb-3">
