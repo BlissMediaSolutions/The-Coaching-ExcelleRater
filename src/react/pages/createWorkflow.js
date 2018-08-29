@@ -21,7 +21,7 @@ import { USER_TEAM } from "../../constants/storageTokens";
 const maxIndex = 4;
 
 // Video to Play
-const youtubeVideo = "https://www.youtube.com/watch?v=mQQgFqptVyc";
+const youtubeVideo = "http://www.youtube.com/watch?v=mQQgFqptVyc";
 
 class CreateWorkflow extends Component {
   constructor(props) {
@@ -243,7 +243,7 @@ class CreateWorkflow extends Component {
   saveWorkflow = () => {
     // TO DO: Need an end point
     const { data } = this.state;
-    console.log(data);
+    console.log(JSON.stringify(data));
   };
 
   componentToRender = index => {
@@ -257,9 +257,6 @@ class CreateWorkflow extends Component {
       playbackRate,
       data: { players }
     } = this.state;
-
-    console.log(workflow);
-    console.log(this.state);
 
     switch (index) {
       case 0:
