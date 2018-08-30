@@ -31,6 +31,11 @@ class Video extends Component {
     });
   };
 
+  getClickPosition = e => {
+    // Prints out the x and y coordinates of the click on the overlay of the video player
+    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+  };
+
   render() {
     return (
       <div>
@@ -52,7 +57,10 @@ class Video extends Component {
                 onChange={this.handleUrlChange}
               />
               <div>
-                <div className="video__react-container">
+                <div
+                  className="video__react-container"
+                  onClick={this.getClickPosition}
+                >
                   <ReactPlayer
                     className="video__react-player"
                     url={this.state.inputURL}
@@ -136,8 +144,6 @@ class Video extends Component {
   }
 }
 
-Video.propTypes = {
-  onChange: PropTypes.func.isRequired
-};
+Video.propTypes = {};
 
 export default Video;
