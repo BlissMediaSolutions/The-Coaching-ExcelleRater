@@ -1,0 +1,11 @@
+.c-success-modal {
+  &__icon-container {
+    padding: 1.5rem;
+    background-color: #48c744;
+    border-radius: 50%;
+    i {
+      zoom: 2;
+      color: white;
+    }
+  }
+}

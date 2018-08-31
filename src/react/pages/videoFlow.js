@@ -4,6 +4,7 @@ import { compose, graphql } from "react-apollo";
 import { Button } from "reactstrap";
 
 import Banner from "../components/common/banner";
+import SuccessModal from "../components/common/successModal";
 import { SelectWorkflow, Video } from "../components/videoFlow";
 
 const maxIndex = 1;
@@ -14,7 +15,9 @@ class VideoFlow extends Component {
     this.state = {
       index: 0,
       searchString: "",
-      playing: true
+      playing: true,
+      answerSelectModal: false,
+      data: [] // array of answers from the players
     };
   }
 
@@ -75,12 +78,36 @@ class VideoFlow extends Component {
 
   /* Video Related Functions */
   getClickPosition = e => {
+    const { playing } = this.state;
     // Prints out the x and y coordinates of the click on the overlay of the video player
     console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    // only record answer when video has been paused
+    if (!playing) {
+      this.setState({
+        data: [
+          ...this.state.data,
+          { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY }
+        ],
+        answerSelectModal: true
+      });
+    }
+  };
+
+  toggleAnswerSelectModal = () => {
+    this.setState({
+      answerSelectModal: !this.state.answerSelectModal
+    });
+  };
+
+  onContinueWorkflowClick = () => {
+    // Check whether there is any videos left in workflow
+    // if there is, go to next video
+    // else go to results page
+    this.toggleAnswerSelectModal();
   };
 
   componentToRender = index => {
-    const { searchString, playing } = this.state;
+    const { answerSelectModal, searchString, playing } = this.state;
 
     switch (index) {
       case 0: {
@@ -96,14 +123,24 @@ class VideoFlow extends Component {
 
       case 1: {
         return (
-          <Video
-            question={"Where should the player pass next?"}
-            playing={playing}
-            onChange={this.onChange}
-            getClickPosition={this.getClickPosition}
-            onProgress={this.onProgress}
-            videoUrl={"http://www.youtube.com/watch?v=2Ae5byjzUKg"}
-          />
+          <div>
+            <Video
+              question={"Where should the player pass next?"}
+              playing={playing}
+              onChange={this.onChange}
+              getClickPosition={this.getClickPosition}
+              onProgress={this.onProgress}
+              videoUrl={"http://www.youtube.com/watch?v=2Ae5byjzUKg"}
+            />
+            <SuccessModal
+              isOpen={answerSelectModal}
+              toggle={this.toggleAnswerSelectModal}
+              heading="Answer Selected!"
+              text="Your answer has been saved, click continue when you are ready for the next video"
+              buttonText="Continue"
+              onButtonClick={this.onContinueWorkflowClick}
+            />
+          </div>
         );
       }
 
