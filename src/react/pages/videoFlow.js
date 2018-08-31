@@ -17,6 +17,7 @@ class VideoFlow extends Component {
       searchString: "",
       playing: true,
       answerSelectModal: false,
+      videoUrl: "http://www.youtube.com/watch?v=2Ae5byjzUKg",
       data: [] // array of answers from the players
     };
   }
@@ -103,11 +104,15 @@ class VideoFlow extends Component {
     // Check whether there is any videos left in workflow
     // if there is, go to next video
     // else go to results page
-    this.toggleAnswerSelectModal();
+    this.setState({
+      answerSelectModal: !this.state.answerSelectModal,
+      videoUrl: "http://www.youtube.com/watch?v=_Bnakw83tcM",
+      playing: true
+    });
   };
 
   componentToRender = index => {
-    const { answerSelectModal, searchString, playing } = this.state;
+    const { videoUrl, answerSelectModal, searchString, playing } = this.state;
 
     switch (index) {
       case 0: {
@@ -130,7 +135,7 @@ class VideoFlow extends Component {
               onChange={this.onChange}
               getClickPosition={this.getClickPosition}
               onProgress={this.onProgress}
-              videoUrl={"http://www.youtube.com/watch?v=2Ae5byjzUKg"}
+              videoUrl={videoUrl}
             />
             <SuccessModal
               isOpen={answerSelectModal}
