@@ -1,55 +1,56 @@
 .video {
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 360px;
+    z-index: 1000;
+  }
 
-    &__url {
-        width: 100%;
-        padding: 10px 20px;
+  &__url {
+    width: 100%;
+    padding: 10px 20px;
+  }
 
+  &__url-button {
+    margin-left: 20px;
+  }
+
+  &__react-player {
+    margin-top: 25px;
+    width: 100%;
+    padding-bottom: 56%;
+    background-color: red;
+    position: relative;
+    > div {
+      position: absolute;
     }
+  }
 
-    &__url-button {
-        margin-left:20px;
-    }
+  &__react-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
 
-    &__react-player {
-        margin-top: 25px;
-        width: 100%;
-        padding-bottom: 56%;
-        background-color: red;
-        position: relative;
-        >div {
-            position: absolute;
-        }
-    }
+  &__breakdown {
+    text-align: left;
+    padding-top: 25px;
+    font-weight: bold;
+  }
 
-    &__react-container {
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        
+  &__breakdown-text {
+    padding-bottom: 15px;
+  }
 
+  &__additional {
+    text-align: left;
+    padding-top: 25px;
+    font-weight: bold;
+  }
 
-    }
-    
-    &__breakdown {
-        text-align: left;
-        padding-top: 25px;
-        font-weight: bold;
-
-    }
-
-    &__breakdown-text {
-        padding-bottom: 15px;
-    }
-    
-    &__additional {
-        text-align: left;
-        padding-top: 25px;
-        font-weight: bold;
-       
-    }    
-
-    &__additional-text {
-        padding-bottom: 15px;
-    }
-
-    }
+  &__additional-text {
+    padding-bottom: 15px;
+  }
+}

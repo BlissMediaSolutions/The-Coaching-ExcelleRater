@@ -51,7 +51,7 @@ class DragAndDropVideoPlayer extends Component {
 
     return connectDropTarget(
       <div className="c-dnd-video-player row position-relative">
-        <div className="c-dnd-video-player__overlay bg-transparent" />
+        <div className="video__overlay bg-transparent" />
 
         <ReactPlayer
           className="c-dnd-video-player__player"
