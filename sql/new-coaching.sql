@@ -39,13 +39,13 @@ CREATE TABLE video
 (
   id INT AUTO_INCREMENT PRIMARY KEY,
   teamid INT,
-  description VARCHAR(20) NOT NULL,
+  description VARCHAR(40) NOT NULL,
   private CHAR NOT NULL,
   filename VARCHAR(50) NOT NULL,
   category1 VARCHAR(10) NOT NULL,
   category2 VARCHAR(10),
   category3 VARCHAR(10),
-  title VARCHAR(25),
+  title VARCHAR(40),
   CONSTRAINT FK_Video_Team FOREIGN KEY (teamid) REFERENCES team(id)
 );
 
@@ -66,8 +66,10 @@ CREATE TABLE teamlist
  (
    id INT AUTO_INCREMENT PRIMARY KEY,
    wfdate DATE,
+   wfname VARCHAR(25),
    teamid INT,
    coachid INT,
+   resolution VARCHAR(12),
    CONSTRAINT FK_WorkFlow_TeamID FOREIGN KEY (teamid) REFERENCES teamlist(teamid),
    CONSTRAINT FK_WorkFlow_CoachID FOREIGN KEY (coachid) REFERENCES teamlist(personid)
  );
@@ -79,8 +81,11 @@ CREATE TABLE videolist
   videoid INT,
   question VARCHAR(25),
   answer1 VARCHAR(15),
+  ans1radius VARCHAR(4),
   answer2 VARCHAR(15),
+  ans2radius VARCHAR(4),
   answer3 VARCHAR(15),
+  ans3radius VARCHAR(4),
   stoppoint TIMESTAMP,
   playspeed DECIMAL (2,1),
   display VARCHAR(10),
