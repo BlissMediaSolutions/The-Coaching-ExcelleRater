@@ -6,10 +6,10 @@
 			 This script receives a JSON object of the playerid, modeled as:
        {"playerid": x}
 			 It then uses RedBean ORM, to return all the Workflows which the player has been allocated.
-       It responds with a JSON object, which will be modeled in either of 2 fashions (relative to if the player has been assigned workflows, or an error arises):
+       It responds with a JSON object, which will be modeled in either of 3 fashions (relative to if the player has been assigned workflows, or an error arises):
        1) [{"id": x, "wfdate": xxxx-xx-xx, "wfname":xxxxx, "coachid":x),
            {"id": x, "wfdate": xxxx-xx-xx, "wfname":xxxxx, "coachid":x)]
-       2) {"success": false, "data": xxxxxxxxxx}
+       3) {"success": false, "error": xxxxxxxxxx}
 */
 
 //ini_set('display_errors', 'On');
