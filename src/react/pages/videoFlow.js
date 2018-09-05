@@ -8,6 +8,7 @@ import SuccessModal from "../components/common/successModal";
 import Preloader from "../components/common/preloader";
 import { SelectWorkflow, Video } from "../components/videoFlow";
 
+import { validateNonEmptyString } from "../../util/validators";
 import * as types from "../../graphql/types";
 
 class VideoFlow extends Component {
@@ -122,12 +123,21 @@ class VideoFlow extends Component {
 
     switch (index) {
       case 0: {
+        let filteredWorkflows = videoFlow.workflows;
+        if (validateNonEmptyString(searchString)) {
+          filteredWorkflows = filteredWorkflows.filter(workflow => {
+            return workflow.wfname
+              .toLowerCase()
+              .includes(searchString.toLowerCase());
+          });
+        }
+
         return (
           <SelectWorkflow
             onChange={this.onChange}
             onSelect={this.onWorflowSelect}
             searchString={searchString}
-            workflows={videoFlow.workflows}
+            workflows={filteredWorkflows}
           />
         );
       }
