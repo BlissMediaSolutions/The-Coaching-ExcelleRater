@@ -1,6 +1,7 @@
 import { userQuery } from "./login";
 import { workflowQuery } from "./workflow";
-import { PLAYER_LIST, VIDEO_LIST } from "./types";
+import { videoFlowQuery } from "./videoFlow";
+import * as types from "./types";
 
 export default {
   Mutation: {
@@ -29,7 +30,7 @@ export default {
       const previous = cache.readQuery({ query });
 
       switch (type) {
-        case PLAYER_LIST: {
+        case types.PLAYER_LIST: {
           const newData = {
             workflow: {
               ...previous.workflow,
@@ -40,11 +41,43 @@ export default {
 
           return;
         }
-        case VIDEO_LIST: {
+        case types.VIDEO_LIST: {
           const newData = {
             workflow: {
               ...previous.workflow,
               videos: data
+            }
+          };
+          cache.writeQuery({ query, data: newData });
+          return;
+        }
+        default:
+          return;
+      }
+    },
+    updateVideoFlow: (_, { type, data }, { cache }) => {
+      const query = videoFlowQuery;
+
+      // Get Previous State
+      const previous = cache.readQuery({ query });
+
+      switch (type) {
+        case types.WORKFLOW_LIST: {
+          const newData = {
+            videoFlow: {
+              ...previous.videoFlow,
+              workflows: data
+            }
+          };
+          cache.writeQuery({ query, data: newData });
+
+          return;
+        }
+        case types.WORKFLOW_VIDEO_LIST: {
+          const newData = {
+            videoFlow: {
+              ...previous.videoFlow,
+              workflowVideos: data
             }
           };
           cache.writeQuery({ query, data: newData });

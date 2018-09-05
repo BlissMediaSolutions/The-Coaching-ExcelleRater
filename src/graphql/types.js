@@ -1,2 +1,5 @@
 export const VIDEO_LIST = "VIDEO_LIST";
 export const PLAYER_LIST = "PLAYER_LIST";
+
+export const WORKFLOW_LIST = "WORKFLOW_LIST";
+export const WORKFLOW_VIDEO_LIST = "WORKFLOW_VIDEO_LIST";

@@ -10,5 +10,10 @@ export default {
     __typename: "workflow",
     videos: [],
     players: []
+  },
+  videoFlow: {
+    __typename: "videoFlow",
+    workflows: [],
+    workflowVideos: []
   }
 };

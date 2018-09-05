@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { compose, graphql } from "react-apollo";
-import { Button } from "reactstrap";
+import { videoFlowQuery, updateVideoFlow } from "../../graphql/videoFlow";
 
+import { Button } from "reactstrap";
 import Banner from "../components/common/banner";
 import SuccessModal from "../components/common/successModal";
+import Preloader from "../components/common/preloader";
 import { SelectWorkflow, Video } from "../components/videoFlow";
+
+import * as types from "../../graphql/types";
 
 const maxIndex = 1;
 
@@ -23,7 +27,18 @@ class VideoFlow extends Component {
   }
 
   componentDidMount() {
-    // To Do: Fetch Required Data
+    const { updateVideoFlow } = this.props;
+    const variables = { playerid: "2" };
+    axios
+      .post("/getworkflowlist.php", variables)
+      .then(response => {
+        updateVideoFlow({
+          variables: { type: types.WORKFLOW_LIST, data: response.data }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   /* Generic Functions */
@@ -71,10 +86,30 @@ class VideoFlow extends Component {
     }
   };
 
-  onWorflowSelect = () => {
+  onWorflowSelect = id => {
+    const { updateVideoFlow } = this.props;
     this.setState({
-      index: 1 // Go to the next card
+      loading: true
     });
+    // get the videos for the selected workflow
+    axios
+      .post("/getworkflowvids.php", { workflowid: id })
+      .then(response => {
+        console.log(response);
+        updateVideoFlow({
+          variables: { type: types.WORKFLOW_VIDEO_LIST, data: response.data }
+        });
+        this.setState({
+          loading: false,
+          index: 1 // Go to the next card
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          loading: false
+        });
+      });
   };
 
   /* Video Related Functions */
@@ -112,16 +147,18 @@ class VideoFlow extends Component {
   };
 
   componentToRender = index => {
+    const { videoFlow } = this.props;
     const { videoUrl, answerSelectModal, searchString, playing } = this.state;
+    console.log(videoFlow);
 
     switch (index) {
       case 0: {
         return (
           <SelectWorkflow
             onChange={this.onChange}
-            onSelect={this.onVideoSelect}
+            onSelect={this.onWorflowSelect}
             searchString={searchString}
-            workflows={[]}
+            workflows={videoFlow.workflows}
           />
         );
       }
@@ -164,9 +201,13 @@ class VideoFlow extends Component {
   };
 
   render() {
-    const { index } = this.state;
+    const { loading, index } = this.state;
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
+
+    if (loading) {
+      return <Preloader />;
+    }
 
     return (
       <div>
@@ -204,4 +245,11 @@ class VideoFlow extends Component {
   }
 }
 
-export default compose()(VideoFlow);
+export default compose(
+  graphql(videoFlowQuery, {
+    props: ({ data: { videoFlow } }) => ({
+      videoFlow
+    })
+  }),
+  graphql(updateVideoFlow, { name: "updateVideoFlow" })
+)(VideoFlow);
