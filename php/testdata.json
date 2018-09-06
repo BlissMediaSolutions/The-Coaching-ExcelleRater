@@ -1,0 +1,4 @@
+[{"name":"Workflow1", "teamid": "1", "coachid": "1", "resolution":"400x300"},
+	{"player1": "2", "player2": "3", "player3": "5", "player4": "6"},
+  {"videoid": "1", "ans1": "54,340", "ans1radius":"3", "ans2": "92,563", "ans2radius":"3", "ans3": "190,288", "ans3radius":"4", "endframe":"show", "playrate": "1", "stoppoint": "5.5", "question": "asdasd"},
+  {"videoid": "2", "ans1": "50,300", "ans1radius":"3", "ans2": "92,563", "ans2radius":"3", "ans3": "190,288", "ans3radius":"4", "endframe":"show1", "playrate": "1.5", "stoppoint": "4.5", "question": "bcsdnd"}]

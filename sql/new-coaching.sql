@@ -71,7 +71,7 @@ CREATE TABLE teamlist
    coachid INT,
    resolution VARCHAR(12),
    CONSTRAINT FK_WorkFlow_TeamID FOREIGN KEY (teamid) REFERENCES teamlist(teamid),
-   CONSTRAINT FK_WorkFlow_CoachID FOREIGN KEY (coachid) REFERENCES teamlist(personid)
+   CONSTRAINT FK_WorkFlow_CoachID FOREIGN KEY (coachid) REFERENCES teamlist(id)
  );
 
 CREATE TABLE videolist
@@ -100,7 +100,7 @@ CREATE TABLE wfteamlist
   personid INT,
   totalscore DECIMAL(8,8),
   CONSTRAINT FK_WFTeamList_WorkFlow FOREIGN KEY (workflowid) REFERENCES workflow(id),
-  CONSTRAINT FK_WFTeamList_TeamList FOREIGN KEY (personid) REFERENCES teamlist(personid)
+  CONSTRAINT FK_WFTeamList_TeamList FOREIGN KEY (personid) REFERENCES teamlist(id)
 );
 
 CREATE TABLE wfanswers
@@ -112,7 +112,7 @@ CREATE TABLE wfanswers
   answer VARCHAR(15),
   CONSTRAINT FK_WFAnswers_WorkFlowID FOREIGN KEY (workflowid) REFERENCES wfteamlist(workflowid),
   CONSTRAINT FK_WFAnswers_VideoID FOREIGN KEY (videoid) REFERENCES videolist(videoid),
-  CONSTRAINT FK_WFAnswers_WFTeamList FOREIGN KEY (personid) REFERENCES wfteamlist(personid)
+  CONSTRAINT FK_WFAnswers_WFTeamList FOREIGN KEY (personid) REFERENCES wfteamlist(id)
 );
 
 INSERT INTO sport(sportname) VALUES('Tennis');

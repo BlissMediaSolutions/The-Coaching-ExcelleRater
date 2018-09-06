@@ -1,13 +1,16 @@
 <?php
 /*   User Login for The Coaching ExcelleRater
-     Last Modified Date: 13/8/2018
-     version: 1.0
+     Last Modified Date: 6/9/2018
+     version: 1.1
 	   1.0 - Initial Login script created.
 			 This script receives a JSON object of the username & password, modeled as:
        {"username": xxxx, "password": xxxx}
 			 It then uses RedBean ORM, to check the db, and respond with a JSON Object, modeled as either 2 responses:
        {"success": true, "username": xxxxxx, "userlevel": x, "team": x}
        {"success": false, "error": xxxxxxxxxx}
+    1.1 - Script updated to return the id of the person;
+       {"success": true, "id": x, "username": xxxxxx, "userlevel": x, "team": x}
+
 */
 
   //ini_set('display_errors', 'On');
@@ -42,6 +45,7 @@
 
     if ($result == true) {
       $data->success = true;
+      $data->id = $thisusr->id;
       $data->username = $thisusr->username;
       $data->userlevel = $thisusr->roleid;
       $data->team = $thisusr->teamid;
