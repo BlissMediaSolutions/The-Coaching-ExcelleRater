@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter} from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Preloader from "../components/common/preloader";
 
 import { connect } from "react-redux";
@@ -7,14 +7,15 @@ import { Redirect } from "react-router-dom";
 
 class Footer extends Component {
   constructor(props) {
-    super(props)
-}
+    super(props);
+  }
 
-logoutHandler = (e) => {
-    console.log('test');
+  logoutHandler = e => {
+    console.log("test");
     sessionStorage.clear();
     localStorage.clear();
-}
+    window.location.reload();
+  };
 
   render() {
     return (
@@ -102,14 +103,15 @@ logoutHandler = (e) => {
               <Link className="c-footer__link" to="/termsandconditions">
                 Terms and Conditions
               </Link>
-                <Link to="/login" className="c-footer__link" onClick={e=>this.logoutHandler(e)} > 
-                Logout 
-                </Link>
-              
-
+              <Link
+                to="/login"
+                className="c-footer__link"
+                onClick={e => this.logoutHandler(e)}
+              >
+                Logout
+              </Link>
             </div>
 
-             
             <div>
               <a className="c-footer__social-link">
                 <i className="fa fa-facebook" />
