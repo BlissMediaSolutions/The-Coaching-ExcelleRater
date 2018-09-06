@@ -3,7 +3,7 @@ import React from "react";
 import { Input } from "reactstrap";
 
 export default ({ onChange, onSelect, searchString, workflows }) => (
-  <div className="u-component col-lg-6">
+  <div className="c-select-workflow u-component col-lg-6">
     <div className="container-fluid">
       <div className="row">
         <h2>Search and Select a Workflow</h2>
@@ -18,9 +18,14 @@ export default ({ onChange, onSelect, searchString, workflows }) => (
         />
       </div>
       <div className="mt-2">
-        {workflows.map((workflows, index) => (
-          <div key={index} className="row flex-column py-2 border-bottom">
-            Workflow
+        {workflows.map((workflow, index) => (
+          <div
+            key={index}
+            className="c-select-workflow__item row flex-column py-2 border-bottom"
+            onClick={() => onSelect(workflow.id)}
+          >
+            <div>{workflow.wfname}</div>
+            <div className="color-grey-mid">{workflow.wfdate}</div>
           </div>
         ))}
       </div>

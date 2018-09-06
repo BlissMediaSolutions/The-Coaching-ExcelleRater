@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { compose, graphql } from "react-apollo";
-import { Button } from "reactstrap";
+import { videoFlowQuery, updateVideoFlow } from "../../graphql/videoFlow";
 
 import Banner from "../components/common/banner";
 import SuccessModal from "../components/common/successModal";
+import Preloader from "../components/common/preloader";
 import { SelectWorkflow, Video } from "../components/videoFlow";
 
-const maxIndex = 1;
+import { validateNonEmptyString } from "../../util/validators";
+import * as types from "../../graphql/types";
 
 class VideoFlow extends Component {
   constructor(props) {
@@ -23,41 +25,24 @@ class VideoFlow extends Component {
   }
 
   componentDidMount() {
-    // To Do: Fetch Required Data
+    const { updateVideoFlow } = this.props;
+    const variables = { playerid: "2" };
+    axios
+      .post("/getworkflowlist.php", variables)
+      .then(response => {
+        updateVideoFlow({
+          variables: { type: types.WORKFLOW_LIST, data: response.data }
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
-
-  /* Generic Functions */
-  onNextClick = () => {
-    this.setState({
-      index: this.state.index + 1
-    });
-  };
-
-  onPrevClick = () => {
-    this.setState({
-      index: this.state.index - 1
-    });
-  };
 
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  };
-
-  isComplete(index) {
-    switch (index) {
-      case 0:
-        return this.isSelectWorkflowComplete();
-      default:
-        return false;
-    }
-  }
-
-  /* Workflow Related Functions */
-  isSelectWorkflowComplete = () => {
-    // Force user to select video
-    return true; // TO DO: Fix this
   };
 
   // Stops the player at the required Time Stamps
@@ -71,10 +56,30 @@ class VideoFlow extends Component {
     }
   };
 
-  onWorflowSelect = () => {
+  onWorflowSelect = id => {
+    const { updateVideoFlow } = this.props;
     this.setState({
-      index: 1 // Go to the next card
+      loading: true
     });
+    // get the videos for the selected workflow
+    axios
+      .post("/getworkflowvids.php", { workflowid: id })
+      .then(response => {
+        console.log(response);
+        updateVideoFlow({
+          variables: { type: types.WORKFLOW_VIDEO_LIST, data: response.data }
+        });
+        this.setState({
+          loading: false,
+          index: 1 // Go to the next card
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          loading: false
+        });
+      });
   };
 
   /* Video Related Functions */
@@ -112,16 +117,27 @@ class VideoFlow extends Component {
   };
 
   componentToRender = index => {
+    const { videoFlow } = this.props;
     const { videoUrl, answerSelectModal, searchString, playing } = this.state;
+    console.log(videoFlow);
 
     switch (index) {
       case 0: {
+        let filteredWorkflows = videoFlow.workflows;
+        if (validateNonEmptyString(searchString)) {
+          filteredWorkflows = filteredWorkflows.filter(workflow => {
+            return workflow.wfname
+              .toLowerCase()
+              .includes(searchString.toLowerCase());
+          });
+        }
+
         return (
           <SelectWorkflow
             onChange={this.onChange}
-            onSelect={this.onVideoSelect}
+            onSelect={this.onWorflowSelect}
             searchString={searchString}
-            workflows={[]}
+            workflows={filteredWorkflows}
           />
         );
       }
@@ -164,13 +180,16 @@ class VideoFlow extends Component {
   };
 
   render() {
-    const { index } = this.state;
-    const canNext = this.isComplete(index) && index < maxIndex;
-    const canPrev = index !== 0;
+    const { loading, index } = this.state;
+    const showBanner = index === 0;
+
+    if (loading) {
+      return <Preloader />;
+    }
 
     return (
       <div>
-        {!canPrev && (
+        {showBanner && (
           <Banner
             title="Create Workflow"
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
@@ -180,28 +199,17 @@ class VideoFlow extends Component {
           <div className="row justify-content-center">
             {this.componentToRender(index)}
           </div>
-          {index !== 4 && (
-            <div className="row justify-content-between mb-4">
-              <Button
-                color="secondary"
-                onClick={this.onPrevClick}
-                disabled={!canPrev}
-              >
-                Previous
-              </Button>
-              <Button
-                color="primary"
-                onClick={this.onNextClick}
-                disabled={!canNext}
-              >
-                Next
-              </Button>
-            </div>
-          )}
         </div>
       </div>
     );
   }
 }
 
-export default compose()(VideoFlow);
+export default compose(
+  graphql(videoFlowQuery, {
+    props: ({ data: { videoFlow } }) => ({
+      videoFlow
+    })
+  }),
+  graphql(updateVideoFlow, { name: "updateVideoFlow" })
+)(VideoFlow);

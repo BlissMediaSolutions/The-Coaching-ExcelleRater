@@ -4,6 +4,12 @@
 // Variables
 @import "./variables/spacing";
 
+// Utilities
+@import "./utilities/misc";
+@import "./utilities/form";
+@import "./utilities/video";
+@import "./utilities/colors";
+
 // Components
 @import "./components/_banner";
 @import "./components/_success-modal";
@@ -16,14 +22,10 @@
 @import "./components/_dnd-video-player";
 @import "./components/_quiz";
 @import "./components/_select-video";
+@import "./components/_select-workflow";
 //@import "./components/_player-select";
 
 // Elements
 @import "./elements/typography";
 @import "./elements/links";
 @import "./elements/preloader";
-
-// Utilities
-@import "./utilities/misc";
-@import "./utilities/form";
-@import "./utilities/video";
