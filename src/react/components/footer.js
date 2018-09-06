@@ -1,7 +1,19 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter} from "react-router-dom";
+import Preloader from "../components/common/preloader";
+
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class Footer extends Component {
+  constructor(props) {
+    super(props)
+}
+
+logoutHandler = (e) => {
+    this.props.history.push('/login')
+}
+
   render() {
     return (
       <footer className="c-footer">
@@ -88,8 +100,14 @@ class Footer extends Component {
               <Link className="c-footer__link" to="/termsandconditions">
                 Terms and Conditions
               </Link>
+                <Link to="/login" className="c-footer__link" onClick={e=>this.logoutHandler(e)} > 
+                Logout 
+                </Link>
+              
+
             </div>
 
+             
             <div>
               <a className="c-footer__social-link">
                 <i className="fa fa-facebook" />
