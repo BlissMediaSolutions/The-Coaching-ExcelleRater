@@ -24,7 +24,6 @@ class Routes extends Component {
           <Switch>
             <Route path={`/`} exact component={Home} />
             <Route path={`/about`} exact component={About} />
-            <Route path={`/login`} exact component={Login} />
             <Route path={`/signup`} exact component={Signup} />
             <Route path={`/videos`} exact component={VideoFlow} />
             <Route path={`/createWorkflow`} exact component={CreateWorkflow} />
