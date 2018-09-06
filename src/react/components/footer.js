@@ -11,7 +11,9 @@ class Footer extends Component {
 }
 
 logoutHandler = (e) => {
-    this.props.history.push('/login')
+    console.log('test');
+    sessionStorage.clear();
+    localStorage.clear();
 }
 
   render() {
