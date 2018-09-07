@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import Preloader from "../components/common/preloader";
-
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Footer extends Component {
   constructor(props) {
@@ -11,7 +7,6 @@ class Footer extends Component {
   }
 
   logoutHandler = e => {
-    console.log("test");
     sessionStorage.clear();
     localStorage.clear();
     window.location.reload();
