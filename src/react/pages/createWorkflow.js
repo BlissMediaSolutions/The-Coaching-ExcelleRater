@@ -6,6 +6,7 @@ import { workflowQuery, updateWorkflow } from "../../graphql/workflow";
 import { Button } from "reactstrap";
 
 import Banner from "../components/common/banner";
+import Preloader from "../components/common/preloader";
 import SelectVideo from "../components/createWorkflow/selectVideo";
 import VideoSetUp from "../components/createWorkflow/videoSetUp";
 import VideoAnswers from "../components/createWorkflow/videoAnswers";
@@ -259,9 +260,65 @@ class CreateWorkflow extends Component {
   };
 
   saveWorkflow = () => {
-    // TO DO: Need an end point
     const { data } = this.state;
-    console.log(JSON.stringify(data));
+    // build player object
+    let playerObject = {};
+    data.players.forEach((p, index) => {
+      const key = (index + 1).toString();
+      playerObject = { ...playerObject, [key]: p };
+    });
+
+    // initial variables
+    const variables = [
+      {
+        name: "Workflow Yeah Yeah Yeah",
+        date: new Date(),
+        teamid: sessionStorage.getItem(USER_TEAM),
+        coachid: "1",
+        resolution: "400x300"
+      },
+      playerObject
+    ];
+    // build and push each video data onto variables
+    data.videoData.forEach(video => {
+      const { endFrame, playbackRate, question, videoId, timeStamp } = video;
+      const ans1 = `${video.answers[1].left},${video.answers[1].top}`;
+      const ans2 = `${video.answers[2].left},${video.answers[2].top}`;
+      const ans3 = `${video.answers[3].left},${video.answers[3].top}`;
+
+      variables.push({
+        ans1,
+        ans1radius: 50,
+        ans2,
+        ans2radius: 50,
+        ans3,
+        ans3radius: 50,
+        endframe: endFrame,
+        playrate: playbackRate,
+        videoid: videoId,
+        stoppoint: timeStamp,
+        question
+      });
+    });
+    // send to php
+    this.setState({
+      loading: true
+    });
+    axios
+      .post("/addworkflow.php", variables)
+      .then(() => {
+        // stop loading and go back to first screen
+        this.setState({
+          loading: false,
+          index: 0
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          loading: false
+        });
+      });
   };
 
   componentToRender = index => {
@@ -345,7 +402,7 @@ class CreateWorkflow extends Component {
   };
 
   render() {
-    const { index } = this.state;
+    const { index, loading } = this.state;
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
@@ -359,7 +416,7 @@ class CreateWorkflow extends Component {
         )}
         <div className="container">
           <div className="row justify-content-center">
-            {this.componentToRender(index)}
+            {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
           {index !== 4 && (
             <div className="row justify-content-between mb-4">
