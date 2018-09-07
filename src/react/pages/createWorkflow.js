@@ -36,17 +36,17 @@ class CreateWorkflow extends Component {
         "1": {
           number: "1",
           top: 0,
-          right: 0
+          left: 640
         },
         "2": {
           number: "2",
           top: 100,
-          right: 0
+          left: 640
         },
         "3": {
           number: "3",
           top: 200,
-          right: 0
+          left: 640
         }
       },
       data: {
@@ -153,14 +153,14 @@ class CreateWorkflow extends Component {
     }
   };
 
-  moveAnswer = (number, top, right) => {
+  moveAnswer = (number, top, left) => {
     this.setState({
       answers: {
         ...this.state.answers,
         [number]: {
           ...this.state.answers[number],
           top,
-          right
+          left
         }
       }
     });

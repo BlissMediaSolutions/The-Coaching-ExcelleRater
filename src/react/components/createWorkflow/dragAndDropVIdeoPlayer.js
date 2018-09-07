@@ -18,10 +18,10 @@ const target = {
     }
     const item = monitor.getItem();
     const delta = monitor.getDifferenceFromInitialOffset();
-    const right = Math.round(item.right - delta.x);
+    const left = Math.round(item.left + delta.x);
     const top = Math.round(item.top + delta.y);
 
-    component.props.moveAnswer(item.number, top, right);
+    component.props.moveAnswer(item.number, top, left);
   }
 };
 
@@ -62,13 +62,13 @@ class DragAndDropVideoPlayer extends Component {
         />
         <div className="c-dnd-video-player__side-bar d-flex flex-column justify-content-between">
           {Object.keys(answers).map(answer => {
-            const { number, top, right } = answers[answer];
+            const { number, top, left } = answers[answer];
             return (
               <DraggableCircle
                 key={number}
                 number={number}
                 top={top}
-                right={right}
+                left={left}
               />
             );
           })}

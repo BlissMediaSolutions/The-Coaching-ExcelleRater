@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 import { DragSource } from "react-dnd";
-import { ToolBox } from './toolbox';
+import { ToolBox } from "./toolbox";
 
 /**
  * Implements the drag source contract.
@@ -12,7 +12,7 @@ const cardSource = {
     return {
       number: props.number,
       top: props.top,
-      right: props.right
+      left: props.left
     };
   }
 };
@@ -30,30 +30,36 @@ function collect(connect, monitor) {
 class DraggableCircle extends Component {
   state = {
     toolBoxOpen: false
-  }
+  };
 
   toggleTabBar = () => {
-    this.setState({ 
-      toolBoxOpen: !this.state.toolBoxOpen 
+    this.setState({
+      toolBoxOpen: !this.state.toolBoxOpen
     });
-    console.log('selected circle');
-  }
+    console.log("selected circle");
+  };
 
   render() {
-    const { connectDragSource, number, top, right } = this.props;
+    const { connectDragSource, number, top, left } = this.props;
     const { toolBoxOpen } = this.state;
     // can get isDragging from props
 
     const style = {
       position: "absolute",
       top,
-      right
+      left
     };
     return connectDragSource(
-      <div className="c-dnd-video-player__side-bar__circle__wrapper" style={style}>
+      <div
+        className="c-dnd-video-player__side-bar__circle__wrapper"
+        style={style}
+      >
         <div className="c-dnd-video-player__side-bar__circle__sub">
-          { toolBoxOpen ? <ToolBox /> : null }
-          <div onClick={this.toggleTabBar} className="c-dnd-video-player__side-bar__circle">
+          {toolBoxOpen ? <ToolBox /> : null}
+          <div
+            onClick={this.toggleTabBar}
+            className="c-dnd-video-player__side-bar__circle"
+          >
             {number}
           </div>
         </div>
