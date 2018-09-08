@@ -86,7 +86,7 @@ CREATE TABLE videolist
   ans2radius VARCHAR(4),
   answer3 VARCHAR(15),
   ans3radius VARCHAR(4),
-  stoppoint TIMESTAMP,
+  stoppoint VARCHAR(5),
   playspeed DECIMAL (2,1),
   display VARCHAR(10),
   CONSTRAINT FK_VideoList_WorkFlow FOREIGN KEY (workflowid) REFERENCES workflow(id),
