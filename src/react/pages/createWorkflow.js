@@ -7,17 +7,20 @@ import { Button } from "reactstrap";
 
 import Banner from "../components/common/banner";
 import Preloader from "../components/common/preloader";
+import SuccessModal from "../components/common/successModal";
 import SelectVideo from "../components/createWorkflow/selectVideo";
 import VideoSetUp from "../components/createWorkflow/videoSetUp";
 import VideoAnswers from "../components/createWorkflow/videoAnswers";
 import SelectPlayers from "../components/createWorkflow/selectPlayers";
 import CompleteWorkflow from "../components/createWorkflow/completeWorkflow";
+import WorkflowModal from "../components/createWorkflow/workflowModal";
 
 import { isDefinedNotNull } from "../../util/objUtil";
 import { validateNonEmptyString } from "../../util/validators";
 
 import { VIDEO_LIST, PLAYER_LIST } from "../../graphql/types";
 import { USER_TEAM } from "../../constants/storageTokens";
+import { videoUrlString } from "../../util/helpers";
 
 const maxIndex = 4;
 
@@ -27,6 +30,9 @@ class CreateWorkflow extends Component {
     this.state = {
       index: 0,
       searchString: "",
+      workflowModal: false,
+      successModal: false,
+      workflowName: "",
       videoId: "",
       playing: true,
       timeStamp: "",
@@ -83,6 +89,19 @@ class CreateWorkflow extends Component {
         console.log(error);
       });
   }
+
+  toggleWorkflowModal = () => {
+    this.setState({
+      workflowModal: !this.state.workflowModal
+    });
+  };
+
+  toggleSuccessModal = () => {
+    this.setState({
+      successModal: false,
+      index: 0
+    });
+  };
 
   onNextClick = () => {
     this.setState({
@@ -181,7 +200,7 @@ class CreateWorkflow extends Component {
     } = this.props;
     const video = videos.find(video => video.id === id);
     if (isDefinedNotNull(video)) {
-      return "http://144.6.226.54/videos/" + video.filename;
+      return videoUrlString(video.filename);
     }
     // if no video was found
     return undefined;
@@ -260,7 +279,7 @@ class CreateWorkflow extends Component {
   };
 
   saveWorkflow = () => {
-    const { data } = this.state;
+    const { data, workflowName } = this.state;
     // build player object
     let playerObject = {};
     data.players.forEach((p, index) => {
@@ -271,7 +290,7 @@ class CreateWorkflow extends Component {
     // initial variables
     const variables = [
       {
-        name: "Workflow Yeah Yeah Yeah",
+        name: workflowName,
         date: new Date(),
         teamid: sessionStorage.getItem(USER_TEAM),
         coachid: "1",
@@ -310,7 +329,8 @@ class CreateWorkflow extends Component {
         // stop loading and go back to first screen
         this.setState({
           loading: false,
-          index: 0
+          workflowModal: false,
+          successModal: true
         });
       })
       .catch(error => {
@@ -324,6 +344,9 @@ class CreateWorkflow extends Component {
   componentToRender = index => {
     const { workflow } = this.props;
     const {
+      workflowModal,
+      workflowName,
+      successModal,
       playing,
       videoId,
       answers,
@@ -383,13 +406,27 @@ class CreateWorkflow extends Component {
         return <CompleteWorkflow onAdd={this.onAddVideoSetUp} />;
       case 4:
         return (
-          <SelectPlayers
-            players={workflow.players}
-            selectedPlayers={players}
-            onSelect={this.onPlayerSelect}
-            onSave={this.saveWorkflow}
-            onGoBackClick={this.onGoBackClick}
-          />
+          <div>
+            <SelectPlayers
+              players={workflow.players}
+              selectedPlayers={players}
+              onSelect={this.onPlayerSelect}
+              onSave={this.toggleWorkflowModal}
+              onGoBackClick={this.onGoBackClick}
+            />
+            <WorkflowModal
+              isOpen={workflowModal}
+              toggle={this.toggleWorkflowModal}
+              workflowName={workflowName}
+              onChange={this.onChange}
+              onButtonClick={this.saveWorkflow}
+            />
+            <SuccessModal
+              isOpen={successModal}
+              toggle={this.toggleSuccessModal}
+              heading="Workflow created!"
+            />
+          </div>
         );
 
       default: {

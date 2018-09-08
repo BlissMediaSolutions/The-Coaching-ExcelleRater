@@ -10,6 +10,8 @@ import { SelectWorkflow, Video } from "../components/videoFlow";
 
 import { validateNonEmptyString } from "../../util/validators";
 import * as types from "../../graphql/types";
+import { videoUrlString } from "../../util/helpers";
+import { isDefinedNotNull } from "../../util/objUtil";
 
 class VideoFlow extends Component {
   constructor(props) {
@@ -19,7 +21,8 @@ class VideoFlow extends Component {
       searchString: "",
       playing: true,
       answerSelectModal: false,
-      videoUrl: "http://www.youtube.com/watch?v=2Ae5byjzUKg",
+      workflowCompleteModal: false,
+      videoIndex: 0,
       data: [] // array of answers from the players
     };
   }
@@ -42,6 +45,12 @@ class VideoFlow extends Component {
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
+    });
+  };
+
+  toggleWorkflowCompleteModal = () => {
+    this.setState({
+      workflowCompleteModal: !this.state.workflowCompleteModal
     });
   };
 
@@ -71,7 +80,8 @@ class VideoFlow extends Component {
         });
         this.setState({
           loading: false,
-          index: 1 // Go to the next card
+          index: 1, // Go to the next card
+          videoData: response.data[0]
         });
       })
       .catch(error => {
@@ -84,7 +94,10 @@ class VideoFlow extends Component {
 
   /* Video Related Functions */
   getClickPosition = e => {
-    const { playing } = this.state;
+    const {
+      videoFlow: { workflowVideos }
+    } = this.props;
+    const { playing, videoIndex } = this.state;
     // Prints out the x and y coordinates of the click on the overlay of the video player
     console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
     // only record answer when video has been paused
@@ -93,9 +106,18 @@ class VideoFlow extends Component {
         data: [
           ...this.state.data,
           { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY }
-        ],
-        answerSelectModal: true
+        ]
       });
+      // check if last answer in workflow
+      if (videoIndex === workflowVideos.length - 1) {
+        this.setState({
+          workflowCompleteModal: true
+        });
+      } else {
+        this.setState({
+          answerSelectModal: true
+        });
+      }
     }
   };
 
@@ -106,19 +128,38 @@ class VideoFlow extends Component {
   };
 
   onContinueWorkflowClick = () => {
+    const { videoFlow } = this.props;
     // Check whether there is any videos left in workflow
     // if there is, go to next video
     // else go to results page
+    const newVideoIndex = this.state.videoIndex + 1;
+    if (isDefinedNotNull(videoFlow.workflowVideos[newVideoIndex])) {
+      this.setState({
+        videoIndex: newVideoIndex,
+        answerSelectModal: !this.state.answerSelectModal,
+        videoData: videoFlow.workflowVideos[newVideoIndex],
+        playing: true
+      });
+    }
+  };
+
+  onFinishWorkflow = () => {
+    // Go to results for workflow
     this.setState({
-      answerSelectModal: !this.state.answerSelectModal,
-      videoUrl: "http://www.youtube.com/watch?v=_Bnakw83tcM",
-      playing: true
+      index: 0,
+      workflowCompleteModal: false
     });
   };
 
   componentToRender = index => {
     const { videoFlow } = this.props;
-    const { videoUrl, answerSelectModal, searchString, playing } = this.state;
+    const {
+      workflowCompleteModal,
+      videoData,
+      answerSelectModal,
+      searchString,
+      playing
+    } = this.state;
     console.log(videoFlow);
 
     switch (index) {
@@ -133,25 +174,29 @@ class VideoFlow extends Component {
         }
 
         return (
-          <SelectWorkflow
-            onChange={this.onChange}
-            onSelect={this.onWorflowSelect}
-            searchString={searchString}
-            workflows={filteredWorkflows}
-          />
+          <div>
+            <SelectWorkflow
+              onChange={this.onChange}
+              onSelect={this.onWorflowSelect}
+              searchString={searchString}
+              workflows={filteredWorkflows}
+            />
+          </div>
         );
       }
 
       case 1: {
+        console.log(videoData);
         return (
           <div>
             <Video
-              question={"Where should the player pass next?"}
+              question={videoData.question}
+              onEndFrame={videoData.display}
               playing={playing}
               onChange={this.onChange}
               getClickPosition={this.getClickPosition}
               onProgress={this.onProgress}
-              videoUrl={videoUrl}
+              videoUrl={videoUrlString(videoData.filename)}
             />
             <SuccessModal
               isOpen={answerSelectModal}
@@ -160,6 +205,14 @@ class VideoFlow extends Component {
               text="Your answer has been saved, click continue when you are ready for the next video"
               buttonText="Continue"
               onButtonClick={this.onContinueWorkflowClick}
+            />
+            <SuccessModal
+              isOpen={workflowCompleteModal}
+              toggle={this.toggleWorkflowCompleteModal}
+              heading="Workflow Completed"
+              text="Continue to results"
+              buttonText="View Results"
+              onButtonClick={this.onFinishWorkflow}
             />
           </div>
         );
@@ -191,7 +244,7 @@ class VideoFlow extends Component {
       <div>
         {showBanner && (
           <Banner
-            title="Create Workflow"
+            title="Test Sequence"
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
           />
         )}
