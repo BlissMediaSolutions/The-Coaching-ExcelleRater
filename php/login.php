@@ -1,7 +1,7 @@
 <?php
 /*   User Login for The Coaching ExcelleRater
-     Last Modified Date: 6/9/2018
-     version: 1.1
+     Last Modified Date: 10/9/2018
+     version: 1.2
 	   1.0 - Initial Login script created.
 			 This script receives a JSON object of the username & password, modeled as:
        {"username": xxxx, "password": xxxx}
@@ -10,6 +10,7 @@
        {"success": false, "error": xxxxxxxxxx}
     1.1 - Script updated to return the id of the person;
        {"success": true, "id": x, "username": xxxxxx, "userlevel": x, "team": x}
+    1.2 - changed password from md5 to bcrypt hash with salt.
 
 */
 
