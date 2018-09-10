@@ -13,7 +13,7 @@ CREATE TABLE team
 (
   id INT AUTO_INCREMENT PRIMARY KEY,
   sportid INT,
-  teamname VARCHAR(35) NOT NULL,
+  teamname VARCHAR(50) NOT NULL,
   CONSTRAINT FK_Team_Sport FOREIGN KEY (sportid) REFERENCES sport(id)
 );
 
@@ -125,33 +125,17 @@ INSERT INTO sport(sportname) VALUES('Hockey');
 INSERT INTO role(roletitle) VALUES('Coach');
 INSERT INTO role(roletitle) VALUES('Player');
 
-INSERT INTO team(sportid, teamname) VALUES (2, 'Rockets');
-INSERT INTO team(sportid, teamname) VALUES (6, 'The Hockynets');
+INSERT INTO team(sportid, teamname) VALUES (2, 'Port Melbourne Football Club');
+INSERT INTO team(sportid, teamname) VALUES (2, 'Frankston Football Club');
 
 INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('John Doe', '1985-2-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdoe@test.com');
-INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Harry Fink', '1979-6-12', '111 This Place St', 'Somewhere', 'VIC', '0401 234 5678', 'hfink@test.com');
-INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Ted Bundy', '1946-11-24', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'tbundy@test.com');
-INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('John Wayne Gacy', '1942-3-17', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jgacy@test.com');
-INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Gary Ridgway', '1949-2-18', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'gridgway@test.com');
-INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Luis Garavito', '1957-1-25', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'lgaravito@test.com');
-INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Pedro Lopez', '1948-10-8', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'plopez@test.com');
-
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('jdoe', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 1, 1);
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('hfink', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 2, 2);
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('tbundy', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 3, 2);
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('jgacy', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 4, 2);
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('gridgway', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 5, 2);
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('lgaravito', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 6, 2);
-INSERT INTO teamlist(username, password, teamid, personid, roleid) VALUES ('plopez', '5f4dcc3b5aa765d61d8327deb882cf99', 1, 7, 2);
-
-INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip01N.mp4', 'W Bulldogs', '', '', 'WB Kickout1');
-INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (1, 'Where to Kick after Point Scored?', 1, 'Clip02N.mp4', 'W Bulldogs', '', '', 'WB Kickout2');
-INSERT INTO video(teamid, description, private, filename, category1, category2, category3, title) VALUES (2, 'Where to Kick after Point Scored?', 1, 'Clip03N.mp4', 'W Bulldogs', '', '', 'WB Kickout3');
-
-INSERT INTO workflow (wfdate, wfname, teamid, coachid, resolution) VALUES ('2018-08-29', 'Workflow 1', '1', '1', '800x600');
-INSERT INTO workflow (wfdate, wfname, teamid, coachid, resolution) VALUES ('2018-08-30', 'Workflow 2', '1', '1', '800x600');
-INSERT INTO workflow (wfdate, wfname, teamid, coachid, resolution) VALUES ('2018-08-31', 'Workflow 3', '1', '1', '800x600');
-
-INSERT INTO wfteamlist (workflowid, personid, totalscore) VALUES ('1', '2', '');
-INSERT INTO wfteamlist (workflowid, personid, totalscore) VALUES ('2', '2', '');
-INSERT INTO wfteamlist (workflowid, personid, totalscore) VALUES ('3', '2', '');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('James Hird', '1979-6-12', '111 This Place St', 'Somewhere', 'VIC', '0401 234 5678', 'jhird@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Gary Ablett', '1946-11-24', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'gablett@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Jason Dunstall', '1942-3-17', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'jdunstall@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Nathan Buckley', '1949-2-18', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'nbuckley@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Tony Lockett', '1957-1-25', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'tlockett@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Wayne Carey', '1948-10-8', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'wcarey@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Ted Whitten', '1963-11-2', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'twhitten@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Greg Williams', '1970-8-11', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'gwilliams@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Dermott Brereton ', '1969-2-15', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'dbrereton@test.com');
+INSERT INTO person(fullname, dob, address, city, state, phone, email) VALUES ('Stephen Silvagni', '1971-3-20', '123 Somewhere St', 'Some Place', 'VIC', '0412 345 6789', 'ssilvagni@test.com');

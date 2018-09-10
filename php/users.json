@@ -1,0 +1,12 @@
+[{"username": "jdoe", "password": "password", "teamid": "1", "personid": "1", "roleid":"1"},
+  {"username": "jhird", "password": "password", "teamid": "1", "personid": "2", "roleid":"2"},
+  {"username": "gablett", "password": "password", "teamid": "1", "personid": "3", "roleid":"2"},
+  {"username": "jdunstall", "password": "password", "teamid": "1", "personid": "4", "roleid":"2"},
+  {"username": "nbuckley", "password": "password", "teamid": "1", "personid": "5", "roleid":"2"},
+  {"username": "tlockett", "password": "password", "teamid": "1", "personid": "6", "roleid":"2"},
+  {"username": "jhird2", "password": "password", "teamid": "2", "personid": "2", "roleid": "1"},
+  {"username": "wcarey", "password": "password", "teamid": "2", "personid": "7", "roleid":"2"},
+  {"username": "twhitten", "password": "password", "teamid": "2", "personid": "8", "roleid":"2"},
+  {"username": "gwilliams", "password": "password", "teamid": "2", "personid":"9", "roleid":"2"},
+  {"username": "dbrereton", "password": "password", "teamid": "2", "personid": "10", "roleid":"2"},
+  {"username": "ssilvagni", "password": "password", "teamid": "2", "personid": "11", "roleid":"2"}]

@@ -25,7 +25,7 @@
     $login = json_decode($postdata);
 
     $username = $login->username;
-    $password = md5($login->password);
+    $password = $login->password;
 
     $user = R::find('teamlist', ' username LIKE ? ', [ $username ]);
     //Check if a $user was found.  If not $result is false, otherwise check the password.
@@ -34,7 +34,8 @@
     } else {
       //$user was found & is return as a 2 dimensional array, so we need to iterate thru it (and check the password), even though it should have only 1 element
       foreach ($user as $usr) {
-        if ($usr->password === $password) {
+        //if ($usr->password === $password) {
+        	if (password_verify($password, $usr->password)) {
           $thisusr = $usr;
           $result = true;
         } else {
