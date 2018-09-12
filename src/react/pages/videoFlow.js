@@ -12,6 +12,9 @@ import { validateNonEmptyString } from "../../util/validators";
 import * as types from "../../graphql/types";
 import { videoUrlString } from "../../util/helpers";
 import { isDefinedNotNull } from "../../util/objUtil";
+import { Link } from "react-router-dom";
+
+import Results from "../pages/results";
 
 class VideoFlow extends Component {
   constructor(props) {
@@ -145,10 +148,14 @@ class VideoFlow extends Component {
 
   onFinishWorkflow = () => {
     // Go to results for workflow
+    this.props.history.push(`/results`)
     this.setState({
       index: 0,
       workflowCompleteModal: false
     });
+   
+
+    
   };
 
   componentToRender = index => {

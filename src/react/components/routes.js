@@ -12,6 +12,7 @@ import VideoFlow from "../pages/videoFlow";
 import CreateWorkflow from "../pages/createWorkflow";
 import Quiz from "../pages/Quiz";
 import { validateNonEmptyString } from "../../util/validators";
+import Results from "../pages/results";
 
 class Routes extends Component {
   render() {
@@ -28,6 +29,7 @@ class Routes extends Component {
             <Route path={`/videos`} exact component={VideoFlow} />
             <Route path={`/createWorkflow`} exact component={CreateWorkflow} />
             <Route path={`/quiz`} exact component={Quiz} />
+            <Route path={'/results'} exact component={Results} />
             <Redirect to="/" />
           </Switch>
         ) : (
