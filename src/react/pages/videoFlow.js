@@ -16,6 +16,14 @@ import { USER_ID } from "../../constants/storageTokens";
 import { Link } from "react-router-dom";
 
 import Results from "../pages/results";
+import { split } from "apollo-link";
+
+// x,y is the point to test
+// cx, cy is circle center, and radius is circle radius
+const pointInCircle = (x, y, cx, cy, radius) => {
+  var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+  return distancesquared <= radius * radius;
+};
 
 class VideoFlow extends Component {
   constructor(props) {
@@ -106,11 +114,47 @@ class VideoFlow extends Component {
     console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
     // only record answer when video has been paused
     if (!playing) {
+      const {
+        answer1,
+        ans1radius,
+        answer2,
+        ans2radius,
+        answer3,
+        ans3radius
+      } = workflowVideos[videoIndex];
+
+      const answerCircles = [
+        {
+          cx: answer1.split(",")[0],
+          cy: answer1.split(",")[1],
+          cr: ans1radius
+        },
+        {
+          cx: answer2.split(",")[0],
+          cy: answer2.split(",")[1],
+          cr: ans2radius
+        },
+        {
+          cx: answer3.split(",")[0],
+          cy: answer3.split(",")[1],
+          cr: ans3radius
+        }
+      ];
+
+      const x = e.nativeEvent.offsetX;
+      const y = e.nativeEvent.offsetY;
+
+      let score = 0;
+      for (var i = 0; i < answerCircles.length; i++) {
+        const { cx, cy, cr } = answerCircles[i];
+        if (pointInCircle(x, y, cx, cy, cr)) {
+          score = i + 1;
+          break;
+        }
+      }
+
       this.setState({
-        data: [
-          ...this.state.data,
-          { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY }
-        ]
+        data: [...this.state.data, { score }]
       });
       // check if last answer in workflow
       if (videoIndex === workflowVideos.length - 1) {
@@ -148,8 +192,9 @@ class VideoFlow extends Component {
   };
 
   onFinishWorkflow = () => {
+    console.log(this.state.data);
     // Go to results for workflow
-    this.props.history.push(`/results`);
+    this.props.history.push("/results");
     this.setState({
       index: 0,
       workflowCompleteModal: false
@@ -205,7 +250,6 @@ class VideoFlow extends Component {
             />
             <SuccessModal
               isOpen={answerSelectModal}
-              toggle={this.toggleAnswerSelectModal}
               heading="Answer Selected!"
               text="Your answer has been saved, click continue when you are ready for the next video"
               buttonText="Continue"
@@ -213,7 +257,6 @@ class VideoFlow extends Component {
             />
             <SuccessModal
               isOpen={workflowCompleteModal}
-              toggle={this.toggleWorkflowCompleteModal}
               heading="Workflow Completed"
               text="Continue to results"
               buttonText="View Results"

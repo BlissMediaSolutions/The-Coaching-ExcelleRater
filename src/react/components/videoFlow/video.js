@@ -22,66 +22,6 @@ export default ({
           height={360}
         />
       </div>
-      <div>
-        <h4 className="video__breakdown">Breakdown of the situtation</h4>
-        <p className="video__breakdown-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          facere animi quod excepturi deserunt ratione eos ipsa? Laudantium
-          nobis eligendi sit libero possimus necessitatibus nulla, quam tenetur
-          aliquid incidunt obcaecati voluptates ipsa, magni, praesentium minus
-          iste quae dolorem aperiam. Sit, laborum enim commodi provident
-          deleniti non iste iusto sed inventore. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quisquam facere animi quod excepturi
-          deserunt ratione eos ipsa? Laudantium nobis eligendi sit libero
-          possimus necessitatibus nulla, quam tenetur aliquid incidunt obcaecati
-          voluptates ipsa, magni, praesentium minus iste quae dolorem aperiam.
-          Sit, laborum enim commodi provident deleniti non iste iusto sed
-          inventore.
-        </p>
-        <p className="video__breakdown-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          facere animi quod excepturi deserunt ratione eos ipsa? Laudantium
-          nobis eligendi sit libero possimus necessitatibus nulla, quam tenetur
-          aliquid incidunt obcaecati voluptates ipsa, magni, praesentium minus
-          iste quae dolorem aperiam. Sit, laborum enim commodi provident
-          deleniti non iste iusto sed inventore. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quisquam facere animi quod excepturi
-          deserunt ratione eos ipsa? Laudantium nobis eligendi sit libero
-          possimus necessitatibus nulla, quam tenetur aliquid incidunt obcaecati
-          voluptates ipsa, magni, praesentium minus iste quae dolorem aperiam.
-          Sit, laborum enim commodi provident deleniti non iste iusto sed
-          inventore.
-        </p>
-        <h4 className="video__additional"> Additional information </h4>
-        <p className="video__additional-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          facere animi quod excepturi deserunt ratione eos ipsa? Laudantium
-          nobis eligendi sit libero possimus necessitatibus nulla, quam tenetur
-          aliquid incidunt obcaecati voluptates ipsa, magni, praesentium minus
-          iste quae dolorem aperiam. Sit, laborum enim commodi provident
-          deleniti non iste iusto sed inventore. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quisquam facere animi quod excepturi
-          deserunt ratione eos ipsa? Laudantium nobis eligendi sit libero
-          possimus necessitatibus nulla, quam tenetur aliquid incidunt obcaecati
-          voluptates ipsa, magni, praesentium minus iste quae dolorem aperiam.
-          Sit, laborum enim commodi provident deleniti non iste iusto sed
-          inventore.
-        </p>
-        <p className="video__additional-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          facere animi quod excepturi deserunt ratione eos ipsa? Laudantium
-          nobis eligendi sit libero possimus necessitatibus nulla, quam tenetur
-          aliquid incidunt obcaecati voluptates ipsa, magni, praesentium minus
-          iste quae dolorem aperiam. Sit, laborum enim commodi provident
-          deleniti non iste iusto sed inventore. Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Quisquam facere animi quod excepturi
-          deserunt ratione eos ipsa? Laudantium nobis eligendi sit libero
-          possimus necessitatibus nulla, quam tenetur aliquid incidunt obcaecati
-          voluptates ipsa, magni, praesentium minus iste quae dolorem aperiam.
-          Sit, laborum enim commodi provident deleniti non iste iusto sed
-          inventore.
-        </p>
-      </div>
     </div>
   </div>
 );

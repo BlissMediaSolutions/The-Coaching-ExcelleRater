@@ -3,7 +3,7 @@ import React from "react";
 import { Input } from "reactstrap";
 
 export default ({ onChange, onSelect, searchString, workflows }) => (
-  <div className="c-select-workflow u-component col-lg-6">
+  <div className="c-select-workflow u-component">
     <div className="container-fluid">
       <div className="row">
         <h2>Search and Select a Workflow</h2>

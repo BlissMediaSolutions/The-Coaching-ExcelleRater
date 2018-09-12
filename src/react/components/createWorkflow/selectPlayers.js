@@ -9,7 +9,7 @@ export default ({
   onSave,
   onGoBackClick
 }) => (
-  <div className="u-component col-lg-6">
+  <div className="u-component">
     <div className="container-fluid">
       <div className="row">
         <h2>Select Players to assign to Workflow</h2>
