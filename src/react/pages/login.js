@@ -9,7 +9,7 @@ import InlineError from "../components/common/inlineError";
 import Preloader from "../components/common/preloader";
 
 import { validateNonEmptyString } from "../../util/validators";
-import { USER_TEAM, USER_LEVEL } from "../../constants/storageTokens";
+import { USER_TEAM, USER_LEVEL, USER_ID } from "../../constants/storageTokens";
 
 class Login extends Component {
   constructor(props) {
@@ -58,10 +58,11 @@ class Login extends Component {
       axios
         .post("/login.php", data)
         .then(response => {
-          const { success, team, userlevel } = response.data;
+          const { success, id, team, userlevel } = response.data;
           if (success) {
             this.setState({ loading: false });
             // save in sessionStorage
+            sessionStorage.setItem(USER_ID, id);
             sessionStorage.setItem(USER_TEAM, team);
             sessionStorage.setItem(USER_LEVEL, userlevel);
             // update link state
@@ -94,7 +95,10 @@ class Login extends Component {
           <div className="u-component">
             <h2>Log into an existing account</h2>
             {loading ? (
-              <div className="p-5"> <Preloader/> </div>
+              <div className="p-5">
+                {" "}
+                <Preloader />{" "}
+              </div>
             ) : (
               <div className="u-form-container">
                 <div className="row mb-3">
