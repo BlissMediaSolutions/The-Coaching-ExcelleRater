@@ -238,7 +238,7 @@ class VideoFlow extends Component {
       case 1: {
         console.log(videoData);
         return (
-          <div>
+          <div className="video-screen">
             <Video
               question={videoData.question}
               onEndFrame={videoData.display}

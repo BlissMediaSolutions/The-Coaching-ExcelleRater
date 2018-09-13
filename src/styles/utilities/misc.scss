@@ -3,3 +3,13 @@
   margin-top: $spacing-v-component;
   width: 100%;
 }
+
+.video-screen {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
