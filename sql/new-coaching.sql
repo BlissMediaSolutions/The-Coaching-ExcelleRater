@@ -98,7 +98,7 @@ CREATE TABLE wfteamlist
   id INT AUTO_INCREMENT PRIMARY KEY,
   workflowid INT,
   personid INT,
-  totalscore DECIMAL(8,8),
+  totalscore INT,
   CONSTRAINT FK_WFTeamList_WorkFlow FOREIGN KEY (workflowid) REFERENCES workflow(id),
   CONSTRAINT FK_WFTeamList_TeamList FOREIGN KEY (personid) REFERENCES teamlist(id)
 );
@@ -110,6 +110,7 @@ CREATE TABLE wfanswers
   videoid INT,
   personid INT,
   answer VARCHAR(15),
+  score INT,
   CONSTRAINT FK_WFAnswers_WorkFlowID FOREIGN KEY (workflowid) REFERENCES wfteamlist(workflowid),
   CONSTRAINT FK_WFAnswers_VideoID FOREIGN KEY (videoid) REFERENCES videolist(videoid),
   CONSTRAINT FK_WFAnswers_WFTeamList FOREIGN KEY (personid) REFERENCES wfteamlist(id)

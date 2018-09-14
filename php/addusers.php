@@ -29,10 +29,12 @@
        $teamlistid = R::store($teamlist);
      }
 
+		 R::close();
+
    } catch (Exception $e) {
     echo json_encode(array("success"=>false, "data"=>$e));
   }
 
   echo json_encode(array("success"=>true, "data"=>"Users added successfully"));
- 
+
  ?>
