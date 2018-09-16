@@ -13,10 +13,6 @@ import * as types from "../../graphql/types";
 import { videoUrlString } from "../../util/helpers";
 import { isDefinedNotNull } from "../../util/objUtil";
 import { USER_ID } from "../../constants/storageTokens";
-import { Link } from "react-router-dom";
-
-import Results from "../pages/results";
-import { split } from "apollo-link";
 
 // x,y is the point to test
 // cx, cy is circle center, and radius is circle radius
@@ -40,18 +36,29 @@ class VideoFlow extends Component {
   }
 
   componentDidMount() {
-    const { updateVideoFlow } = this.props;
-    const variables = { playerid: sessionStorage.getItem(USER_ID) };
-    axios
-      .post("/getworkflowlist.php", variables)
-      .then(response => {
-        updateVideoFlow({
-          variables: { type: types.WORKFLOW_LIST, data: response.data }
-        });
-      })
-      .catch(error => {
-        console.log(error);
+    const { updateVideoFlow, videoFlow } = this.props;
+    if (videoFlow.workflows.length < 1) {
+      const variables = { playerid: sessionStorage.getItem(USER_ID) };
+      this.setState({
+        loading: true
       });
+      axios
+        .post("/getworkflowlist.php", variables)
+        .then(response => {
+          updateVideoFlow({
+            variables: { type: types.WORKFLOW_LIST, data: response.data }
+          });
+          this.setState({
+            loading: false
+          });
+        })
+        .catch(error => {
+          console.log(error);
+          this.setState({
+            loading: false
+          });
+        });
+    }
   }
 
   onChange = e => {
@@ -120,7 +127,9 @@ class VideoFlow extends Component {
         answer2,
         ans2radius,
         answer3,
-        ans3radius
+        ans3radius,
+        workflowid,
+        id
       } = workflowVideos[videoIndex];
 
       const answerCircles = [
@@ -153,8 +162,16 @@ class VideoFlow extends Component {
         }
       }
 
+      const data = {
+        score,
+        answer: `${x},${y}`,
+        playerid: sessionStorage.getItem(USER_ID),
+        workflowid,
+        videoid: id
+      };
+
       this.setState({
-        data: [...this.state.data, { score }]
+        data: [...this.state.data, data]
       });
       // check if last answer in workflow
       if (videoIndex === workflowVideos.length - 1) {
@@ -192,13 +209,20 @@ class VideoFlow extends Component {
   };
 
   onFinishWorkflow = () => {
-    console.log(this.state.data);
-    // Go to results for workflow
-    this.props.history.push("/results");
     this.setState({
-      index: 0,
-      workflowCompleteModal: false
+      loading: true
     });
+    axios
+      .post("/addanswers.php", this.state.data)
+      .then(response => {
+        this.props.history.push("/results");
+      })
+      .catch(error => {
+        console.log(error);
+        this.setState({
+          loading: false
+        });
+      });
   };
 
   componentToRender = index => {
@@ -210,10 +234,24 @@ class VideoFlow extends Component {
       searchString,
       playing
     } = this.state;
-    console.log(videoFlow);
 
     switch (index) {
       case 0: {
+        if (videoFlow.workflows.success === false) {
+          return (
+            <div>
+              <div className="row py-5">
+                <h2>No Workflows have been assigned to you</h2>
+              </div>
+              <div className="row justify-content-center pb-5 mb-5">
+                <span>
+                  Please contact your coach regarding workflow assignments
+                </span>
+              </div>
+            </div>
+          );
+        }
+
         let filteredWorkflows = videoFlow.workflows;
         if (validateNonEmptyString(searchString)) {
           filteredWorkflows = filteredWorkflows.filter(workflow => {
