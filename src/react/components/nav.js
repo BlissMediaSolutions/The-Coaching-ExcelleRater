@@ -20,6 +20,12 @@ class Nav extends Component {
     });
   }
 
+  _closeNavMenu() {
+    this.setState({
+      hamburgerOpen: false
+    });
+  }
+
   render() {
     const { user } = this.props;
 
@@ -54,6 +60,7 @@ class Nav extends Component {
                 exact
                 className="c-nav__link"
                 to={`${process.env.PUBLIC_URL}/`}
+                onClick={() => this._closeNavMenu()}
               >
                 Home
               </NavLink>
@@ -62,6 +69,7 @@ class Nav extends Component {
                 exact
                 className="c-nav__link"
                 to={`${process.env.PUBLIC_URL}/about`}
+                onClick={() => this._closeNavMenu()}
               >
                 About
               </NavLink>
@@ -70,6 +78,7 @@ class Nav extends Component {
                 exact
                 className="c-nav__link"
                 to={`${process.env.PUBLIC_URL}/createWorkflow`}
+                onClick={() => this._closeNavMenu()}
               >
                 Quizzes
               </NavLink>
@@ -78,6 +87,7 @@ class Nav extends Component {
                 exact
                 className="c-nav__link"
                 to={`${process.env.PUBLIC_URL}/videos`}
+                onClick={() => this._closeNavMenu()}
               >
                 Videos
               </NavLink>
@@ -86,6 +96,7 @@ class Nav extends Component {
                 exact
                 className="c-nav__link"
                 to={`${process.env.PUBLIC_URL}/demo`}
+                onClick={() => this._closeNavMenu()}
               >
                 Demo
               </NavLink>
