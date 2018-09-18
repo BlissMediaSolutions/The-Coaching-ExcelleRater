@@ -10,7 +10,7 @@ const coach = [
 ];
 const player = [
   { path: "", name: "Home" },
-  { path: "sequence", name: "VideoFlow" },
+  { path: "sequence", name: "Sequences" },
   { path: "results", name: "Results" }
 ];
 const noLogin = [
