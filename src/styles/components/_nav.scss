@@ -7,26 +7,37 @@
     font-size: 1.6rem;
     transform-origin: left center;
     text-shadow: 30px -8px 4px rgba(0,0,0,0.2);
-
-    &.is-active{
-      &:nth-child(1){ transform: scale(1.5) rotate(11deg);}
-      &:nth-child(2){ transform: scale(1.5) rotate(25deg);} 
-      &:nth-child(3){ transform: scale(1.5) rotate(43deg);} 
-      &:nth-child(4){ transform: scale(1.5) rotate(62deg);} 
-      &:nth-child(5){ transform: scale(1.5) rotate(78deg);} 
-    }
-
-    &:nth-child(1){ right: 151px; top: 8px; transform: rotate(11deg); &:hover{ transform: scale(1.5) rotate(11deg);} } 
-    &:nth-child(2){ right: 169px; top: 52px; transform: rotate(25deg); &:hover{ transform: scale(1.5) rotate(25deg);} }
-    &:nth-child(3){ right: 179px; top: 88px; transform: rotate(43deg); &:hover{ transform: scale(1.5) rotate(43deg);} }
-    &:nth-child(4){ right: 232px; top: 112px; transform: rotate(62deg); &:hover{ transform: scale(1.5) rotate(62deg);} }
-    &:nth-child(5){ right: 292px; top: 124px; transform: rotate(78deg); &:hover{ transform: scale(1.5)  rotate(78deg) ;} }
-
     &:hover{
       text-decoration: none;
       color: white;
     }
+    &--coach,
+    &--player {
+      &.is-active{
+        &:nth-child(1){ transform: scale(1.5) rotate(11deg);}
+        &:nth-child(2){ transform: scale(1.5) rotate(42deg);} 
+        &:nth-child(3){ transform: scale(1.5) rotate(68deg);} 
+      }
 
+      &:nth-child(1){ right: 149px; top: 21px; transform: rotate(11deg); &:hover{ transform: scale(1.5) rotate(11deg);} } 
+      &:nth-child(2){ right: 156px; top: 79px; transform: rotate(42deg); &:hover{ transform: scale(1.5) rotate(42deg);} }
+      &:nth-child(3){ right: 255px; top: 116px; transform: rotate(68deg); &:hover{ transform: scale(1.5) rotate(68deg);} }
+
+    }
+    &--no {
+      &.is-active{
+        &:nth-child(1){ transform: scale(1.5) rotate(11deg);}
+        &:nth-child(2){ transform: scale(1.5) rotate(36deg);} 
+        &:nth-child(3){ transform: scale(1.5) rotate(55deg);} 
+        &:nth-child(4){ transform: scale(1.5) rotate(78deg);} 
+      }
+
+      &:nth-child(1){ right: 151px; top: 8px; transform: rotate(11deg); &:hover{ transform: scale(1.5) rotate(11deg);} } 
+      &:nth-child(2){ right: 179px; top: 66px; transform: rotate(36deg); &:hover{ transform: scale(1.5) rotate(36deg);} }
+      &:nth-child(3){ right: 231px; top: 104px; transform: rotate(55deg); &:hover{ transform: scale(1.5) rotate(55deg);} }
+      &:nth-child(4){ right: 292px; top: 124px; transform: rotate(78deg); &:hover{ transform: scale(1.5)  rotate(78deg) ;} }
+
+    }
   }
 
   &__items{

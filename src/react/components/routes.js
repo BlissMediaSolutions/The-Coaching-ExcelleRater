@@ -7,38 +7,61 @@ import { userQuery } from "../../graphql/login";
 import Home from "../pages/home";
 import Login from "../pages/login";
 import About from "../pages/about";
-import Signup from "../pages/signup";
 import VideoFlow from "../pages/videoFlow";
 import CreateWorkflow from "../pages/createWorkflow";
-import Quiz from "../pages/Quiz";
-import { validateNonEmptyString } from "../../util/validators";
 import Results from "../pages/results";
+// import Quiz from "../pages/Quiz";
+
+const coach = [
+  { path: "/", component: Home },
+  { path: "/createWorkflow", component: CreateWorkflow },
+  { path: "/results", component: Results }
+];
+const player = [
+  { path: "/", component: Home },
+  { path: "/sequence", component: VideoFlow },
+  { path: "/results", component: Results }
+];
+const noLogin = [
+  { path: "/", component: Home },
+  { path: "/about", component: About },
+  { path: "/login", component: Login }
+];
 
 class Routes extends Component {
   render() {
     const { user } = this.props;
 
+    console.log(user.level)
+
+    let routes = [];
+    switch (user.level) {
+      case "1": {
+        // coach
+        routes = coach;
+        break;
+      }
+      case "2": {
+        // player
+        routes = player;
+        break;
+      }
+      default: {
+        // not logged in
+        routes = noLogin;
+        break;
+      }
+    }
+
+    console.log(routes);
+
     return (
-      <div>
-        {// if there is a team to the user(is logged in)
-        validateNonEmptyString(user.team) ? (
-          <Switch>
-            <Route path={`/`} exact component={Home} />
-            <Route path={`/about`} exact component={About} />
-            <Route path={`/signup`} exact component={Signup} />
-            <Route path={`/videos`} exact component={VideoFlow} />
-            <Route path={`/createWorkflow`} exact component={CreateWorkflow} />
-            <Route path={`/quiz`} exact component={Quiz} />
-            <Route path={'/results'} exact component={Results} />
-            <Redirect to="/" />
-          </Switch>
-        ) : (
-          <Switch>
-            <Route path={`/`} exact component={Login} />
-            <Redirect to="/" />
-          </Switch>
-        )}
-      </div>
+      <Switch>
+        {routes.map(r => (
+          <Route key={r.path} exact path={r.path} component={r.component} />
+        ))}
+        <Redirect to="/" />
+      </Switch>
     );
   }
 }

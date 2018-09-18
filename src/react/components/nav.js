@@ -2,7 +2,23 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { graphql } from "react-apollo";
 import { userQuery } from "../../graphql/login";
-import { validateNonEmptyString } from "../../util/validators";
+
+const coach = [
+  { path: "", name: "Home" },
+  { path: "createWorkflow", name: "Workflow" },
+  { path: "results", name: "Results" }
+];
+const player = [
+  { path: "", name: "Home" },
+  { path: "sequence", name: "VideoFlow" },
+  { path: "results", name: "Results" }
+];
+const noLogin = [
+  { path: "", name: "Home" },
+  { path: "login", name: "Login" },
+  { path: "about", name: "About" },
+  { path: "demo", name: "Demo" }
+];
 
 class Nav extends Component {
   constructor(props) {
@@ -10,35 +26,48 @@ class Nav extends Component {
     this.state = {
       hamburgerOpen: false
     };
-
-    this._clickHandler = this._clickHandler.bind(this);
   }
 
-  _clickHandler() {
+  _clickHandler = () => {
     this.setState({
       hamburgerOpen: !this.state.hamburgerOpen
     });
-  }
-
-  _closeNavMenu() {
-    this.setState({
-      hamburgerOpen: false
-    });
-  }
+  };
 
   render() {
     const { user } = this.props;
 
-    // If user is not logged in, hide nav
-    if (!validateNonEmptyString(user.team)) {
-      return <div />;
+    console.log(user);
+    let navOptions = [];
+    let navClassName = "c-nav__link ";
+    switch (user.level) {
+      case "1": {
+        // coach
+        navOptions = coach;
+        navClassName += "c-nav__link--coach";
+        break;
+      }
+      case "2": {
+        // player
+        navOptions = player;
+        navClassName += "c-nav__link--player";
+        break;
+      }
+      default: {
+        // not logged in
+        navOptions = noLogin;
+        navClassName += "c-nav__link--no";
+        break;
+      }
     }
+
+    console.log("NAV", navOptions);
 
     return (
       <nav className="c-nav">
         <div className="c-nav__main">
           <div
-            onClick={() => this._clickHandler()}
+            onClick={this._clickHandler}
             className={`${
               this.state.hamburgerOpen ? "c-nav__hamburger-open" : ""
             } c-nav__hamburger`}
@@ -55,51 +84,17 @@ class Nav extends Component {
             } c-nav__items`}
           >
             <div className="c-nav__item-wrapper">
-              <NavLink
-                activeClassName="is-active"
-                exact
-                className="c-nav__link"
-                to={`${process.env.PUBLIC_URL}/`}
-                onClick={() => this._closeNavMenu()}
-              >
-                Home
-              </NavLink>
-              <NavLink
-                activeClassName="is-active"
-                exact
-                className="c-nav__link"
-                to={`${process.env.PUBLIC_URL}/about`}
-                onClick={() => this._closeNavMenu()}
-              >
-                About
-              </NavLink>
-              <NavLink
-                activeClassName="is-active"
-                exact
-                className="c-nav__link"
-                to={`${process.env.PUBLIC_URL}/createWorkflow`}
-                onClick={() => this._closeNavMenu()}
-              >
-                Quizzes
-              </NavLink>
-              <NavLink
-                activeClassName="is-active"
-                exact
-                className="c-nav__link"
-                to={`${process.env.PUBLIC_URL}/videos`}
-                onClick={() => this._closeNavMenu()}
-              >
-                Videos
-              </NavLink>
-              <NavLink
-                activeClassName="is-active"
-                exact
-                className="c-nav__link"
-                to={`${process.env.PUBLIC_URL}/demo`}
-                onClick={() => this._closeNavMenu()}
-              >
-                Demo
-              </NavLink>
+              {navOptions.map(n => (
+                <NavLink
+                  activeClassName="is-active"
+                  exact
+                  className={navClassName}
+                  to={`/${n.path}`}
+                  onClick={this._clickHandler}
+                >
+                  {n.name}
+                </NavLink>
+              ))}
             </div>
           </div>
         </div>
