@@ -6,6 +6,7 @@ import { userQuery } from "../../graphql/login";
 const coach = [
   { path: "", name: "Home" },
   { path: "createWorkflow", name: "Workflow" },
+  { path: "upload", name: "Upload" },
   { path: "results", name: "Results" }
 ];
 const player = [
@@ -32,6 +33,12 @@ class Nav extends Component {
     this.setState({
       hamburgerOpen: !this.state.hamburgerOpen
     });
+  };
+
+  logoutHandler = () => {
+    sessionStorage.clear();
+    localStorage.clear();
+    window.location.reload();
   };
 
   render() {
@@ -83,6 +90,7 @@ class Nav extends Component {
             <div className="c-nav__item-wrapper">
               {navOptions.map(n => (
                 <NavLink
+                  key={"key-" + n.path}
                   activeClassName="is-active"
                   exact
                   className={navClassName}
@@ -92,6 +100,15 @@ class Nav extends Component {
                   {n.name}
                 </NavLink>
               ))}
+              {user.level ? (
+                <NavLink
+                  to=""
+                  className={navClassName}
+                  onClick={this.logoutHandler}
+                >
+                  Logout
+                </NavLink>
+              ) : null}
             </div>
           </div>
         </div>

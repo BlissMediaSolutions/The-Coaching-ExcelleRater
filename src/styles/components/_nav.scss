@@ -11,17 +11,34 @@
       text-decoration: none;
       color: white;
     }
-    &--coach,
+    &--coach {
+      &.is-active{
+        &:nth-child(1){ transform: scale(1.5) rotate(11deg);}
+        &:nth-child(2){ transform: scale(1.5) rotate(35deg);} 
+        &:nth-child(3){ transform: scale(1.5) rotate(48deg);} 
+        &:nth-child(4){ transform: scale(1.5) rotate(62deg);} 
+        &:nth-child(5){ transform: scale(1.5) rotate(78deg);} 
+      }
+
+      &:nth-child(1){ right: 151px; top: 8px; transform: rotate(11deg); &:hover{ transform: scale(1.5) rotate(11deg);} } 
+      &:nth-child(2){ right: 123px; top: 54px; transform: rotate(35deg); &:hover{ transform: scale(1.5) rotate(35deg);} }
+      &:nth-child(3){ right: 183px; top: 93px; transform: rotate(48deg); &:hover{ transform: scale(1.5) rotate(48deg);} }
+      &:nth-child(4){ right: 236px; top: 116px; transform: rotate(62deg); &:hover{ transform: scale(1.5)  rotate(62deg) ;} }
+      &:nth-child(5){ right: 292px; top: 124px; transform: rotate(78deg); &:hover{ transform: scale(1.5)  rotate(78deg) ;} }
+
+    }
     &--player {
       &.is-active{
         &:nth-child(1){ transform: scale(1.5) rotate(11deg);}
-        &:nth-child(2){ transform: scale(1.5) rotate(42deg);} 
-        &:nth-child(3){ transform: scale(1.5) rotate(68deg);} 
+        &:nth-child(2){ transform: scale(1.5) rotate(40deg);} 
+        &:nth-child(3){ transform: scale(1.5) rotate(55deg);} 
+        &:nth-child(4){ transform: scale(1.5) rotate(78deg);} 
       }
 
-      &:nth-child(1){ right: 149px; top: 21px; transform: rotate(11deg); &:hover{ transform: scale(1.5) rotate(11deg);} } 
-      &:nth-child(2){ right: 156px; top: 79px; transform: rotate(42deg); &:hover{ transform: scale(1.5) rotate(42deg);} }
-      &:nth-child(3){ right: 255px; top: 116px; transform: rotate(68deg); &:hover{ transform: scale(1.5) rotate(68deg);} }
+      &:nth-child(1){ right: 151px; top: 8px; transform: rotate(11deg); &:hover{ transform: scale(1.5) rotate(11deg);} } 
+      &:nth-child(2){ right: 123px; top: 66px; transform: rotate(40deg); &:hover{ transform: scale(1.5) rotate(40deg);} }
+      &:nth-child(3){ right: 231px; top: 104px; transform: rotate(55deg); &:hover{ transform: scale(1.5) rotate(55deg);} }
+      &:nth-child(4){ right: 292px; top: 124px; transform: rotate(78deg); &:hover{ transform: scale(1.5)  rotate(78deg) ;} }
 
     }
     &--no {
