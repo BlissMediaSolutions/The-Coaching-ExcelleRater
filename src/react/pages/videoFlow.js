@@ -213,18 +213,23 @@ class VideoFlow extends Component {
     const {
       history,
       updateResults,
-      videoFlow: { workflowVideos }
+      videoFlow: { workflows, workflowVideos }
     } = this.props;
     const { data } = this.state;
+
     this.setState({
       loading: true
     });
+    // get the workflow
+    const workflow = workflows.find(workflow => workflow.id === data[0].workflowid);
+    // save results in link state
     updateResults({
       variables: {
         type: types.INDIVIDUAL_RESULTS,
-        data: { results: data, workflowVideos }
+        data: { results: data, workflowVideos, workflow }
       }
     });
+    // post to backend
     axios
       .post("/addanswers.php", data)
       .then(response => {

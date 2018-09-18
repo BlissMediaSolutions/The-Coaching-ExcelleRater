@@ -43,6 +43,7 @@ class Results extends Component {
   render() {
     const { results } = this.props;
 
+    console.log("WORKFLOW", results.individualResults.workflow);
     console.log("RESULTS FROM WORKFLOW", results.individualResults.results);
     console.log("VIDEOS FROM WORKFLOW", results.individualResults.workflowVideos);
 
