@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { graphql } from "react-apollo";
 import { userQuery } from "../../graphql/login";
+import { logo } from "../../assets/images/svgs/logo"
 
 const coach = [
   { path: "", name: "Home" },
@@ -110,6 +111,12 @@ class Nav extends Component {
                 </NavLink>
               ) : null}
             </div>
+          </div>
+        </div>
+
+        <div className="c-nav__mid">
+          <div className="c-nav__logo">
+            {logo}
           </div>
         </div>
       </nav>
