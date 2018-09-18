@@ -1,5 +1,24 @@
 .c-nav{
 
+  &__mid {
+    position: fixed;
+    right: 50%;
+    top: -100px;
+    background-color: red;
+    width: 240px;
+    height: 180px;
+    transform: translateX(50%);
+    border-radius: 50%;
+  }
+
+  .c-nav__logo {
+    position: fixed;
+    top: 105px;
+    right: 50%;
+    z-index: 999;
+    transform: translateX(50%)
+  }
+
   &__link{
     color: white;
     position: absolute;
@@ -29,9 +48,9 @@
     }
     &--player {
       &.is-active{
-        &:nth-child(1){ transform: scale(1.5) rotate(11deg);}
-        &:nth-child(2){ transform: scale(1.5) rotate(40deg);} 
-        &:nth-child(3){ transform: scale(1.5) rotate(55deg);} 
+        &:nth-child(1){ transform: scale(1.5) rotate(11deg); }
+        &:nth-child(2){ transform: scale(1.5) rotate(40deg); } 
+        &:nth-child(3){ transform: scale(1.5) rotate(55deg); } 
         &:nth-child(4){ transform: scale(1.5) rotate(78deg);} 
       }
 
