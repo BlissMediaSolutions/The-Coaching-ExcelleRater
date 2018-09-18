@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 class Footer extends Component {
-  logoutHandler = e => {
-    sessionStorage.clear();
-    localStorage.clear();
-    window.location.reload();
-  };
-
+  
   render() {
     return (
       <footer className="c-footer">
@@ -85,21 +80,11 @@ class Footer extends Component {
               <Link className="c-footer__link" to="/">
                 Home
               </Link>
-              <Link className="c-footer__link" to="/videos">
-                Videos
-              </Link>
               <Link className="c-footer__link" to="/about">
                 About Us
               </Link>
               <Link className="c-footer__link" to="/termsandconditions">
                 Terms and Conditions
-              </Link>
-              <Link
-                to="/login"
-                className="c-footer__link"
-                onClick={e => this.logoutHandler(e)}
-              >
-                Logout
               </Link>
             </div>
 
