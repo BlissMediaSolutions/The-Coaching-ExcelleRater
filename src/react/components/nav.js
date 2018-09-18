@@ -37,7 +37,6 @@ class Nav extends Component {
   render() {
     const { user } = this.props;
 
-    console.log(user);
     let navOptions = [];
     let navClassName = "c-nav__link ";
     switch (user.level) {
@@ -60,8 +59,6 @@ class Nav extends Component {
         break;
       }
     }
-
-    console.log("NAV", navOptions);
 
     return (
       <nav className="c-nav">

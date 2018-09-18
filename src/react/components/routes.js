@@ -32,8 +32,6 @@ class Routes extends Component {
   render() {
     const { user } = this.props;
 
-    console.log(user.level)
-
     let routes = [];
     switch (user.level) {
       case "1": {
@@ -52,8 +50,6 @@ class Routes extends Component {
         break;
       }
     }
-
-    console.log(routes);
 
     return (
       <Switch>
