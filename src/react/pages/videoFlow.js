@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { compose, graphql } from "react-apollo";
 import { videoFlowQuery, updateVideoFlow } from "../../graphql/videoFlow";
+import { updateResults } from "../../graphql/results";
 
 import Banner from "../components/common/banner";
 import SuccessModal from "../components/common/successModal";
@@ -209,13 +210,25 @@ class VideoFlow extends Component {
   };
 
   onFinishWorkflow = () => {
+    const {
+      history,
+      updateResults,
+      videoFlow: { workflowVideos }
+    } = this.props;
+    const { data } = this.state;
     this.setState({
       loading: true
     });
+    updateResults({
+      variables: {
+        type: types.INDIVIDUAL_RESULTS,
+        data: { results: data, workflowVideos }
+      }
+    });
     axios
-      .post("/addanswers.php", this.state.data)
+      .post("/addanswers.php", data)
       .then(response => {
-        this.props.history.push("/results");
+        history.push("/results");
       })
       .catch(error => {
         console.log(error);
@@ -350,5 +363,6 @@ export default compose(
       videoFlow
     })
   }),
-  graphql(updateVideoFlow, { name: "updateVideoFlow" })
+  graphql(updateVideoFlow, { name: "updateVideoFlow" }),
+  graphql(updateResults, { name: "updateResults" })
 )(VideoFlow);

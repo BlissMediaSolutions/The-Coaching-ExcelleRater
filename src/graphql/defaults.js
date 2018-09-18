@@ -15,5 +15,9 @@ export default {
     __typename: "videoFlow",
     workflows: [],
     workflowVideos: []
+  },
+  results: {
+    __typename: "results",
+    individualResults: [],
   }
 };

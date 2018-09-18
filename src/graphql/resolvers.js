@@ -1,6 +1,7 @@
 import { userQuery } from "./login";
 import { workflowQuery } from "./workflow";
 import { videoFlowQuery } from "./videoFlow";
+import { resultsQuery } from "./results";
 import * as types from "./types";
 
 export default {
@@ -78,6 +79,27 @@ export default {
             videoFlow: {
               ...previous.videoFlow,
               workflowVideos: data
+            }
+          };
+          cache.writeQuery({ query, data: newData });
+          return;
+        }
+        default:
+          return;
+      }
+    },
+    updateResults: (_, { type, data }, { cache }) => {
+      const query = resultsQuery;
+
+      // Get Previous State
+      const previous = cache.readQuery({ query });
+
+      switch (type) {
+        case types.INDIVIDUAL_RESULTS: {
+          const newData = {
+            results: {
+              ...previous.results,
+              individualResults: data
             }
           };
           cache.writeQuery({ query, data: newData });
