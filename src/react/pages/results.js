@@ -1,33 +1,29 @@
 import React, { Component } from "react";
 import { compose, graphql } from "react-apollo";
 import { resultsQuery } from "../../graphql/results";
+import { Container } from "reactstrap";
 
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 import "react-bootstrap-table/dist/react-bootstrap-table.min.css";
 import Banner from "../components/common/banner";
 
-var ResultsPage = [
-  { player: "James Hird", quiz: "Targetting kick outs ", score: "1" },
-  { player: "Garry Ablett", quiz: "Targetting kick outs ", score: "3" }
-];
-
-var ResultsPage2 = [
-  { player: "Nathan Buckley", quiz: "Midfield Posession", score: "3" },
-  { player: "Jason Dunstall", quiz: "Midfield Posession", score: "3" }
-];
-
-var ResultsPage3 = [
+const tableStructure = [
   {
-    player: "Tony Lockett",
-    quiz: "Making Smarter attacking decisions",
-    score: "2"
+    dataField: "playerid",
+    className: "results__table-player-name",
+    title: 'Player Id'
   },
   {
-    player: "Dustin Martin",
-    quiz: "Making Smarter attacking decisions",
-    score: "3"
-  }
-];
+    dataField: "question",
+    className: "results__table-quiz",
+    title: 'Question Completed'
+  },
+  {
+    dataField: "score",
+    className: "results__table-score",
+    title: 'Score'
+  },
+]
 
 class Results extends Component {
   constructor(props) {
@@ -43,9 +39,20 @@ class Results extends Component {
   render() {
     const { results } = this.props;
 
-    console.log("WORKFLOW", results.individualResults.workflow);
-    console.log("RESULTS FROM WORKFLOW", results.individualResults.results);
-    console.log("VIDEOS FROM WORKFLOW", results.individualResults.workflowVideos);
+    const playerResults = results.individualResults.results
+    const workflowVideos = results.individualResults.workflowVideos
+    const workflow = results.individualResults.workflow
+    const workflowName = workflow ? workflow.wfname : null
+    
+    const mergedData = playerResults ? playerResults.reduce((prev, current, index) => {
+      const mergedPlayerData = {...current, ...workflowVideos[index]}
+
+      if (index === 0) {
+        return [mergedPlayerData]
+      } else {
+        return prev.concat(mergedPlayerData)
+      }
+    }, []) : []
 
     return (
       <div>
@@ -53,11 +60,12 @@ class Results extends Component {
           title="Workflow Results"
           bgImage="https://elementvc.files.wordpress.com/2016/04/17-1.jpg?w=1075"
         />
-        <div>
-          <h3 className="results__Heading"> Results of Completed Workflow </h3>
+
+        <Container>
+          <h3 className="results__Heading"> Results of Completed Workflow {workflowName ? `(${workflowName})` : ''} </h3>
           <div>
             <BootstrapTable
-              data={ResultsPage}
+              data={mergedData}
               className="results__table-layout"
               hover
               responsive
@@ -65,98 +73,18 @@ class Results extends Component {
               bordered
               condensed
             >
-              <TableHeaderColumn
-                isKey
-                dataField="player"
-                className="results__table-player-name"
-              >
-                Player Name
-              </TableHeaderColumn>
+              {
+                tableStructure.map((item, index) => {
+                  const { dataField, className, title } = item;
 
-              <TableHeaderColumn
-                dataField="quiz"
-                className="results__table-quiz"
-              >
-                Workflow Completed
-              </TableHeaderColumn>
-
-              <TableHeaderColumn
-                dataField="score"
-                className="results__table-score"
-              >
-                Score
-              </TableHeaderColumn>
+                  return <TableHeaderColumn isKey={index === 0} dataField={dataField} className={className}>
+                    {title}
+                  </TableHeaderColumn>
+                })
+              }
             </BootstrapTable>
           </div>
-
-          <div>
-            <BootstrapTable
-              data={ResultsPage2}
-              className="results__table-layout"
-              hover
-              responsive
-              striped
-              bordered
-              condensed
-            >
-              <TableHeaderColumn
-                isKey
-                dataField="player"
-                className="results__table-player-name"
-              >
-                Player Name
-              </TableHeaderColumn>
-
-              <TableHeaderColumn
-                dataField="quiz"
-                className="results__table-quiz"
-              >
-                Workflow Completed
-              </TableHeaderColumn>
-
-              <TableHeaderColumn
-                dataField="score"
-                className="results__table-score"
-              >
-                Score
-              </TableHeaderColumn>
-            </BootstrapTable>
-          </div>
-
-          <div>
-            <BootstrapTable
-              data={ResultsPage3}
-              className="results__table-layout"
-              hover
-              responsive
-              striped
-              bordered
-              condensed
-            >
-              <TableHeaderColumn
-                isKey
-                dataField="player"
-                className="results__table-player-name"
-              >
-                Player Name
-              </TableHeaderColumn>
-
-              <TableHeaderColumn
-                dataField="quiz"
-                className="results__table-quiz"
-              >
-                Workflow Completed
-              </TableHeaderColumn>
-
-              <TableHeaderColumn
-                dataField="score"
-                className="results__table-score"
-              >
-                Score
-              </TableHeaderColumn>
-            </BootstrapTable>
-          </div>
-        </div>
+        </Container>
       </div>
     );
   }
