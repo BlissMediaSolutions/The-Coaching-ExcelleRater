@@ -55,7 +55,7 @@ class Results extends Component {
     }, []) : []
 
     return (
-      <div>
+      <div className="mb-footer">
         <Banner
           title="Workflow Results"
           bgImage="https://elementvc.files.wordpress.com/2016/04/17-1.jpg?w=1075"

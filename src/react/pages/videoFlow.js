@@ -345,7 +345,7 @@ class VideoFlow extends Component {
     }
 
     return (
-      <div>
+      <div className="mb-footer">
         {showBanner && (
           <Banner
             title="Test Sequence"

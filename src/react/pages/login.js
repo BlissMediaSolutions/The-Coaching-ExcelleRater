@@ -86,7 +86,7 @@ class Login extends Component {
   render() {
     const { loading, rememberMe, data, errors } = this.state;
     return (
-      <div>
+      <div className="mb-footer">
         <Banner
           title="Login"
           bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
@@ -100,7 +100,7 @@ class Login extends Component {
                 <Preloader />{" "}
               </div>
             ) : (
-              <div className="u-form-container">
+              <div className="pl-3 pr-3">
                 <div className="row mb-3">
                   <label htmlFor="username">Username</label>
                   <input

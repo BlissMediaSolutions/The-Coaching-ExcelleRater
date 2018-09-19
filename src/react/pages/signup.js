@@ -61,7 +61,7 @@ class Signup extends Component {
     }
 
     return (
-      <div>
+      <div className="mb-footer">
         <Banner
           title="Sign Up"
           bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
@@ -69,7 +69,7 @@ class Signup extends Component {
         <div className="container">
           <div className="u-component">
             <h2>Create an account</h2>
-            <div className="u-form-container">
+            <div className="pl-3 pr-3">
               <form>
                 <div className="row mb-3">
                   <label htmlFor="organisation">Organisation</label>

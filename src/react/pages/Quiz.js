@@ -30,7 +30,7 @@ var playerData = [
 class Quiz extends Component {
   render() {
     return (
-      <div>
+      <div className="mb-footer">
         <Banner title="Quiz Overview" bgImage="http://i.cdn.turner.com/cnn/2010/SPORT/football/06/21/france.squad.crisis/t1larg.france.squad.afp.gi.jpg"></Banner>
         <div className="quiz">
 
