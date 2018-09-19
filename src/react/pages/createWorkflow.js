@@ -443,6 +443,8 @@ class CreateWorkflow extends Component {
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
+    const className = canPrev ? "mt-5 pt-5" : "";
+
     return (
       <div>
         {!canPrev && (
@@ -451,7 +453,7 @@ class CreateWorkflow extends Component {
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
           />
         )}
-        <div className="container">
+        <div className={`container ${className}`}>
           <div className="row justify-content-center">
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
