@@ -9,13 +9,14 @@
     height: 180px;
     transform: translateX(50%);
     border-radius: 50%;
+    z-index: 3;
   }
 
   .c-nav__logo {
     position: fixed;
     top: 105px;
     right: 50%;
-    z-index: 99999999;
+    z-index: 9;
     transform: translateX(50%)
   }
 

@@ -4,7 +4,7 @@ import Banner from "../components/common/banner";
 class About extends Component {
   render() {
     return (
-      <div>
+      <div className="mb-footer">
         <Banner
           title="About / Us"
           bgImage="http://getwallpapers.com/wallpaper/full/4/4/3/382939.jpg"

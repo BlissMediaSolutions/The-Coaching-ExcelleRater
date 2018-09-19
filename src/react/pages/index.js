@@ -1,0 +1,7 @@
+export { default as Quizzes } from './quizzes'
+export { default as About } from './about'
+export { default as CreateWorkflow } from './createWorkflow'
+export { default as Home } from './home'
+export { default as Login } from './login'
+export { default as Signup } from './signup'
+export { default as Video } from './video'

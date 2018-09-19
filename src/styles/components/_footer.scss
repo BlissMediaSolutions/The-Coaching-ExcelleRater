@@ -3,7 +3,11 @@
     padding-top: 15px;
     padding-bottom: 15px;
     color: white;
- 
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: translateY(100%);
     
     &__container {
         display: flex;

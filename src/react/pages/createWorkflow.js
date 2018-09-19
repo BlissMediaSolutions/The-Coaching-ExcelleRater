@@ -444,7 +444,7 @@ class CreateWorkflow extends Component {
     const canPrev = index !== 0;
 
     return (
-      <div>
+      <div className="mb-footer">
         {!canPrev && (
           <Banner
             title="Create Workflow"
