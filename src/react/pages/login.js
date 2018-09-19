@@ -100,7 +100,7 @@ class Login extends Component {
                 <Preloader />{" "}
               </div>
             ) : (
-              <div className="u-form-container">
+              <div className="pl-3 pr-3">
                 <div className="row mb-3">
                   <label htmlFor="username">Username</label>
                   <input
