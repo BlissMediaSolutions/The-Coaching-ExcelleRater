@@ -6,6 +6,16 @@
     width: 640px;
     height: 360px;
     z-index: 1000;
+    &--show {
+      // no difference
+    }
+    &--black-out {
+      background-color: #000000;
+    }
+    &--fade {
+      background-color: #000000;
+      animation: fadein 1.5s;
+    }
   }
 
   &__url {
@@ -52,5 +62,14 @@
 
   &__additional-text {
     padding-bottom: 15px;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

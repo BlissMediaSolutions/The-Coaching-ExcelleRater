@@ -221,7 +221,9 @@ class VideoFlow extends Component {
       loading: true
     });
     // get the workflow
-    const workflow = workflows.find(workflow => workflow.id === data[0].workflowid);
+    const workflow = workflows.find(
+      workflow => workflow.id === data[0].workflowid
+    );
     // save results in link state
     updateResults({
       variables: {
@@ -297,7 +299,7 @@ class VideoFlow extends Component {
           <div className="video-screen">
             <Video
               question={videoData.question}
-              onEndFrame={videoData.display}
+              endFrame={videoData.display}
               playing={playing}
               onChange={this.onChange}
               getClickPosition={this.getClickPosition}
