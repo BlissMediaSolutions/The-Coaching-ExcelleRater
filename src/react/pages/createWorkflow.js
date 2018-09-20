@@ -365,7 +365,8 @@ class CreateWorkflow extends Component {
         let filteredVideos = workflow.videos;
         if (validateNonEmptyString(searchString)) {
           filteredVideos = workflow.videos.filter(video => {
-            return video.description
+            const searchFields = video.description + " " + video.title;
+            return searchFields
               .toLowerCase()
               .includes(searchString.toLowerCase());
           });
