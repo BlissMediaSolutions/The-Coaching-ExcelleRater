@@ -1,7 +1,7 @@
 <?php
 /*   Get Workflow List for The Coaching ExcelleRater
-     Last Modified Date: 2/9/2018
-     version: 1.0
+     Last Modified Date: 21/9/2018
+     version: 1.1
 	   1.0 - Initial script created.
 			 This script receives a JSON object of the playerid, modeled as:
        {"playerid": x}
@@ -10,6 +10,8 @@
        1) [{"id": x, "wfdate": xxxx-xx-xx, "wfname":xxxxx, "coachid":x),
            {"id": x, "wfdate": xxxx-xx-xx, "wfname":xxxxx, "coachid":x)]
        3) {"success": false, "error": xxxxxxxxxx}
+    1.1 - Updated script to return formatted date ("Wed, August 29, 2018"), and the fullname of the Coach which created the workflow.  thus result:
+       {"id": x, "wfdate": "Wed, August 29, 2018", "wfname":xxxxx, "coachid":x, "coachname": xxxxxxxx),
 */
 
 //ini_set('display_errors', 'On');
@@ -25,7 +27,7 @@ try {
 
   $newresult = "";
   $playerid = $player->playerid;
-  //$playerid = "3";
+  //$playerid = "2";
 
   $result = R::getAll("SELECT workflow.id, workflow.wfdate, workflow.wfname, workflow.coachid FROM workflow INNER JOIN wfteamlist ON workflow.id = wfteamlist.workflowid WHERE wfteamlist.personid = ".$playerid);
 
@@ -38,7 +40,16 @@ try {
 
   //The player has been assigned to 1 or more workflows.
   foreach ($result as $wflist) {
-    $newresult .= json_encode($wflist).",";
+    $data->id = $wflist['id'];
+    $thisDate = date_create($wflist['wfdate']);           //convert the String Date to a Date object
+    $data->wfdate = date_format($thisDate, "D, F j, Y");  //format the Date object & add to object;
+    $data->wfname = $wflist['wfname'];
+    $data->coachid = $wflist['coachid'];
+
+    $wfcoach = R::getRow("SELECT person.fullname FROM person INNER JOIN teamlist ON teamlist.personid = person.id WHERE teamlist.id = ".$wflist[coachid]);
+    $data->coachname = $wfcoach['fullname'];
+
+    $newresult .= json_encode($data).",";
   }
 
   R::close();
