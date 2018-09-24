@@ -5,7 +5,6 @@ import { logo } from "../../assets/images/svgs/logo"
 class Footer extends Component {
   
   render() {
-    const deven = <span>HIIII</span>
     return (
       <footer className="c-footer">
         <div className="container">
@@ -26,8 +25,8 @@ class Footer extends Component {
 
           <div className="c-footer__bottom">
             <div>
-              <Link className="c-footer__link" to="/">
-                Home
+              <Link className="c-footer__link" to="/video">
+                Videos  
               </Link>
               <Link className="c-footer__link" to="/about">
                 About Us

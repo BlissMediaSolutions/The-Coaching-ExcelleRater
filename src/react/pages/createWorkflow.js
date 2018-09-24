@@ -253,8 +253,11 @@ class CreateWorkflow extends Component {
       answers
     };
 
+
+
     // if adding more go to start, else go to player select
     const index = addMore ? 0 : 4;
+     this.state.question = '', this.state.timeStamp = '', this.endFrame = '', this.playbackRate = '', this.answers = '';
 
     this.setState({
       index,
@@ -365,8 +368,7 @@ class CreateWorkflow extends Component {
         let filteredVideos = workflow.videos;
         if (validateNonEmptyString(searchString)) {
           filteredVideos = workflow.videos.filter(video => {
-            const searchFields = video.description + " " + video.title;
-            return searchFields
+            return video.description
               .toLowerCase()
               .includes(searchString.toLowerCase());
           });
@@ -444,8 +446,6 @@ class CreateWorkflow extends Component {
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
-    const className = canPrev ? "mt-5 pt-5" : "";
-
     return (
       <div className="mb-footer">
         {!canPrev && (
@@ -454,7 +454,7 @@ class CreateWorkflow extends Component {
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
           />
         )}
-        <div className={`container ${className}`}>
+        <div className="container">
           <div className="row justify-content-center">
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
