@@ -1,0 +1,53 @@
+.VideoUpload {
+
+padding-bottom: 50px;   
+
+
+    &__Container {
+    margin-top: 50px;
+    margin-left: 50px; 
+    }
+
+    &__FileUpload {
+        // gonna sus later
+    }
+
+    &__preview {
+        padding-bottom: 25px;
+    }
+
+    &__dropzone-styling {
+        width: 50%;
+        height: 75px;
+        border: 2px solid red;
+        background-color: red;
+        padding-top: 25px;
+        color: white;
+        margin-bottom: 25px;
+        text-align: center;
+        }
+
+    &__name {
+        max-width: 500px;
+        margin-top: 25px;
+        margin-left: 50px; 
+    }
+
+    &__description {
+        max-width: 500px;
+        margin-top: 25px;
+        margin-left: 50px; 
+    }
+
+    &__category {
+        max-width: 500px;
+        margin-top: 25px;
+        margin-left: 50px; 
+    }
+
+    &__author {
+        max-width: 500px;
+        margin-top: 25px;
+        margin-left: 50px; 
+    }  
+}

@@ -188,9 +188,31 @@ class CreateWorkflow extends Component {
 
   onVideoSelect = id => {
     // set the video id and change index
+    // also reset the data to default
     this.setState({
       videoId: id,
-      index: this.state.index + 1
+      index: this.state.index + 1,
+      timeStamp: "",
+      question: "",
+      endFrame: "show",
+      playbackRate: 1.0,
+      answers: {
+        "1": {
+          number: "1",
+          top: 0,
+          left: 640
+        },
+        "2": {
+          number: "2",
+          top: 100,
+          left: 640
+        },
+        "3": {
+          number: "3",
+          top: 200,
+          left: 640
+        }
+      },
     });
   };
 
@@ -365,8 +387,7 @@ class CreateWorkflow extends Component {
         let filteredVideos = workflow.videos;
         if (validateNonEmptyString(searchString)) {
           filteredVideos = workflow.videos.filter(video => {
-            const searchFields = video.description + " " + video.title;
-            return searchFields
+            return video.description
               .toLowerCase()
               .includes(searchString.toLowerCase());
           });

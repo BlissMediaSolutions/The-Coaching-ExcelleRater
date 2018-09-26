@@ -19,5 +19,6 @@ export default {
   results: {
     __typename: "results",
     individualResults: [],
+    teamResults: []
   }
 };

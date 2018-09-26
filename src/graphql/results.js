@@ -4,6 +4,7 @@ export const resultsQuery = gql`
   query {
     results @client {
       individualResults
+      teamResults
     }
   }
 `;

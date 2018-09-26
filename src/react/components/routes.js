@@ -10,12 +10,15 @@ import About from "../pages/about";
 import VideoFlow from "../pages/videoFlow";
 import CreateWorkflow from "../pages/createWorkflow";
 import Results from "../pages/results";
+import VideoUpload from "../pages/upload";
+import ResultsCoach from "../pages/resultsCoach"
 // import Quiz from "../pages/Quiz";
 
 const coach = [
   { path: "/", component: Home },
   { path: "/createWorkflow", component: CreateWorkflow },
-  { path: "/results", component: Results }
+  { path: "/results", component: ResultsCoach },
+  {path: "/upload", component: VideoUpload }
 ];
 const player = [
   { path: "/", component: Home },
