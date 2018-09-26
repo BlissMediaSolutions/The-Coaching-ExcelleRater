@@ -15,7 +15,7 @@ import {
     Label
   } from "reactstrap";
 
-  //const maxVideoSize = 63543529; // maximum size of video in bytes
+  const maxVideoSize = 63543599; // maximum size of video in bytes
   const acceptedFiles = "video/mp4, video/avi, video/mov, video/flv, video/wmv";
   //const acceptedVideoArray = acceptedFiles.split(",").map((item) => {return item.trim()})
 
@@ -52,16 +52,16 @@ class VideoUpload extends Component {
             const rejectedFileType = rejectedFile.type;
             const rejectedFileSize = rejectedFile.size;
 
-            if (rejectedFileType !== {acceptedFiles})
+            if (rejectedFileType !== acceptedFiles)
             {
                 alert("Please enter a valid video type")
             }
 
-            /*if (rejectedFileSize > maxVideoSize)
+            if (rejectedFileSize > maxVideoSize)
             {
                 alert("Video selected is larger than allowed")
             }
-            */
+            
         }
 
         const fileToUpload = files[0];
@@ -104,10 +104,10 @@ class VideoUpload extends Component {
                 <Dropzone 
                 //className="VideoUpload__dropzone-styling"
                 onDrop={this.handleOnDrop}
-               // maxSize = {maxVideoSize} 
+                maxSize = {maxVideoSize} 
                 accept={acceptedFiles} 
                 multiple={false}> 
-                Place file Here! 
+                Place file Here! Please make sure the video is under 1 minute.
                 </Dropzone>
 
         {this.state.files.length > 0 &&
