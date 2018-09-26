@@ -188,9 +188,31 @@ class CreateWorkflow extends Component {
 
   onVideoSelect = id => {
     // set the video id and change index
+    // also reset the data to default
     this.setState({
       videoId: id,
-      index: this.state.index + 1
+      index: this.state.index + 1,
+      timeStamp: "",
+      question: "",
+      endFrame: "show",
+      playbackRate: 1.0,
+      answers: {
+        "1": {
+          number: "1",
+          top: 0,
+          left: 640
+        },
+        "2": {
+          number: "2",
+          top: 100,
+          left: 640
+        },
+        "3": {
+          number: "3",
+          top: 200,
+          left: 640
+        }
+      },
     });
   };
 
@@ -253,11 +275,8 @@ class CreateWorkflow extends Component {
       answers
     };
 
-
-
     // if adding more go to start, else go to player select
     const index = addMore ? 0 : 4;
-     this.state.question = '', this.state.timeStamp = '', this.endFrame = '', this.playbackRate = '', this.answers = '';
 
     this.setState({
       index,
@@ -446,6 +465,8 @@ class CreateWorkflow extends Component {
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
+    const className = canPrev ? "mt-5 pt-5" : "";
+
     return (
       <div className="mb-footer">
         {!canPrev && (
@@ -454,7 +475,7 @@ class CreateWorkflow extends Component {
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
           />
         )}
-        <div className="container">
+        <div className={`container ${className}`}>
           <div className="row justify-content-center">
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>

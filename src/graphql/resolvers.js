@@ -105,6 +105,16 @@ export default {
           cache.writeQuery({ query, data: newData });
           return;
         }
+        case types.TEAM_RESULTS: {
+          const newData = {
+            results: {
+              ...previous.results,
+              teamResults: data
+            }
+          };
+          cache.writeQuery({ query, data: newData });
+          return;
+        }
         default:
           return;
       }
