@@ -46,7 +46,7 @@ class DragAndDropVideoPlayer extends Component {
   };
 
   render() {
-    const { videoUrl, connectDropTarget, answers } = this.props;
+    const { videoUrl, connectDropTarget, resize, answers } = this.props;
     const { playing } = this.state;
 
     return connectDropTarget(
@@ -62,13 +62,16 @@ class DragAndDropVideoPlayer extends Component {
         />
         <div className="c-dnd-video-player__side-bar d-flex flex-column justify-content-between">
           {Object.keys(answers).map(answer => {
-            const { number, top, left } = answers[answer];
+            const { number, top, left, width, height } = answers[answer];
             return (
               <DraggableCircle
                 key={number}
                 number={number}
+                resize={resize}
                 top={top}
                 left={left}
+                width={width}
+                height={height}
               />
             );
           })}

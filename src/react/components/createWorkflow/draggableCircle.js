@@ -40,29 +40,38 @@ class DraggableCircle extends Component {
   };
 
   render() {
-    const { connectDragSource, number, top, left } = this.props;
+    const {
+      connectDragSource,
+      resize,
+      number,
+      top,
+      left,
+      width,
+      height
+    } = this.props;
     const { toolBoxOpen } = this.state;
     // can get isDragging from props
 
     const style = {
+      "z-index": 9999,
       position: "absolute",
       top,
-      left
+      left,
+      width,
+      height
     };
-    return connectDragSource(
-      <div
-        className="c-dnd-video-player__side-bar__circle__wrapper"
-        style={style}
-      >
-        <div className="c-dnd-video-player__side-bar__circle__sub">
-          {toolBoxOpen ? <ToolBox /> : null}
-          <div
-            onClick={this.toggleTabBar}
-            className="c-dnd-video-player__side-bar__circle"
-          >
-            {number}
-          </div>
+
+    if (toolBoxOpen) {
+      return (
+        <div className="c-dnd-video-player__side-bar__circle" style={style}>
+          <ToolBox number={number} resize={resize} />
+          <div onClick={this.toggleTabBar}>{number}</div>
         </div>
+      );
+    }
+    return connectDragSource(
+      <div className="c-dnd-video-player__side-bar__circle" style={style}>
+        <div onClick={this.toggleTabBar}>{number}</div>
       </div>
     );
   }

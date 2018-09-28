@@ -43,17 +43,23 @@ class CreateWorkflow extends Component {
         "1": {
           number: "1",
           top: 0,
-          left: 640
+          left: 640,
+          height: 50,
+          width: 50
         },
         "2": {
           number: "2",
           top: 100,
-          left: 640
+          left: 640,
+          height: 50,
+          width: 50
         },
         "3": {
           number: "3",
           top: 200,
-          left: 640
+          left: 640,
+          height: 50,
+          width: 50
         }
       },
       data: {
@@ -186,6 +192,34 @@ class CreateWorkflow extends Component {
     });
   };
 
+  resize = (number, direction) => {
+    let newAnswer = this.state.answers[number];
+    switch (direction) {
+      case "up":
+        newAnswer = {
+          ...newAnswer,
+          height: newAnswer.height + 5,
+          width: newAnswer.width + 5
+        };
+        break;
+      case "down":
+        newAnswer = {
+          ...newAnswer,
+          height: newAnswer.height - 5,
+          width: newAnswer.width - 5
+        };
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      answers: {
+        ...this.state.answers,
+        [number]: newAnswer
+      }
+    });
+  };
+
   onVideoSelect = id => {
     // set the video id and change index
     // also reset the data to default
@@ -200,19 +234,25 @@ class CreateWorkflow extends Component {
         "1": {
           number: "1",
           top: 0,
-          left: 640
+          left: 640,
+          height: 50,
+          width: 50
         },
         "2": {
           number: "2",
           top: 100,
-          left: 640
+          left: 640,
+          height: 50,
+          width: 50
         },
         "3": {
           number: "3",
           top: 200,
-          left: 640
+          left: 640,
+          height: 50,
+          width: 50
         }
-      },
+      }
     });
   };
 
@@ -329,11 +369,11 @@ class CreateWorkflow extends Component {
 
       variables.push({
         ans1,
-        ans1radius: 50,
+        ans1radius: video.answers[0].width / 2,
         ans2,
-        ans2radius: 50,
+        ans2radius: video.answers[1].width / 2,
         ans3,
-        ans3radius: 50,
+        ans3radius: video.answers[2].width / 2,
         endframe: endFrame,
         playrate: playbackRate,
         videoid: videoId,
@@ -417,6 +457,7 @@ class CreateWorkflow extends Component {
       case 2:
         return (
           <VideoAnswers
+            resize={this.resize}
             answers={answers}
             videoUrl={videoUrl}
             moveAnswer={this.moveAnswer}
@@ -466,6 +507,8 @@ class CreateWorkflow extends Component {
     const canPrev = index !== 0;
 
     const className = canPrev ? "mt-5 pt-5" : "";
+
+    console.log(this.state.answers);
 
     return (
       <div className="mb-footer">

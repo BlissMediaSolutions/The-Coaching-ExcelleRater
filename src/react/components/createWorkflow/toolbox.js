@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 
 export class ToolBox extends Component {
 
+
+
   render() {
+    const { resize, number } = this.props;
     return <div className="c-toolbox">
       <nav className="menu">
         <input type="checkbox" onClick={this.clickHandler} href="#" className="menu-open" name="menu-open" id="menu-open"/>
@@ -13,10 +15,8 @@ export class ToolBox extends Component {
           <span className="hamburger hamburger-3"></span>
         </label>
         
-        <NavLink exact activeClassName="active" to="/" className="menu-item"> <i className="fa fa-home"></i> </NavLink>
-        <NavLink activeClassName="active" to="/articles" className="menu-item"> <i className="fa fa-newspaper-o"></i> </NavLink>
-        <NavLink activeClassName="active" to="/home" className="menu-item"> <i className="fa fa-heart"></i> </NavLink>
-        <NavLink activeClassName="active" to="/link3" className="menu-item"> <i className="fa fa-envelope"></i> </NavLink>    
+        <span className="menu-item" onClick={() => resize(number, "up")}> <i className="fa fa-chevron-up"></i> </span>
+        <span className="menu-item" onClick={() => resize(number, "down")}> <i className="fa fa-chevron-down"></i> </span>
       </nav>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>

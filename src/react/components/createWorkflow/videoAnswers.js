@@ -6,10 +6,18 @@ import DragAndDropVideoPlayer from "./dragAndDropVIdeoPlayer";
 
 class VideoAnswers extends Component {
   render() {
-    const { answers, moveAnswer, videoUrl, timeStamp, question } = this.props;
+    const {
+      resize,
+      answers,
+      moveAnswer,
+      videoUrl,
+      timeStamp,
+      question
+    } = this.props;
     return (
       <div className="u-component c-video-answers d-flex align-items-center m-3 flex-column w-100">
         <DragAndDropVideoPlayer
+          resize={resize}
           moveAnswer={moveAnswer}
           answers={answers}
           videoUrl={videoUrl}
