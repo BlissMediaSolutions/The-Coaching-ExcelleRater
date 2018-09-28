@@ -7,16 +7,9 @@ export class ToolBox extends Component {
   render() {
     const { resize, number } = this.props;
     return <div className="c-toolbox">
-      <nav className="menu">
-        <input type="checkbox" onClick={this.clickHandler} href="#" className="menu-open" name="menu-open" id="menu-open"/>
-        <label className="menu-open-button" htmlFor="menu-open">
-          <span className="hamburger hamburger-1"></span>
-          <span className="hamburger hamburger-2"></span>
-          <span className="hamburger hamburger-3"></span>
-        </label>
-        
-        <span className="menu-item" onClick={() => resize(number, "up")}> <i className="fa fa-chevron-up"></i> </span>
-        <span className="menu-item" onClick={() => resize(number, "down")}> <i className="fa fa-chevron-down"></i> </span>
+      <nav className="menu">        
+        <span className="menu-item menu-item-up" onClick={() => resize(number, "up")}> <i className="fa fa-chevron-up"></i> </span>
+        <span className="menu-item menu-item-down" onClick={() => resize(number, "down")}> <i className="fa fa-chevron-down"></i> </span>
       </nav>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>

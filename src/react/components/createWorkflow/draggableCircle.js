@@ -53,7 +53,6 @@ class DraggableCircle extends Component {
     // can get isDragging from props
 
     const style = {
-      "z-index": 9999,
       position: "absolute",
       top,
       left,
@@ -63,15 +62,27 @@ class DraggableCircle extends Component {
 
     if (toolBoxOpen) {
       return (
-        <div className="c-dnd-video-player__side-bar__circle" style={style}>
-          <ToolBox number={number} resize={resize} />
-          <div onClick={this.toggleTabBar}>{number}</div>
-        </div>
+        <React.Fragment>
+          <div style={style}>
+            <ToolBox number={number} resize={resize} />
+          </div>
+          <div
+            className="c-dnd-video-player__side-bar__circle"
+            style={style}
+            onClick={this.toggleTabBar}
+          >
+            <div>{number}</div>
+          </div>
+        </React.Fragment>
       );
     }
     return connectDragSource(
-      <div className="c-dnd-video-player__side-bar__circle" style={style}>
-        <div onClick={this.toggleTabBar}>{number}</div>
+      <div
+        className="c-dnd-video-player__side-bar__circle"
+        style={style}
+        onClick={this.toggleTabBar}
+      >
+        <div>{number}</div>
       </div>
     );
   }
