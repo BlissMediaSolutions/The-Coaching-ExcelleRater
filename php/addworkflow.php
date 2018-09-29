@@ -48,6 +48,7 @@
 					$wfteamlist->workflowid = $workflowid;
 					$wfteamlist->personid = $value;
 					$wfteamlist->totalscore = 0;
+					$wfteamlist->complete = 0;
 					$wfid = R::store($wfteamlist);
 				}
 			}

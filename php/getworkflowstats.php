@@ -31,7 +31,7 @@ try {
   $coachid = $coach->coachid;
   //$coachid = "1";
 
-  $result = R::getAll("SELECT workflow.id, workflow.wfdate, workflow.wfname, wfteamlist.personid, wfteamlist.totalscore FROM workflow INNER JOIN wfteamlist ON workflow.id = wfteamlist.workflowid WHERE workflow.coachid = ".$coachid);
+  $result = R::getAll("SELECT workflow.id, workflow.wfdate, workflow.wfname, wfteamlist.personid, wfteamlist.totalscore, wfteamlist.complete FROM workflow INNER JOIN wfteamlist ON workflow.id = wfteamlist.workflowid WHERE workflow.coachid = ".$coachid." AND wfteamlist.complete = 1");
 
   //Check if $result returned anything... or basically, if the coach had created any workflows yet?
   $emptyresult = array_filter($result);

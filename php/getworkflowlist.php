@@ -29,7 +29,7 @@ try {
   $playerid = $player->playerid;
   //$playerid = "2";
 
-  $result = R::getAll("SELECT workflow.id, workflow.wfdate, workflow.wfname, workflow.coachid FROM workflow INNER JOIN wfteamlist ON workflow.id = wfteamlist.workflowid WHERE wfteamlist.personid = ".$playerid);
+  $result = R::getAll("SELECT workflow.id, workflow.wfdate, workflow.wfname, workflow.coachid, wfteamlist.complete FROM workflow INNER JOIN wfteamlist ON workflow.id = wfteamlist.workflowid WHERE wfteamlist.personid = ".$playerid." AND wfteamlist.complete = 0");
 
   //Check if $result returned anything... or basically, has the player been assigned to a Workflow?
   $emptyresult = array_filter($result);

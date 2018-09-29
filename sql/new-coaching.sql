@@ -99,6 +99,7 @@ CREATE TABLE wfteamlist
   workflowid INT,
   personid INT,
   totalscore INT,
+  complete TINYINT,
   CONSTRAINT FK_WFTeamList_WorkFlow FOREIGN KEY (workflowid) REFERENCES workflow(id),
   CONSTRAINT FK_WFTeamList_TeamList FOREIGN KEY (personid) REFERENCES teamlist(id)
 );

@@ -52,6 +52,7 @@
 		//Add the total score of the workflow to 'wfteamlist'
 		$person = R::load( 'wfteamlist', $wfid );
 		$person->totalscore = $total;
+		$person->complete = 1;
 		$thisid = R::store($person);
 
 		R::close();
