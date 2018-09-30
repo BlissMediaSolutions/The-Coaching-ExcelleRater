@@ -34,7 +34,7 @@ class CreateWorkflow extends Component {
       successModal: false,
       workflowName: "",
       videoId: "",
-      playing: true,
+      playing: false,
       timeStamp: "",
       question: "",
       endFrame: "show",
