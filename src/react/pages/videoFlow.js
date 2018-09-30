@@ -151,8 +151,12 @@ class VideoFlow extends Component {
         }
       ];
 
+
       const x = e.nativeEvent.offsetX;
       const y = e.nativeEvent.offsetY;
+
+      console.log(answerCircles, x, y)
+
 
       let score = 0;
       for (var i = 0; i < answerCircles.length; i++) {

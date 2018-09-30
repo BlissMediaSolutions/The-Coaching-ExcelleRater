@@ -42,22 +42,22 @@ class CreateWorkflow extends Component {
       answers: {
         "1": {
           number: "1",
-          top: 0,
-          left: 640,
+          top: 643,
+          left: 0,
           height: 50,
           width: 50
         },
         "2": {
           number: "2",
-          top: 100,
-          left: 640,
+          top: 643,
+          left: 555,
           height: 50,
           width: 50
         },
         "3": {
           number: "3",
-          top: 200,
-          left: 640,
+          top: 643,
+          left: 1080,
           height: 50,
           width: 50
         }
@@ -233,26 +233,26 @@ class CreateWorkflow extends Component {
       answers: {
         "1": {
           number: "1",
-          top: 0,
-          left: 640,
+          top: 643,
+          left: 0,
           height: 50,
           width: 50
         },
         "2": {
           number: "2",
-          top: 100,
-          left: 640,
+          top: 643,
+          left: 555,
           height: 50,
           width: 50
         },
         "3": {
           number: "3",
-          top: 200,
-          left: 640,
+          top: 643,
+          left: 1080,
           height: 50,
           width: 50
         }
-      }
+      },
     });
   };
 
@@ -363,17 +363,17 @@ class CreateWorkflow extends Component {
     // build and push each video data onto variables
     data.videoData.forEach(video => {
       const { endFrame, playbackRate, question, videoId, timeStamp } = video;
-      const ans1 = `${video.answers[1].left},${video.answers[1].top}`;
-      const ans2 = `${video.answers[2].left},${video.answers[2].top}`;
-      const ans3 = `${video.answers[3].left},${video.answers[3].top}`;
+      const ans1 = `${video.answers[1].left + video.answers[1].width / 2},${video.answers[1].top + video.answers[1].width / 2}`;
+      const ans2 = `${video.answers[2].left + video.answers[1].width / 2},${video.answers[2].top + video.answers[1].width / 2}`;
+      const ans3 = `${video.answers[3].left + video.answers[1].width / 2},${video.answers[3].top + video.answers[1].width / 2}`;
 
       variables.push({
         ans1,
-        ans1radius: video.answers[0].width / 2,
+        ans1radius: video.answers[1].width / 2,
         ans2,
-        ans2radius: video.answers[1].width / 2,
+        ans2radius: video.answers[2].width / 2,
         ans3,
-        ans3radius: video.answers[2].width / 2,
+        ans3radius: video.answers[3].width / 2,
         endframe: endFrame,
         playrate: playbackRate,
         videoid: videoId,

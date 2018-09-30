@@ -59,6 +59,8 @@ class DragAndDropVideoPlayer extends Component {
           playing={playing}
           onPlay={this.seekToTime}
           ref={this.ref}
+          width={1130}
+          height={650}
         />
         <div className="c-dnd-video-player__side-bar d-flex flex-column justify-content-between">
           {Object.keys(answers).map(answer => {

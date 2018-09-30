@@ -26,8 +26,8 @@ export default ({
             onProgress={onProgress}
             volume="0"
             playing={playing}
-            width={640}
-            height={360}
+            width={1130}
+            height={650}
           />
         </div>
       </div>
