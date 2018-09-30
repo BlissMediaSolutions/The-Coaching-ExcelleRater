@@ -427,9 +427,8 @@ class CreateWorkflow extends Component {
         let filteredVideos = workflow.videos;
         if (validateNonEmptyString(searchString)) {
           filteredVideos = workflow.videos.filter(video => {
-            return video.description
-              .toLowerCase()
-              .includes(searchString.toLowerCase());
+            const string = video.description + " " + video.title;
+            return string.toLowerCase().includes(searchString.toLowerCase());
           });
         }
 

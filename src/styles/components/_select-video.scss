@@ -1,8 +1,14 @@
 .c-select-video {
   &__video {
     cursor: pointer;
+    max-height: 118px;
     &:hover {
       background-color: $color-grey-light;
+    }
+    &__player {
+      video {
+        max-height: 100px;
+      }
     }
   }
 }
