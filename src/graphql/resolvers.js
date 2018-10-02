@@ -112,11 +112,12 @@ export default {
               teamResults: data
             }
           };
-          newData.results.teamResults.sort((a,b) =>{
+          newData.results.teamResults.sort((a, b) => {
             const dateA = new Date(a.wfdate);
             const dateB = new Date(b.wfdate);
-            return dateA.getTime() - dateB.getTime();
-          })
+
+            return dateB.getTime() - dateA.getTime();
+          });
           cache.writeQuery({ query, data: newData });
           return;
         }
