@@ -2,33 +2,36 @@ import React, { Component } from "react";
 import axios from "axios";
 import { compose, graphql } from "react-apollo";
 import { resultsQuery, updateResults } from "../../graphql/results";
-// import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
-// import "react-bootstrap-table/dist/react-bootstrap-table.min.css";
+import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
+import "react-bootstrap-table/dist/react-bootstrap-table.min.css";
 import Banner from "../components/common/banner";
 import Preloader from "../components/common/preloader";
 
 import { USER_ID } from "../../constants/storageTokens";
 import { TEAM_RESULTS } from "../../graphql/types";
 
-/*
 const tableStructure = [
   {
-    dataField: "playerid",
-    className: "results__table-player-name",
-    title: 'Player Id'
-  },
-  {
-    dataField: "question",
+    dataField: "wfname",
     className: "results__table-quiz",
-    title: 'Question Completed'
+    title: "Workflow"
   },
   {
-    dataField: "score",
-    className: "results__table-score",
-    title: 'Score'
+    dataField: "playername",
+    className: "results__table-player-name",
+    title: "Player"
   },
-]
-*/
+  {
+    dataField: "wfdate",
+    className: "results__table-player-name",
+    title: "Date Completed"
+  },
+  {
+    dataField: "totalscore",
+    className: "results__table-score",
+    title: "Score"
+  }
+];
 
 class ResultsCoach extends Component {
   constructor(props) {
@@ -84,6 +87,34 @@ class ResultsCoach extends Component {
           title="Workflow Results"
           bgImage="https://elementvc.files.wordpress.com/2016/04/17-1.jpg?w=1075"
         />
+        <div className="container">
+          <h3 className="results__Heading">Completed Workflows</h3>
+          <div>
+            <BootstrapTable
+              data={results.teamResults}
+              className="results__table-layout"
+              hover
+              responsive
+              striped
+              bordered
+              condensed
+            >
+              {tableStructure.map((item, index) => {
+                const { dataField, className, title } = item;
+
+                return (
+                  <TableHeaderColumn
+                    isKey={index === 0}
+                    dataField={dataField}
+                    className={className}
+                  >
+                    {title}
+                  </TableHeaderColumn>
+                );
+              })}
+            </BootstrapTable>
+          </div>
+        </div>
       </div>
     );
   }
