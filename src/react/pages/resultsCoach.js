@@ -71,6 +71,10 @@ class ResultsCoach extends Component {
     }
   }
 
+  onRowClick = (data) => {
+    console.log(data);
+  }
+
   render() {
     const { results } = this.props;
     const { loading } = this.state;
@@ -80,6 +84,10 @@ class ResultsCoach extends Component {
     }
 
     console.log(results.teamResults);
+
+    const options = {
+      onRowClick: this.onRowClick
+    };
 
     return (
       <div className="mb-footer">
@@ -92,6 +100,7 @@ class ResultsCoach extends Component {
           <div>
             <BootstrapTable
               data={results.teamResults}
+              options={options}
               className="results__table-layout"
               hover
               responsive
@@ -104,6 +113,7 @@ class ResultsCoach extends Component {
 
                 return (
                   <TableHeaderColumn
+                    key={index}
                     isKey={index === 0}
                     dataField={dataField}
                     className={className}

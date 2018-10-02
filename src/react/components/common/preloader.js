@@ -6,8 +6,8 @@ class Preloader extends React.Component {
       <div id="loader-wrapper">
         <div id="loader" />
 
-        <div class="loader-section section-left" />
-        <div class="loader-section section-right" />
+        <div className="loader-section section-left" />
+        <div className="loader-section section-right" />
       </div>
     );
   }
