@@ -37,7 +37,9 @@ class ResultsCoach extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true
+      loading: true,
+      sortName: undefined,
+      sortOrder: undefined
     };
   }
 
@@ -71,13 +73,20 @@ class ResultsCoach extends Component {
     }
   }
 
-  onRowClick = (data) => {
+  onSortChange = (sortName, sortOrder) => {
+    this.setState({
+      sortName,
+      sortOrder
+    });
+  };
+
+  onRowClick = data => {
     console.log(data);
-  }
+  };
 
   render() {
     const { results } = this.props;
-    const { loading } = this.state;
+    const { loading, sortName, sortOrder } = this.state;
 
     if (loading) {
       return <Preloader />;
@@ -86,8 +95,14 @@ class ResultsCoach extends Component {
     console.log(results.teamResults);
 
     const options = {
+      sortName: sortName,
+      sortOrder: sortOrder,
+      sortIndicator: false,
+      onSortChange: this.onSortChange,
       onRowClick: this.onRowClick
     };
+
+    console.log(sortName, sortOrder);
 
     return (
       <div className="mb-footer">
@@ -110,15 +125,27 @@ class ResultsCoach extends Component {
             >
               {tableStructure.map((item, index) => {
                 const { dataField, className, title } = item;
-
+                let icon = null;
+                if (sortName === dataField) {
+                  icon =
+                    sortOrder === "asc" ? (
+                      <i className="fa fa-chevron-up" />
+                    ) : (
+                      <i className="fa fa-chevron-down" />
+                    );
+                }
                 return (
                   <TableHeaderColumn
                     key={index}
                     isKey={index === 0}
                     dataField={dataField}
                     className={className}
+                    dataSort={true}
                   >
-                    {title}
+                    <span className="d-inline-flex w-100 justify-content-between">
+                      {title}
+                      {icon}
+                    </span>
                   </TableHeaderColumn>
                 );
               })}
