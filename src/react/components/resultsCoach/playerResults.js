@@ -4,22 +4,12 @@ import "react-bootstrap-table/dist/react-bootstrap-table.min.css";
 
 const tableStructure = [
   {
-    dataField: "wfname",
-    className: "results__table-quiz cursor-pointer",
-    title: "Workflow"
-  },
-  {
-    dataField: "playername",
+    dataField: "question",
     className: "results__table-player-name cursor-pointer",
-    title: "Player"
+    title: "Question Answered"
   },
   {
-    dataField: "wfdate",
-    className: "results__table-player-name cursor-pointer",
-    title: "Date Completed"
-  },
-  {
-    dataField: "totalscore",
+    dataField: "score",
     className: "results__table-score cursor-pointer",
     title: "Score"
   }
@@ -27,7 +17,9 @@ const tableStructure = [
 
 export default class PlayerResults extends Component {
   render() {
-    const { onBackClick, results } = this.props;
+    const { onBackClick, results, workflowName } = this.props;
+
+    const playerName = results ? results[0].playername : "";
 
     return (
       <div className="container">
@@ -35,7 +27,7 @@ export default class PlayerResults extends Component {
           <i className="fa fa-chevron-left mr-2" />
           <a>Back To Results</a>
         </div>
-        <h3 className="results__Heading">Completed Workflows</h3>
+        <h3 className="results__Heading">{playerName} - {workflowName}</h3>
         <div>
           <BootstrapTable
             data={results.teamResults}

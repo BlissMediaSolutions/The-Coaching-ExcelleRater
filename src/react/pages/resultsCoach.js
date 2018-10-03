@@ -81,7 +81,7 @@ class ResultsCoach extends Component {
         updateResults({
           variables: {
             type: INDIVIDUAL_RESULTS,
-            data: { ...response.data, wfname: wfname }
+            data: { results: response.data, wfname: wfname }
           }
         });
       })
@@ -125,7 +125,8 @@ class ResultsCoach extends Component {
         />
         {individualResults ? (
           <PlayerResults
-            results={results.individualResults}
+            results={results.individualResults.results}
+            workflowName={results.individualResults.wfname}
             onBackClick={this.onBackClick}
           />
         ) : (
