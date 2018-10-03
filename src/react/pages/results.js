@@ -9,11 +9,6 @@ import Banner from "../components/common/banner";
 
 const tableStructure = [
   {
-    dataField: "playerid",
-    className: "results__table-player-name",
-    title: 'Player Id'
-  },
-  {
     dataField: "question",
     className: "results__table-quiz",
     title: 'Question Completed'

@@ -22,3 +22,16 @@
   position: relative;
   min-height: calc(100vh - 163px);
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.back-button {
+  cursor: pointer;
+  color: red;
+  font-size: 18px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
