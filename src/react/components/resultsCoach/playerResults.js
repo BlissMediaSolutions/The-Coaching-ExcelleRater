@@ -16,45 +16,81 @@ const tableStructure = [
 ];
 
 export default class PlayerResults extends Component {
+  state = {
+    detailedAnswer: undefined
+  };
+
+  onRowClick = data => {
+    this.setState({
+      detailedAnswer: data
+    });
+  };
+
+  backToPlayerResults = () => {
+    this.setState({
+      detailedAnswer: undefined
+    });
+  };
+
   render() {
     const { onBackClick, results, workflowName } = this.props;
+    const { detailedAnswer } = this.state;
 
     const playerName = results ? results[0].playername : "";
 
+    const options = {
+      onRowClick: this.onRowClick
+    };
+
     return (
       <div className="container">
-        <div className="back-button mt-2" onClick={onBackClick}>
-          <i className="fa fa-chevron-left mr-2" />
-          <a>Back To Results</a>
-        </div>
-        <h3 className="results__Heading">{playerName} - {workflowName}</h3>
-        <div>
-          <BootstrapTable
-            data={results.teamResults}
-            className="results__table-layout"
-            trClassName="cursor-pointer"
-            hover
-            responsive
-            striped
-            bordered
-            condensed
-          >
-            {tableStructure.map((item, index) => {
-              const { dataField, className, title } = item;
+        {detailedAnswer ? (
+          <div className="back-button mt-2" onClick={this.backToPlayerResults}>
+            <i className="fa fa-chevron-left mr-2" />
+            <a>Back To Player Results</a>
+          </div>
+        ) : (
+          <div className="back-button mt-2" onClick={onBackClick}>
+            <i className="fa fa-chevron-left mr-2" />
+            <a>Back To Team Results</a>
+          </div>
+        )}
 
-              return (
-                <TableHeaderColumn
-                  key={index}
-                  isKey={index === 0}
-                  dataField={dataField}
-                  className={className}
-                  dataSort={true}
-                >
-                  {title}
-                </TableHeaderColumn>
-              );
-            })}
-          </BootstrapTable>
+        <h3 className="results__Heading">
+          {playerName} - {workflowName}
+        </h3>
+        <div>
+          {detailedAnswer ? (
+            <div>TO DO</div>
+          ) : (
+            <BootstrapTable
+              data={results.teamResults}
+              options={options}
+              className="results__table-layout"
+              trClassName="cursor-pointer"
+              hover
+              responsive
+              striped
+              bordered
+              condensed
+            >
+              {tableStructure.map((item, index) => {
+                const { dataField, className, title } = item;
+
+                return (
+                  <TableHeaderColumn
+                    key={index}
+                    isKey={index === 0}
+                    dataField={dataField}
+                    className={className}
+                    dataSort={true}
+                  >
+                    {title}
+                  </TableHeaderColumn>
+                );
+              })}
+            </BootstrapTable>
+          )}
         </div>
       </div>
     );
