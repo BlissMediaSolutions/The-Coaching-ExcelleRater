@@ -34,7 +34,7 @@ try {
   //$wfid = "1";
 
   $result = R::getAll("SELECT videolist.videoid, videolist.question, videolist.answer1, videolist.ans1radius, videolist.answer2, videolist.ans2radius, videolist.answer3, videolist.ans3radius,
-    wfanswers.personid, wfanswers.answer, wfanswers.score FROM wfanswers INNER JOIN videolist ON videolist.workflowid = wfanswers.workflowid AND videolist.videoid = wfanswers.videoid
+    videolist.stoppoint, wfanswers.personid, wfanswers.answer, wfanswers.score FROM wfanswers INNER JOIN videolist ON videolist.workflowid = wfanswers.workflowid AND videolist.videoid = wfanswers.videoid
     WHERE videolist.workflowid = ".$wfid." AND wfanswers.personid = ".$playerid);
 
   //Simple error handling in case (for some reason) the getAll returns no results.
@@ -57,6 +57,7 @@ try {
     $data->an2radius = $wfstats['ans2radius'];
     $data->answer3 = $wfstats['answer3'];
     $data->an3radius = $wfstats['ans3radius'];
+    $data->stoppoint = $wfstats['stoppoint'];
 
     //while the Players fullname isn't really required, just in case to display on front end.
     $data->playerid = $wfstats['personid'];
