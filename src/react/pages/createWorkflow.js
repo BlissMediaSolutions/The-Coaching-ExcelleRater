@@ -363,9 +363,9 @@ class CreateWorkflow extends Component {
     // build and push each video data onto variables
     data.videoData.forEach(video => {
       const { endFrame, playbackRate, question, videoId, timeStamp } = video;
-      const ans1 = `${video.answers[1].left + video.answers[1].width / 2},${video.answers[1].top + video.answers[1].width / 2}`;
-      const ans2 = `${video.answers[2].left + video.answers[1].width / 2},${video.answers[2].top + video.answers[1].width / 2}`;
-      const ans3 = `${video.answers[3].left + video.answers[1].width / 2},${video.answers[3].top + video.answers[1].width / 2}`;
+      const ans1 = `${video.answers[1].left},${video.answers[1].top}`;
+      const ans2 = `${video.answers[2].left},${video.answers[2].top}`;
+      const ans3 = `${video.answers[3].left},${video.answers[3].top}`;
 
       variables.push({
         ans1,

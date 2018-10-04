@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { BootstrapTable, TableHeaderColumn } from "react-bootstrap-table";
 import "react-bootstrap-table/dist/react-bootstrap-table.min.css";
 
+import DetailedAnswer from "./detailedAnswer";
+
 const tableStructure = [
   {
     dataField: "question",
@@ -61,7 +63,7 @@ export default class PlayerResults extends Component {
         </h3>
         <div>
           {detailedAnswer ? (
-            <div>TO DO</div>
+            <DetailedAnswer {...detailedAnswer} />
           ) : (
             <BootstrapTable
               data={results}

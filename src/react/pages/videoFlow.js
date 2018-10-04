@@ -18,6 +18,7 @@ import { USER_ID } from "../../constants/storageTokens";
 // x,y is the point to test
 // cx, cy is circle center, and radius is circle radius
 const pointInCircle = (x, y, cx, cy, radius) => {
+  console.log(x, y, cx, cy, radius);
   var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
   return distancesquared <= radius * radius;
 };
@@ -150,7 +151,6 @@ class VideoFlow extends Component {
           cr: ans3radius
         }
       ];
-
 
       const x = e.nativeEvent.offsetX;
       const y = e.nativeEvent.offsetY;
