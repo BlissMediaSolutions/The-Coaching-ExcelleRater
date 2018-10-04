@@ -96,8 +96,7 @@ class Login extends Component {
             <h2>Log into an existing account</h2>
             {loading ? (
               <div className="p-5">
-                {" "}
-                <Preloader />{" "}
+                <Preloader />
               </div>
             ) : (
               <div className="pl-3 pr-3">
