@@ -20,7 +20,7 @@
   try {
 
      foreach ($userlist as $list) {
-       $teamlist =  R::load( 'teamlist' );
+       $teamlist =  R::dispense('teamlist');
        $teamlist->username = $list->username;
        $teamlist->password = password_hash($list->password, PASSWORD_BCRYPT);
        $teamlist->teamid = $list->teamid;
