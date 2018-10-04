@@ -18,7 +18,7 @@ import { USER_ID } from "../../constants/storageTokens";
 // x,y is the point to test
 // cx, cy is circle center, and radius is circle radius
 const pointInCircle = (x, y, cx, cy, radius) => {
-  var distancesquared = (x - parseInt(cx, 10)) * (x - parseInt(cx, 10)) + (y - parseInt(cy, 10)) * (y - parseInt(cy, 10));
+  var distancesquared = (x - parseInt(cx, 10) - radius) * (x - parseInt(cx, 10) - radius) + (y - parseInt(cy, 10) - radius) * (y - parseInt(cy, 10) - radius);
   return distancesquared <= radius * radius ;
 };
 
