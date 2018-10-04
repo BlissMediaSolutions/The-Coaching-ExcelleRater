@@ -64,7 +64,7 @@ export default class PlayerResults extends Component {
             <div>TO DO</div>
           ) : (
             <BootstrapTable
-              data={results.teamResults}
+              data={results}
               options={options}
               className="results__table-layout"
               trClassName="cursor-pointer"
