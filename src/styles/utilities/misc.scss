@@ -46,3 +46,12 @@
   justify-content: center;
   align-items: center;
 }
+
+.player-selection {
+  z-index: 9999;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}

@@ -47,10 +47,15 @@ export default class DetailedAnswer extends Component {
   };
 
   render() {
-    const { filename } = this.props;
+    const { answer, filename } = this.props;
     const { playing, answers } = this.state;
 
     console.log(answers);
+    const answerStyle = {
+      position: "absolute",
+      top: parseInt(answer.split(",")[1], 10),
+      left: parseInt(answer.split(",")[0], 10)
+    };
 
     return (
       <div>
@@ -65,9 +70,9 @@ export default class DetailedAnswer extends Component {
             width={1130}
             height={650}
           />
-          {answers.map((answer, index) => {
-            console.log(answer);
-            const { x, y, r } = answer;
+          {answers.map((a, index) => {
+            console.log(a);
+            const { x, y, r } = a;
             const style = {
               position: "absolute",
               top: parseInt(y, 10),
@@ -82,6 +87,7 @@ export default class DetailedAnswer extends Component {
               </div>
             );
           })}
+          <i className="fa fa-times player-selection" style={answerStyle} />
         </div>
       </div>
     );

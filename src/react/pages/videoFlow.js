@@ -18,9 +18,8 @@ import { USER_ID } from "../../constants/storageTokens";
 // x,y is the point to test
 // cx, cy is circle center, and radius is circle radius
 const pointInCircle = (x, y, cx, cy, radius) => {
-  console.log(x, y, cx, cy, radius);
-  var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
-  return distancesquared <= radius * radius;
+  var distancesquared = (x - parseInt(cx, 10)) * (x - parseInt(cx, 10)) + (y - parseInt(cy, 10)) * (y - parseInt(cy, 10));
+  return distancesquared <= radius * radius ;
 };
 
 class VideoFlow extends Component {
