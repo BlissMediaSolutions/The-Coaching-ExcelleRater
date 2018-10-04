@@ -91,8 +91,8 @@ class Login extends Component {
           title="Login"
           bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
         />
-        <div className="container">
-          <div className="u-component">
+        <div className="container d-flex justify-content-center">
+          <div className="u-component w-75">
             <h2>Log into an existing account</h2>
             {loading ? (
               <div className="p-5">
