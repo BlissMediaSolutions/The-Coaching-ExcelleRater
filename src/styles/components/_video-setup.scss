@@ -3,4 +3,11 @@
     color: red;
     zoom: 3;
   }
+  &__tooltip {
+    background-color: red !important;
+    opacity: 1 !important;
+    &::after {
+      border-top-color: red !important;
+    }
+  }
 }

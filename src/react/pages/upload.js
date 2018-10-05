@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { compose, graphql } from "react-apollo";
+// import axios from "axios";
+// import { compose, graphql } from "react-apollo";
 import Dropzone from "react-dropzone";
 
 import Banner from "../components/common/banner";

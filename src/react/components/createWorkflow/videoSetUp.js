@@ -1,7 +1,5 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import ReactTooltip from 'react-tooltip'
-
 import {
   FormGroup,
   Input,
@@ -9,6 +7,13 @@ import {
   InputGroupAddon,
   Label
 } from "reactstrap";
+
+import {
+  EndFrameTooltip,
+  QuestionTooltip,
+  TimestampTooltip,
+  PlaybackTooltip
+} from "./tooltip";
 
 export default ({
   playing,
@@ -36,17 +41,16 @@ export default ({
       <div>
         <div className="row">
           <FormGroup className="col sm-12">
-          
-          <Label>Enter question to ask</Label>
+            <Label>Enter question to ask</Label>
+            <i
+              style={{ marginLeft: "25px" }}
+              class="fa fa-info-circle"
+              data-tip
+              data-for="question"
+            />
+            <QuestionTooltip />
 
-          <a style={{marginLeft:"25px"}} class="fa fa-info-circle" data-tip data-for='InfoCircle'> </a> 
-          <ReactTooltip id='InfoCircle' type='error' effect='float' place='top'>
-          <span>
-            Enter question to ask player completing the workflow
-          </span>
-          </ReactTooltip>
-
-              <Input
+            <Input
               type="text"
               name="question"
               value={question}
@@ -57,14 +61,13 @@ export default ({
         <div className="row">
           <FormGroup className="col sm-4">
             <Label>Pause at Timestamp</Label>
-
-            <a style={{marginLeft:"25px"}} class="fa fa-info-circle" data-tip data-for='InfoCircle2'> </a> 
-            <ReactTooltip id='InfoCircle2' type='error' effect='solid' place='top'>
-            <span>
-              Pause at Timestamp automatically stops the video at the time you select
-            </span>
-            </ReactTooltip>
-
+            <i
+              style={{ marginLeft: "25px" }}
+              class="fa fa-info-circle"
+              data-tip
+              data-for="timeStamp"
+            />
+            <TimestampTooltip />
             <InputGroup>
               <Input
                 type="number"
@@ -76,15 +79,14 @@ export default ({
             </InputGroup>
           </FormGroup>
           <FormGroup className="col sm-4">
-
             <Label>Select playback rate</Label>
-            <a style={{marginLeft:"25px"}} class="fa fa-info-circle" data-tip data-for='InfoCircle3'> </a> 
-          <ReactTooltip id='InfoCircle3' type='error' effect='float' place='top'>
-          <span>
-          Select Playback rate determines the playback speed of the video when players are attempting this question
-          </span>
-          </ReactTooltip>
-
+            <i
+              style={{ marginLeft: "25px" }}
+              class="fa fa-info-circle"
+              data-tip
+              data-for="playback"
+            />
+            <PlaybackTooltip />
 
             <Input
               type="select"
@@ -102,12 +104,13 @@ export default ({
           </FormGroup>
           <FormGroup className="col sm-4">
             <Label>Select end frame option</Label>
-            <a style={{marginLeft:"25px"}} class="fa fa-info-circle" data-tip data-for='InfoCircle4'> </a> 
-          <ReactTooltip id='InfoCircle4' type='error' effect='solid' place='top'>
-          <span>
-            Select end frame allows you to select an option for the final frame 
-          </span>
-          </ReactTooltip>
+            <i
+              style={{ marginLeft: "25px" }}
+              class="fa fa-info-circle"
+              data-tip
+              data-for="endFrame"
+            />
+            <EndFrameTooltip />
             <Input
               type="select"
               name="endFrame"
