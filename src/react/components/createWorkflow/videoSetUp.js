@@ -57,7 +57,9 @@ export default ({
             </InputGroup>
           </FormGroup>
           <FormGroup className="col sm-4">
-            <Label>Select playback rate</Label>
+            <Label className="d-flex justify-content-between">
+              Select playback rate <i className="fa fa-info c-video-setup__info" />
+            </Label>
             <Input
               type="select"
               name="playbackRate"
