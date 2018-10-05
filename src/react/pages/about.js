@@ -11,7 +11,7 @@ class About extends Component {
         />
         <div className="container">
           <div className="u-component">
-            <h2>How to contact us?</h2>
+            <h2>What we do</h2>
 <p>
   The Coaching ExcelleRater is a video-based decision-making platform for performance analysis and coaching.
 </p>

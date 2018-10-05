@@ -28,6 +28,7 @@ export default ({
         <div className="row">
           <FormGroup className="col sm-12">
             <Label>Enter question to ask</Label>
+            <i style={{marginLeft:"25px"}} class="fa fa-info-circle" title="Enter a question to ask the player completing the workflow"></i>
             <Input
               type="text"
               name="question"
@@ -39,6 +40,7 @@ export default ({
         <div className="row">
           <FormGroup className="col sm-4">
             <Label>Pause at Timestamp</Label>
+            <i style={{marginLeft:"25px"}} class="fa fa-info-circle" title="Pause at Timestamp allows you to choose a time in which you would like the video to be stopped"></i>
             <InputGroup>
               <Input
                 type="number"
@@ -51,6 +53,7 @@ export default ({
           </FormGroup>
           <FormGroup className="col sm-4">
             <Label>Select playback rate</Label>
+            <i style={{paddingLeft:"25px"}} class="fa fa-info-circle" title="Select Playback rate determines the playback speed of the video when players are attempting this question"></i>
             <Input
               type="select"
               name="playbackRate"
@@ -67,6 +70,7 @@ export default ({
           </FormGroup>
           <FormGroup className="col sm-4">
             <Label>Select end frame option</Label>
+            <i style={{paddingLeft:"25px"}} class="fa fa-info-circle" title="Select end frame option allows you to choose an option for the final frame shown"></i>
             <Input
               type="select"
               name="endFrame"
