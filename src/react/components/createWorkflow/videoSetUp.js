@@ -59,14 +59,10 @@ export default ({
             </InputGroup>
           </FormGroup>
           <FormGroup className="col sm-4">
-<<<<<<< HEAD
+
             <Label>Select playback rate</Label>
             <i style={{paddingLeft:"25px"}} class="fa fa-info-circle" title="Select Playback rate determines the playback speed of the video when players are attempting this question"></i>
-=======
-            <Label className="d-flex justify-content-between">
-              Select playback rate <i className="fa fa-info c-video-setup__info" />
-            </Label>
->>>>>>> f1da411b222a6c57e2da3d033100f3688455616a
+
             <Input
               type="select"
               name="playbackRate"
