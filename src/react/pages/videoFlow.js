@@ -18,8 +18,10 @@ import { USER_ID } from "../../constants/storageTokens";
 // x,y is the point to test
 // cx, cy is circle center, and radius is circle radius
 const pointInCircle = (x, y, cx, cy, radius) => {
-  var distancesquared = (x - parseInt(cx, 10) - radius) * (x - parseInt(cx, 10) - radius) + (y - parseInt(cy, 10) - radius) * (y - parseInt(cy, 10) - radius);
-  return distancesquared <= radius * radius ;
+  var distancesquared =
+    (x - parseInt(cx, 10) - radius) * (x - parseInt(cx, 10) - radius) +
+    (y - parseInt(cy, 10) - radius) * (y - parseInt(cy, 10) - radius);
+  return distancesquared <= radius * radius;
 };
 
 class VideoFlow extends Component {
@@ -76,9 +78,11 @@ class VideoFlow extends Component {
 
   // Stops the player at the required Time Stamps
   onProgress = progress => {
-    // const { timeStamp } = this.props;
-    const timeStamp = 1;
-    if (Math.round(progress.playedSeconds) === parseInt(timeStamp, 10)) {
+    const { videoData } = this.state;
+    if (
+      Math.round(progress.playedSeconds * 10) / 10 ===
+      parseInt(videoData.stoppoint, 10)
+    ) {
       this.setState({
         playing: false
       });
@@ -154,8 +158,7 @@ class VideoFlow extends Component {
       const x = e.nativeEvent.offsetX;
       const y = e.nativeEvent.offsetY;
 
-      console.log(answerCircles, x, y)
-
+      console.log(answerCircles, x, y);
 
       let score = 0;
       for (var i = 0; i < answerCircles.length; i++) {

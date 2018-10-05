@@ -14,6 +14,7 @@ import VideoAnswers from "../components/createWorkflow/videoAnswers";
 import SelectPlayers from "../components/createWorkflow/selectPlayers";
 import CompleteWorkflow from "../components/createWorkflow/completeWorkflow";
 import WorkflowModal from "../components/createWorkflow/workflowModal";
+import ProgressIndicator from "../components/createWorkflow/progressIndicator";
 
 import { isDefinedNotNull } from "../../util/objUtil";
 import { validateNonEmptyString } from "../../util/validators";
@@ -171,12 +172,10 @@ class CreateWorkflow extends Component {
   };
 
   onProgress = progress => {
-    const { timeStamp } = this.state;
-    if (Math.round(progress.playedSeconds) === parseInt(timeStamp, 10)) {
-      this.setState({
-        playing: false
-      });
-    }
+    const playingTime = Math.round(progress.playedSeconds * 10) / 10;
+    this.setState({
+      timeStamp: playingTime
+    });
   };
 
   moveAnswer = (number, top, left) => {
@@ -252,7 +251,7 @@ class CreateWorkflow extends Component {
           height: 50,
           width: 50
         }
-      },
+      }
     });
   };
 
@@ -392,7 +391,11 @@ class CreateWorkflow extends Component {
         this.setState({
           loading: false,
           workflowModal: false,
-          successModal: true
+          successModal: true,
+          data: {
+            videoData: [],
+            players: []
+          }
         });
       })
       .catch(error => {
@@ -451,6 +454,7 @@ class CreateWorkflow extends Component {
             timeStamp={timeStamp}
             endFrame={endFrame}
             playbackRate={playbackRate}
+            onProgress={this.onProgress}
           />
         );
       case 2:
@@ -501,7 +505,7 @@ class CreateWorkflow extends Component {
   };
 
   render() {
-    const { index, loading } = this.state;
+    const { index, loading, data } = this.state;
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
@@ -530,6 +534,10 @@ class CreateWorkflow extends Component {
               >
                 Previous
               </Button>
+              <div className="d-flex flex-column align-items-center">
+                <div>Videos Added To Workflow: {data.videoData.length}</div>
+                <ProgressIndicator />
+              </div>
               <Button
                 color="primary"
                 onClick={this.onNextClick}

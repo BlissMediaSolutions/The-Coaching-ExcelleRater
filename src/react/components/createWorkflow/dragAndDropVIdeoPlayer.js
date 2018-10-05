@@ -39,7 +39,7 @@ class DragAndDropVideoPlayer extends Component {
 
   seekToTime = () => {
     const { timeStamp } = this.props;
-    this.player.seekTo(parseInt(timeStamp, 10));
+    this.player.seekTo(timeStamp);
     this.setState({
       playing: false
     });
