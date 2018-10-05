@@ -40,7 +40,7 @@ export default class DetailedAnswer extends Component {
 
   seekToTime = () => {
     const { stoppoint } = this.props;
-    this.player.seekTo(parseInt(stoppoint, 10));
+    this.player.seekTo(stoppoint);
     this.setState({
       playing: false
     });

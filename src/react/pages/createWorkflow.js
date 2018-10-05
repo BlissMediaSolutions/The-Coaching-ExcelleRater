@@ -171,12 +171,8 @@ class CreateWorkflow extends Component {
   };
 
   onProgress = progress => {
-    const { timeStamp } = this.state;
-    if (Math.round(progress.playedSeconds) === parseInt(timeStamp, 10)) {
-      this.setState({
-        playing: false
-      });
-    }
+    const playingTime = Math.round(progress.playedSeconds * 10) / 10;
+    console.log(playingTime);
   };
 
   moveAnswer = (number, top, left) => {
@@ -252,7 +248,7 @@ class CreateWorkflow extends Component {
           height: 50,
           width: 50
         }
-      },
+      }
     });
   };
 

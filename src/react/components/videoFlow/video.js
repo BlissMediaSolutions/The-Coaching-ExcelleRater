@@ -24,6 +24,7 @@ export default ({
           <ReactPlayer
             url={videoUrl}
             onProgress={onProgress}
+            progressInterval={100}
             volume="0"
             playing={playing}
             width={1130}
