@@ -172,7 +172,9 @@ class CreateWorkflow extends Component {
 
   onProgress = progress => {
     const playingTime = Math.round(progress.playedSeconds * 10) / 10;
-    console.log(playingTime);
+    this.setState({
+      timeStamp: playingTime
+    })
   };
 
   moveAnswer = (number, top, left) => {
@@ -447,6 +449,7 @@ class CreateWorkflow extends Component {
             timeStamp={timeStamp}
             endFrame={endFrame}
             playbackRate={playbackRate}
+            onProgress={this.onProgress}
           />
         );
       case 2:

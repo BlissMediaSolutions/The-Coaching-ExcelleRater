@@ -15,10 +15,17 @@ export default ({
   endFrame,
   playbackRate,
   onChange,
-  videoUrl
+  videoUrl,
+  onProgress
 }) => (
   <div className="c-video-setup d-flex align-items-center m-3 flex-column w-100">
-    <ReactPlayer playing={playing} url={videoUrl} controls={true} />
+    <ReactPlayer
+      playing={playing}
+      url={videoUrl}
+      controls={true}
+      onProgress={onProgress}
+      progressInterval={100}
+    />
     <div>
       <div className="d-flex align-items-center">
         <i className="c-video-setup__icon fa fa-cog m-3" />
