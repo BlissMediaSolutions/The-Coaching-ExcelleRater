@@ -288,14 +288,12 @@ class VideoFlow extends Component {
         }
 
         return (
-          <div>
-            <SelectWorkflow
-              onChange={this.onChange}
-              onSelect={this.onWorflowSelect}
-              searchString={searchString}
-              workflows={filteredWorkflows}
-            />
-          </div>
+          <SelectWorkflow
+            onChange={this.onChange}
+            onSelect={this.onWorflowSelect}
+            searchString={searchString}
+            workflows={filteredWorkflows}
+          />
         );
       }
 
