@@ -5,7 +5,6 @@ padding-bottom: 50px;
 
     &__Container {
     margin-top: 50px;
-    margin-left: 50px; 
     }
 
     &__FileUpload {
@@ -17,9 +16,9 @@ padding-bottom: 50px;
     }
 
     &__dropzone-styling {
-        width: 50%;
+        width: 100%;
         height: 75px;
-        border: 2px solid red;
+        border: 2px dashed white;
         background-color: red;
         padding-top: 25px;
         color: white;
@@ -28,26 +27,6 @@ padding-bottom: 50px;
         }
 
     &__name {
-        max-width: 500px;
         margin-top: 25px;
-        margin-left: 50px; 
-    }
-
-    &__description {
-        max-width: 500px;
-        margin-top: 25px;
-        margin-left: 50px; 
-    }
-
-    &__category {
-        max-width: 500px;
-        margin-top: 25px;
-        margin-left: 50px; 
-    }
-
-    &__author {
-        max-width: 500px;
-        margin-top: 25px;
-        margin-left: 50px; 
     }  
 }

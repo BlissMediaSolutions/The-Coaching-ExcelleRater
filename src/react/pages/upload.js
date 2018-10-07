@@ -98,11 +98,11 @@ class VideoUpload extends Component {
             bgImage="https://elementvc.files.wordpress.com/2016/04/17-1.jpg?w=1075"
             />
 
-            <div className="VideoUpload__Container" onSubmit = {this.onFormSubmit}> 
+            <div className="VideoUpload__Container container" onSubmit = {this.onFormSubmit}> 
             {VideoToUpload !== null ? <video src={VideoToUpload} /> : ''}
 
                 <Dropzone 
-                //className="VideoUpload__dropzone-styling"
+                className="VideoUpload__dropzone-styling"
                 onDrop={this.handleOnDrop}
                 maxSize = {maxVideoSize} 
                 accept={acceptedFiles} 
@@ -114,7 +114,7 @@ class VideoUpload extends Component {
           <React.Fragment>
             <h3>View Preview of Uploaded File Below</h3>
             {this.state.files.map((file) => (
-              <video width="400" height="300" controls preload="auto"
+              <video width="100%" height="300" controls preload="auto"
                 key={file.preview}
                 src={file.preview}
                 
@@ -124,7 +124,7 @@ class VideoUpload extends Component {
           </React.Fragment>
         }  
          </div>
-            <div className="VideoUpload__details">
+            <div className="VideoUpload__details container">
             
             <FormGroup className="VideoUpload__name">
             <Label>Enter a name for the video</Label>
