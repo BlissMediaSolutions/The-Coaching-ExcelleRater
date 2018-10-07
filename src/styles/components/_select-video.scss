@@ -6,6 +6,7 @@
       background-color: $color-grey-light;
     }
     &__player {
+      margin-left: -10px;
       video {
         max-height: 100px;
       }

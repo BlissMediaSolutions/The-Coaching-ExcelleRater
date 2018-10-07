@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import { videoUrlString } from "../../../util/helpers";
 
 export default ({ onChange, onSelect, searchString, videos }) => (
-  <div className="c-select-video u-component col-lg-6">
+  <div className="c-select-video u-component">
     <div className="container-fluid">
       <div className="row">
         <h2>Search and Select a Video</h2>
@@ -26,7 +26,7 @@ export default ({ onChange, onSelect, searchString, videos }) => (
             className="c-select-video__video row py-2 border-bottom"
             onClick={() => onSelect(video.id)}
           >
-            <div className="col-5">
+            <div className="">
               <ReactPlayer
                 url={videoUrlString(video.filename)}
                 playing={false}
@@ -34,7 +34,7 @@ export default ({ onChange, onSelect, searchString, videos }) => (
                 className="c-select-video__video__player"
               />
             </div>
-            <div className="col-7">
+            <div>
               <div>{video.title}</div>
               <div>{video.description}</div>
             </div>
