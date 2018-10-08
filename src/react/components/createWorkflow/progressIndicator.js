@@ -28,7 +28,6 @@ export default ({ index }) => (
     <Bar condition={index > 1} />
     <Circle number={3} condition={index > 2} />
     <Bar condition={index > 2} />
-    {index > 2 ? <Circle number={4} condition={index > 4} /> : null}
-    
+    <Circle number={4} condition={index > 4} />
   </div>
 );
