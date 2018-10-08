@@ -11,3 +11,17 @@
     }
   }
 }
+
+.c-react-player {
+  width: 100% !important;
+  padding-bottom: 56.25%;
+  position: relative;
+
+  video {
+    position: absolute;
+  }
+}
+
+.c-progress-bar {
+  margin-bottom: -38px;
+}

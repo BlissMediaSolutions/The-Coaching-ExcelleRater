@@ -19,7 +19,7 @@ export default ({ onChange, onSelect, searchString, videos }) => (
           onChange={onChange}
         />
       </div>
-      <div className="mt-2">
+      <div className="mt-3">
         {videos.map((video, index) => (
           <div
             key={index}
@@ -35,7 +35,7 @@ export default ({ onChange, onSelect, searchString, videos }) => (
               />
             </div>
             <div>
-              <div>{video.title}</div>
+              <div className="font-weight-bold">{video.title}</div>
               <div>{video.description}</div>
             </div>
           </div>

@@ -526,7 +526,7 @@ class CreateWorkflow extends Component {
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
           <div className="d-flex flex-column align-items-center">
-            <div>Videos Added To Workflow: {data.videoData.length}</div>
+            <div className="font-weight-bold mb-3">Videos Added To Workflow: {data.videoData.length}</div>
             <ProgressIndicator index={index} />
           </div>
           {index !== 4 && (

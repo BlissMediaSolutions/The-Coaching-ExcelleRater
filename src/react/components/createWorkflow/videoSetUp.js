@@ -25,17 +25,18 @@ export default ({
   videoUrl,
   onProgress
 }) => (
-  <div className="c-video-setup d-flex align-items-center m-3 flex-column w-100">
+  <div className="c-video-setup d-flex align-items-center flex-column w-100">
     <ReactPlayer
       playing={playing}
       url={videoUrl}
       controls={true}
       onProgress={onProgress}
       progressInterval={100}
+      className="c-react-player"
     />
-    <div>
-      <div className="d-flex align-items-center">
-        <i className="c-video-setup__icon fa fa-cog m-3" />
+    <div className="w-100">
+      <div className="d-flex align-items-center mt-3 mb-3">
+        <i className="c-video-setup__icon fa fa-cog mr-3" />
         <h2 className="m-0">Setup the clip information</h2>
       </div>
       <div>
