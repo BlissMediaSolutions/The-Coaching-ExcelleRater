@@ -525,6 +525,10 @@ class CreateWorkflow extends Component {
           <div className="row justify-content-center">
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
+          <div className="d-flex flex-column align-items-center">
+            <div>Videos Added To Workflow: {data.videoData.length}</div>
+            <ProgressIndicator index={index} />
+          </div>
           {index !== 4 && (
             <div className="row justify-content-between mb-4">
               <Button
@@ -534,10 +538,7 @@ class CreateWorkflow extends Component {
               >
                 Previous
               </Button>
-              <div className="d-flex flex-column align-items-center">
-                <div>Videos Added To Workflow: {data.videoData.length}</div>
-                <ProgressIndicator />
-              </div>
+
               <Button
                 color="primary"
                 onClick={this.onNextClick}

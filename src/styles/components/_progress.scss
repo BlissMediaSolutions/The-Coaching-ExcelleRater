@@ -1,0 +1,31 @@
+.c-progress {
+  &__circle {
+    border-radius: 50%;
+    background-color: $color-green-light;
+    color: white;
+    position: relative;
+    text-align: center;
+    border: 3px solid $color-green-light;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--alt {
+      background-color: $color-grey-mid;
+      border-color: $color-grey-mid;
+    }
+  }
+
+  &__bar {
+    width: 50px;
+    height: 4px;
+    background-color: $color-green-light;
+    position: relative;
+  }
+
+  &__bar--alt {
+    background-color: $color-grey-mid;
+  }
+}
