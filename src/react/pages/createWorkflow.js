@@ -521,8 +521,8 @@ class CreateWorkflow extends Component {
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
           />
         )}
-        <div className={`container ${className}`}>
-          <div className="row justify-content-center">
+        <div className={`container pl-0 pr-0 ${className}`}>
+          <div className=" mb-4">
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
           <div className="d-flex flex-column align-items-center">
@@ -530,7 +530,7 @@ class CreateWorkflow extends Component {
             <ProgressIndicator index={index} />
           </div>
           {index !== 4 && (
-            <div className="row justify-content-between mb-4">
+            <div className="row justify-content-between mb-4 pl-3 pr-3">
               <Button
                 color="secondary"
                 onClick={this.onPrevClick}
