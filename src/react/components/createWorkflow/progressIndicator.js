@@ -8,6 +8,7 @@ export const Bar = ({ condition }) => (
   />
 );
 
+// Test Commit Fix
 export const Circle = ({ condition, number }) => (
   <span
     className={
