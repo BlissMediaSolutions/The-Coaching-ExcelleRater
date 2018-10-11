@@ -27,7 +27,7 @@ export default ({
       })}
       <div className="row justify-content-between mt-5">
         <div className="btn btn-success col-4" onClick={onSave}>
-          Save Workflow
+          Name & Finish Workflow
         </div>
         <div className="btn btn-secondary col-4" onClick={onGoBackClick}>
           Go Back

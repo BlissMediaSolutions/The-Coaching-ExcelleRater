@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div className="mb-footer">
         <Banner
-          title="Coaching / Excelerator"
+          title="The Coaching ExcelleRater"
           bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
         />
         <div className="container">

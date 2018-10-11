@@ -3872,6 +3872,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gitinspector@^0.5.0-dev-2:
+  version "0.5.0-dev-2"
+  resolved "https://registry.yarnpkg.com/gitinspector/-/gitinspector-0.5.0-dev-2.tgz#822656dfa7fa5d5127ece117a04b8f0713a75c33"
+  integrity sha512-FqEKpFTOuK3eiB49QdT25QHbs+o4emnZEKFFXqS4PTOR8InyBuinopR0XUUK5QkpL1zqhTVqsVxdra2dBNAbyw==
+  dependencies:
+    python-shell "^0.4.0"
+
 glob-base@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/glob-base/-/glob-base-0.3.0.tgz#dbb164f6221b1c0b1ccf82aea328b497df0ea3c4"
@@ -7127,6 +7134,11 @@ punycode@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.0.tgz#5f863edc89b96db09074bad7947bf09056ca4e7d"
   integrity sha1-X4Y+3Im5bbCQdLrXlHvwkFbKTn0=
+
+python-shell@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/python-shell/-/python-shell-0.4.0.tgz#259c5470d885292b22e906a57b085f651752f956"
+  integrity sha1-JZxUcNiFKSsi6QalewhfZRdS+VY=
 
 q@^1.1.2:
   version "1.5.1"
