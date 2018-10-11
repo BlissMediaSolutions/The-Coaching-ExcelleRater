@@ -15,6 +15,7 @@ import SelectPlayers from "../components/createWorkflow/selectPlayers";
 import CompleteWorkflow from "../components/createWorkflow/completeWorkflow";
 import WorkflowModal from "../components/createWorkflow/workflowModal";
 import ProgressIndicator from "../components/createWorkflow/progressIndicator";
+import ViewVideoModal from "../components/createWorkflow/videoModal";
 
 import { isDefinedNotNull } from "../../util/objUtil";
 import { validateNonEmptyString } from "../../util/validators";
@@ -33,6 +34,7 @@ class CreateWorkflow extends Component {
       searchString: "",
       workflowModal: false,
       successModal: false,
+      viewModal: false,
       workflowName: "",
       videoId: "",
       playing: false,
@@ -107,6 +109,12 @@ class CreateWorkflow extends Component {
     this.setState({
       successModal: false,
       index: 0
+    });
+  };
+
+  toggleViewModal = () => {
+    this.setState({
+      viewModal: !this.state.viewModal
     });
   };
 
@@ -505,7 +513,7 @@ class CreateWorkflow extends Component {
   };
 
   render() {
-    const { index, loading, data } = this.state;
+    const { index, loading, data, viewModal } = this.state;
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
@@ -526,7 +534,16 @@ class CreateWorkflow extends Component {
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
           <div className="d-flex flex-column align-items-center">
-            <div className="font-weight-bold mb-3">Videos Added To Workflow: {data.videoData.length}</div>
+            {data.videoData.length > 0 ? (
+              <div
+                className="font-weight-bold mb-3 cursor-pointer"
+                onClick={this.toggleViewModal}
+              >
+                Click to view Videos added to Workflow(
+                {data.videoData.length})
+              </div>
+            ) : null}
+
             <ProgressIndicator index={index} />
           </div>
           {index !== 4 && (
@@ -549,6 +566,12 @@ class CreateWorkflow extends Component {
             </div>
           )}
         </div>
+        <ViewVideoModal
+          isOpen={viewModal}
+          toggle={this.toggleViewModal}
+          videos={data.videoData}
+          getVideoUrl={this.getVideoUrl}
+        />
       </div>
     );
   }
