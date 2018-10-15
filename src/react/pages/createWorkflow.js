@@ -347,6 +347,43 @@ class CreateWorkflow extends Component {
     });
   };
 
+  deleteVideo = index => {
+    const { data } = this.state;
+
+    // Clone from state
+    const newVideoData = Array.from(data.videoData);
+
+    // Delete characteristic at index
+    newVideoData.splice(index, 1);
+
+    this.setState({
+      data: {
+        ...data,
+        videoData: newVideoData
+      }
+    });
+  };
+
+  onChangeOrderClick = (index, type) => {
+    const { data } = this.state;
+
+    // Clone from state
+    const newVideoData = Array.from(data.videoData);
+
+    const newIndex = type === "asc" ? index - 1 : index + 1;
+
+    var temp = newVideoData[index];
+    newVideoData[index] = newVideoData[newIndex];
+    newVideoData[newIndex] = temp;
+
+    this.setState({
+      data: {
+        ...data,
+        videoData: newVideoData
+      }
+    });
+  };
+
   saveWorkflow = () => {
     const { data, workflowName } = this.state;
     // build player object
@@ -519,6 +556,8 @@ class CreateWorkflow extends Component {
 
     console.log(this.state.answers);
 
+    console.log(data);
+
     return (
       <div className="mb-footer">
         {!canPrev ? (
@@ -574,6 +613,8 @@ class CreateWorkflow extends Component {
           toggle={this.toggleViewModal}
           videos={data.videoData}
           getVideoUrl={this.getVideoUrl}
+          deleteVideo={this.deleteVideo}
+          onChangeOrderClick={this.onChangeOrderClick}
         />
       </div>
     );
