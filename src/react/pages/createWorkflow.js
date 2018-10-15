@@ -553,6 +553,7 @@ class CreateWorkflow extends Component {
                 color="secondary"
                 onClick={this.onPrevClick}
                 disabled={!canPrev}
+                className="w-5rem"
               >
                 Previous
               </Button>
@@ -561,6 +562,7 @@ class CreateWorkflow extends Component {
                 color="primary"
                 onClick={this.onNextClick}
                 disabled={!canNext}
+                className="w-5rem"
               >
                 Next
               </Button>
