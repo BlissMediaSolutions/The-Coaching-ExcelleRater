@@ -8,13 +8,14 @@ export default ({ onChange, onSelect, searchString, videos }) => (
   <div className="c-select-video u-component">
     <div className="container-fluid">
       <div className="row">
-        <h2>Search and Select a Video</h2>
+        <h2>Select a Video</h2>
       </div>
       <div className="row">
         <Input
           type="text"
           name="searchString"
           className="col-12"
+          placeholder="Search for a Video"
           value={searchString}
           onChange={onChange}
         />

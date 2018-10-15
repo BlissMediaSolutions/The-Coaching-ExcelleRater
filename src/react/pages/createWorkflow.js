@@ -517,19 +517,22 @@ class CreateWorkflow extends Component {
     const canNext = this.isComplete(index) && index < maxIndex;
     const canPrev = index !== 0;
 
-    const className = canPrev ? "mt-5 pt-5" : "";
-
     console.log(this.state.answers);
 
     return (
       <div className="mb-footer">
-        {!canPrev && (
+        {!canPrev ? (
           <Banner
             title="Create Workflow"
             bgImage="https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png"
           />
+        ) : (
+          <div className="mt-5 pt-5 d-flex flex-column align-items-center border-bottom">
+            <h1 className="text-center">Create Workflow</h1>
+            <ProgressIndicator index={index} />
+          </div>
         )}
-        <div className={`container pl-0 pr-0 ${className}`}>
+        <div className={`container pl-0 pr-0`}>
           <div className=" mb-4">
             {loading ? <Preloader /> : this.componentToRender(index)}
           </div>
@@ -543,8 +546,6 @@ class CreateWorkflow extends Component {
                 {data.videoData.length})
               </div>
             ) : null}
-
-            <ProgressIndicator index={index} />
           </div>
           {index !== 4 && (
             <div className="row justify-content-between mb-4 pl-3 pr-3">

@@ -22,7 +22,7 @@ export const Circle = ({ condition, number }) => (
 );
 
 export default ({ index }) => (
-  <div className="d-flex align-items-center c-progress-bar">
+  <div className="d-flex align-items-center mb-2">
     <Circle number={1} condition={index > 0} />
     <Bar condition={index > 0} />
     <Circle number={2} condition={index > 1} />
