@@ -559,7 +559,7 @@ class CreateWorkflow extends Component {
     console.log(data);
 
     return (
-      <div className="mb-footer">
+      <div className="mb-footer c-create-workflow">
         {!canPrev ? (
           <Banner
             title="Create Workflow"
@@ -586,27 +586,28 @@ class CreateWorkflow extends Component {
               </div>
             ) : null}
           </div>
-          {index !== 4 && (
-            <div className="row justify-content-between mb-4 pl-3 pr-3">
-              <Button
-                color="secondary"
-                onClick={this.onPrevClick}
-                disabled={!canPrev}
-                className="w-5rem"
-              >
-                Previous
-              </Button>
+          {index !== 4 &&
+            index !== 0 && (
+              <div className="row justify-content-between mb-4 pl-3 pr-3">
+                <Button
+                  color="secondary"
+                  onClick={this.onPrevClick}
+                  disabled={!canPrev}
+                  className="w-5rem"
+                >
+                  Previous
+                </Button>
 
-              <Button
-                color="primary"
-                onClick={this.onNextClick}
-                disabled={!canNext}
-                className="w-5rem"
-              >
-                Next
-              </Button>
-            </div>
-          )}
+                <Button
+                  color="primary"
+                  onClick={this.onNextClick}
+                  disabled={!canNext}
+                  className="w-5rem"
+                >
+                  Next
+                </Button>
+              </div>
+            )}
         </div>
         <ViewVideoModal
           isOpen={viewModal}

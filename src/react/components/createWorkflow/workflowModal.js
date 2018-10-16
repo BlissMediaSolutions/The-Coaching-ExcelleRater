@@ -20,6 +20,11 @@ export default ({ isOpen, toggle, workflowName, onChange, onButtonClick }) => (
       </div>
       <div className="row justify-content-between my-3">
         <div className="col-6">
+          <Button className="w-100" color="secondary" onClick={toggle}>
+            Cancel
+          </Button>
+        </div>
+        <div className="col-6">
           <Button
             color="primary"
             className="w-100"
@@ -27,11 +32,6 @@ export default ({ isOpen, toggle, workflowName, onChange, onButtonClick }) => (
             disabled={workflowName === ""}
           >
             Save Workflow
-          </Button>
-        </div>
-        <div className="col-6">
-          <Button className="w-100" color="secondary" onClick={toggle}>
-            Cancel
           </Button>
         </div>
       </div>
