@@ -21,16 +21,32 @@ export default class VideoModal extends Component {
             <i className="fa fa-times c-video-modal__icon" onClick={toggle} />
           </div>
           <div className="row border-bottom">
-            <div className="col-1">Order</div>
+            <div className="col-2">Order</div>
             <div className="col-4">Video</div>
-            <div className="col-4">Question</div>
+            <div className="col-5">Question</div>
           </div>
           {videos.map((v, index) => (
             <div
               className="row mt-2 pb-2 border-bottom align-items-center"
               key={index}
             >
-              <div className="col-1">{index + 1} </div>
+              <div className="col-2 d-flex align-items-center">
+                <span className="mr-2 c-video-modal__item__order">
+                  {index + 1}
+                </span>
+                {index < videos.length - 1 ? (
+                  <i
+                    className="fa fa-arrow-down c-video-modal__item__icon"
+                    onClick={() => onChangeOrderClick(index, "desc")}
+                  />
+                ) : null}
+                {index > 0 ? (
+                  <i
+                    className="fa fa-arrow-up c-video-modal__item__icon"
+                    onClick={() => onChangeOrderClick(index, "asc")}
+                  />
+                ) : null}
+              </div>
               <div className="col-4">
                 <ReactPlayer
                   url={getVideoUrl(v.videoId)}
@@ -39,23 +55,12 @@ export default class VideoModal extends Component {
                   height={100}
                 />
               </div>
-              <div className="col-4 ml-2">{v.question}</div>
+              <div className="col-5">{v.question}</div>
               <div className="col-1">
-                {index < videos.length - 1 ? (
-                  <i
-                    className="fa fa-arrow-down"
-                    onClick={() => onChangeOrderClick(index, "desc")}
-                  />
-                ) : null}
-                {index > 0 ? (
-                  <i
-                    className="fa fa-arrow-up"
-                    onClick={() => onChangeOrderClick(index, "asc")}
-                  />
-                ) : null}
-              </div>
-              <div className="col-1">
-                <i className="fa fa-trash" onClick={() => deleteVideo(index)} />
+                <i
+                  className="fa fa-trash c-video-modal__item__icon"
+                  onClick={() => deleteVideo(index)}
+                />
               </div>
             </div>
           ))}
