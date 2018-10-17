@@ -302,6 +302,7 @@ class VideoFlow extends Component {
         return (
           <div className="video-screen">
             <Video
+              key={videoData.filename + videoData.question}
               question={videoData.question}
               endFrame={videoData.display}
               playing={playing}
