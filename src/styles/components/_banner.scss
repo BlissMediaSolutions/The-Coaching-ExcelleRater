@@ -1,18 +1,17 @@
-.c-banner{
+.c-banner {
   width: 100%;
-  height: 400px;
+  height: 300px;
   background-size: cover;
   // background-position: center center;
   background-image: url(https://i.pinimg.com/originals/44/7e/2e/447e2e8f27045f2ec24eb0d7d4e2e1ea.png);
   background-position: center -336px;
-  background-attachment: fixed
-  ;
+  background-attachment: fixed;
   display: flex;
   align-items: center;
-  
-  &__heading{
+
+  &__heading {
     font-size: 5rem;
     color: white;
-    text-shadow: 9px 8px 15px black;;
+    text-shadow: 9px 8px 15px black;
   }
 }
