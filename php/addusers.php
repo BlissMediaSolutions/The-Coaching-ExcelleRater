@@ -20,7 +20,7 @@
   try {
 
      foreach ($userlist as $list) {
-       $teamlist =  R::dispense('teamlist');
+       $teamlist =  R::load( 'teamlist' );
        $teamlist->username = $list->username;
        $teamlist->password = password_hash($list->password, PASSWORD_BCRYPT);
        $teamlist->teamid = $list->teamid;
@@ -35,6 +35,6 @@
     echo json_encode(array("success"=>false, "data"=>$e));
   }
 
-  echo json_encode(array("success"=>true, "data"=>"Users added successfully"));
+  echo json_encode(array("success"=>true, "data"=>"Users added success"));
 
  ?>
