@@ -9,6 +9,6 @@
 */
 
   require 'rb.php';
-  R::setup ('mysql:host=localhost;dbname=coaching', 'root', 'AD624or325' );
+  R::setup ('mysql:host=localhost;dbname=coaching', 'root', 'password' );
 
 ?>
