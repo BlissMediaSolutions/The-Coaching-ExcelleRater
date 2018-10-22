@@ -11,7 +11,7 @@ class Home extends Component {
         />
         <div className="container">
           <div className="u-component">
-            <h2>What is coaching excellerator?</h2>
+            <h2>What is The Coaching ExcelleRater?</h2>
             <p>
               The Coaching ExcelleRater is a video-based decision-making
               platform for performance analysis and coaching.
