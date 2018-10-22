@@ -7,7 +7,9 @@ export default ({
   endFrame,
   videoUrl,
   onProgress,
-  getClickPosition
+  getClickPosition,
+  videoNumber,
+  videoTotal
 }) => {
   let overlayClassName = "video__overlay ";
   overlayClassName += !playing ? `video__overlay--${endFrame}` : "";
@@ -15,6 +17,9 @@ export default ({
   return (
     <div className="u-component">
       <div className="container d-flex align-items-center flex-column">
+        <div className="pb-2 mt-2">
+          Answering Question {videoNumber}/{videoTotal}
+        </div>
         <h2>{question}</h2>
         <div className="position-relative">
           <div className="video__overlay" onClick={getClickPosition} />

@@ -254,6 +254,7 @@ class VideoFlow extends Component {
   componentToRender = index => {
     const { videoFlow } = this.props;
     const {
+      videoIndex,
       workflowCompleteModal,
       videoData,
       answerSelectModal,
@@ -310,6 +311,8 @@ class VideoFlow extends Component {
               getClickPosition={this.getClickPosition}
               onProgress={this.onProgress}
               videoUrl={videoUrlString(videoData.filename)}
+              videoNumber={videoIndex + 1}
+              videoTotal={videoFlow.workflowVideos.length}
             />
             <SuccessModal
               isOpen={answerSelectModal}
