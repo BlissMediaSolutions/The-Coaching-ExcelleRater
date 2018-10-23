@@ -28,13 +28,12 @@ function test_getTeamPlayer($teamid)
   //$strresult = "[".rtrim($newresult, ",")."]";
   //echo $strresult;
 
-	//Check if newresult contains anything
-    if (!empty($newresult))
-    {
-      return true;
-    } else {
-      return false;
-    }
+	if (!empty($newresult))
+  {
+    return true;
+  } else {
+    return false;
+  }
     //$newresult .= json_encode($ros).",";
   //}
 }

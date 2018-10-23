@@ -13,28 +13,26 @@
 
     //$teamid = $team->teamid;
     //$teamid = "1";
-    //$newresult = "";
+    $newresult = "";
 
     $videos = R::find("video", "where teamid = ".$teamid);
+    foreach ($videos as $vid) {
+      $newresult .= json_encode($vid).",";
+    }
 
-    if (!empty($videos))
+    R::close();
+
+    if (!empty($newresult))
     {
       return true;
     } else {
       return false;
     }
-
-    //foreach ($videos as $vid) {
-    //  $newresult .= json_encode($vid).",";
-    //}
-
-    R::close();
-
-  	//add brackets to the start & end to proper json-ify the data for the frontend & remove the last trailing comma
-  	//$strresult = "[".rtrim($newresult, ",")."]";
-  	//echo $strresult;
-
+  
+    //add brackets to the start & end to proper json-ify the data for the frontend & remove the last trailing comma
+    //$strresult = "[".rtrim($newresult, ",")."]";
+    //echo $strresult;
 
   }
 
- ?>
+?>

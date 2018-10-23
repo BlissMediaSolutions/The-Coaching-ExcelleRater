@@ -2,18 +2,6 @@
 /*   Unit Test for Get PLayer Stats
      Last Modified Date: 21/10/2018
      version: 1.0
-	   1.0 - Initial script created.
-			 This script receives a JSON object of the playerid & workflowid, modeled as:
-       {"playerid": x, "workflowid":x}
-			 It then uses RedBean ORM, to return the original answers defined by the coach, along with the answer which was given by the player.
-       It responds with a JSON object, which will be modeled in either of 3 fashions (relative to if the player has been assigned workflows, or an error arises):
-       1) [{"videoid": x, "filename": xxxx, "question":xxxxx, "answer1":x, "ans1radius":x, "answer2":x, "ans2radius":x, "answer3":x, "ans3radius":x, "personid":x, "playername":xxx, "answer":x, "score":x},
-           {"videoid": x, "filename": xxxx, "question":xxxxx, "answer1":x, "ans1radius":x, "answer2":x, "ans2radius":x, "answer3":x, "ans3radius":x, "personid":x, "playername":xxx, "answer":x, "score":x)]
-       3) {"success": false, "data": xxxxxxxxxx}
-
-       Note: Answer1, Answer2, Answer3 : refer to the positions defined by the Coach for that particular video (and thus radius refers to the size defined for the answer)
-             Answer : refers to the position given by the player as their answer.  (Score: how many points the player got for this answer)
-
 */
 
 require_once ("connect.php");
@@ -23,6 +11,7 @@ function test_getPlayerStats($playerid, $wfid)
 {
 
   $newresult = "";
+  $data = new \stdClass();
   //$playerid = $stats->playerid;
   //$wfid = $stats->workflowid;
   //$playerid = "2";
@@ -76,8 +65,6 @@ function test_getPlayerStats($playerid, $wfid)
   //add brackets to the start & end to proper json-ify the data for the frontend & remove the last trailing comma
   //$strresult = "[".rtrim($newresult, ",")."]";
   //echo $strresult;
-
-
 
 }
 
